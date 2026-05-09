@@ -1,11 +1,13 @@
+import Header from './components/Header/header'
 import './App.css'
-import Formulario from './components/formularioUsuario/Formulario'
+import MainLayout from './layout/mainLayout'
+import AppRouter from './routers/appRouter'
 
 function App() {
 
   return (
     <>
-      <Formulario/>
+      <AppRouter/>
     </>
   )
 }
