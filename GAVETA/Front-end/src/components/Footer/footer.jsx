@@ -1,6 +1,7 @@
 import CopyrightRoundedIcon from '@mui/icons-material/CopyrightRounded';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import logo from "../../assets/imgs/logo_gaveta.svg"
+import { Link } from 'react-router-dom'
 import './footer.css'
 const Footer = () => {
     return (
@@ -8,10 +9,10 @@ const Footer = () => {
             <div className="footer-infor">
                 <section className="site-map">
                     <h3>Mapa do Site</h3>
-                    <a>Mural</a>
-                    <a>Memórial</a>
-                    <a>Pontos turísticos</a>
-                    <a>Compartilhar memória</a>
+                    <Link className='link' to="/">Mural</Link>
+                    <Link className='link' to="/memoria">Memória</Link>
+                    <Link className='link' to="/ponto-turistico">Pontos turísticos</Link>
+                    <Link className='link' to="/compartilhar-memoria">Compartilhar memória</Link>
                 </section>
                 <section className="contacts">
                     <h3>Contatos</h3>
