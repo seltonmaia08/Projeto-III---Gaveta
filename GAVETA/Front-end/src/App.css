@@ -57,6 +57,7 @@
    font-weight: bold;
 }
 
+
 html {
    font-size: 78%;
 }
@@ -65,4 +66,10 @@ html {
    padding: 0;
    margin: 0;
    overflow-x: hidden;
+   box-sizing: border-box; 
+}
+
+#root{
+   width: 100%;
+   max-width: 100%;
 }
