@@ -1,0 +1,48 @@
+.footer {
+    width: 85%;
+    height: 28.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.footer-infor {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.site-map, .contacts{
+    width: 40rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+}
+
+.copyright {
+    width: 60rem;
+    margin-top: 2rem;
+}
+
+.site-map h3,
+.contacts h3{
+    margin-bottom: 1rem;
+    font-family: "subtitle";
+}
+
+.site-map a,
+.contacts a{
+    margin-bottom: 1rem;
+    font-family: "text-site";
+}
+
+.copyright p{
+    text-align: center;
+    font-family: "text-site";
+}
+
