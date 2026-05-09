@@ -4,7 +4,7 @@ import './compartilharMemoria.css'
 const CompartilharMemoria = () => {
     return (
         <div className='comp-memoria'>
-           {/* <Formulario/> */}
+           <Formulario />
         </div>
     )
 }

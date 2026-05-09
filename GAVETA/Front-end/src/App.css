@@ -11,7 +11,7 @@
    --monolitos: #7A6047;
    --terra-molhada: #43251D;
    --sertao-chuvoso: #5C766D;
-   --ceu-nublado: #313131;
+   --nuvem-inverno: #313131;
 
 }
 
@@ -26,23 +26,22 @@
    src: url(../src/assets/fonts/CourierPrime-Bold.ttf);
    font-size: 21pt;
 }
+
 @font-face {
    font-family: "Subtitle";
    src: url(../src/assets/fonts/CourierPrime-Regular.ttf);
 }
 
- @font-face {
+@font-face {
    font-family: "text-button";
    src: url(../src/assets/fonts/CourierPrime-Bold.ttf);
-   font-size: 18pt;
-   text-transform: uppercase;
- }
+}
 
-  @font-face {
+@font-face {
    font-family: "text-site";
    src: url(../src/assets/fonts/CourierPrime-Regular.ttf);
    font-size: 12pt;
- }
+}
 
 @font-face {
    font-family: "title-h1-CoveredBy";
@@ -57,6 +56,11 @@
    font-size: 21pt;
    font-weight: bold;
 }
+
+html {
+   font-size: 78%;
+}
+
 * {
    padding: 0;
    margin: 0;

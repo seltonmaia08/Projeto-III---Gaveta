@@ -1,4 +1,4 @@
-.button-nav{
+.button-nav {
     width: 11rem;
     height: 4.3rem;
 
@@ -21,11 +21,11 @@
     justify-content: center;
     text-align: center;
     font-family: "text-button";
-    font-size: 16pt;
+    font-size: 13pt;
     overflow-wrap: break-word;
 }
 
-.button-nav.active{
+.button-nav.active {
     transform: scale(1.1);
     padding: 0 1rem 0 1rem;
     border-top-left-radius: 2.7rem;

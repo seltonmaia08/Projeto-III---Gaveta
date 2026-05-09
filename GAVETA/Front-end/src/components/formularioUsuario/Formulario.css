@@ -1,0 +1,184 @@
+.geral {
+   
+    color: white;
+    font-family:'text-site';
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3rem;
+}
+
+.aviso {
+
+    width: 657px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.aviso_titulo {
+
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.formulario {
+
+    font-size: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.item {
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.item label {
+
+    color: var(--pedra-cruzeiro);
+    font-weight: bold;
+}
+
+.item input {
+
+    background-color: var(--pedra-cruzeiro);
+    border: none;
+
+    color: var(--nuvem-inverno);
+    padding-left: 16px;
+
+    width: 443px; /*aqui tem desconto do padding acima, se não fica maior.*/
+    height: 54px;
+
+    border-radius: 8px;
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+}
+
+.item #data {
+
+    width: 120px; /*aqui precisei diminuir, porque ficou muita área em branco.*/
+    height: 60px;
+    padding-right: 16px;
+}
+
+.item select {
+
+    background-color: var(--pedra-cruzeiro);
+    outline: none;
+    border: none;
+
+    color: var(--nuvem-inverno);
+    padding-left: 16px;
+
+    width: 459px;
+    height: 54px;
+
+    border-radius: 8px;
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+}
+
+.item select option {background-color: var(--pedra-cruzeiro)}
+.item select option:hover {background-color: rgb(253, 205, 157)}
+
+input::placeholder {color: var(--nuvem-inverno)}
+input:focus {outline: none} /*quando o usário clica no input, não aparece borda de foco.*/
+
+
+#texto {
+
+    background-color: var(--pedra-cruzeiro);
+    outline: none;
+    border: none;
+
+    color: var(--nuvem-inverno);
+
+    padding-top: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    width: 427px;
+    height: 360px;
+
+    border-radius: 8px;
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+
+    text-align: justify;
+}
+
+#texto::placeholder {
+
+    color: var(--nuvem-inverno)
+}
+
+#imagem {
+
+    background-color: var(--pedra-cruzeiro);
+    border: none;
+
+    color: var(--nuvem-inverno);
+    text-align: center;
+
+    width: 200px;
+    height: 60px;
+
+    border-radius: 8px;
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+}
+
+.observacao {font-size: 12px}
+
+#concordo { /*ajustando a formatação do botão de concordar com os termos.*/
+
+    appearance: none;
+
+    width: 15px;
+    height: 15px;
+
+    border: 2px solid var(--pedra-cruzeiro);
+    border-radius: 0.2rem;
+
+    cursor: pointer;
+    position: relative;
+}
+
+#concordo:checked {background-color: var(--pedra-cruzeiro)}
+#concordo:checked::after {
+
+    content: "✔";
+    color: var(--nuvem-inverno);
+    font-size: 14px;
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+#enviar {
+
+    background-color: var(--nuvem-inverno);
+    border: none;
+
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+
+    width: 150px;
+    height: 60px;
+
+    border-radius: 20px;
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+}

@@ -1,17 +1,17 @@
-.header-content{
-    width: 85%;
+.header-content {
+    width: 90%;
     height: 7rem;
     background-color: var(--pedra-cruzeiro);
 
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     justify-content: space-between;
-    align-items: self-end;  
+    align-items: self-end;
     padding-left: 10rem;
     padding-right: 10rem;
 }
 
-.logo{
+.logo {
     width: 15rem;
     height: 7rem;
     display: flex;
