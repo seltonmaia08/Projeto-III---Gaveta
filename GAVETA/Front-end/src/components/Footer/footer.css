@@ -34,14 +34,18 @@
     margin-bottom: 1rem;
     font-family: "subtitle";
     color: var(--nuvem-inverno);
+    font-size: 16pt;
 
 }
 
-.site-map a,
 .contacts a{
     margin-bottom: 1rem;
     font-family: "text-site";
     color: var(--nuvem-inverno);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 12pt;
 }
 
 .copyright p{
@@ -51,3 +55,13 @@
 
 }
 
+.link{
+    content: '';
+    font-family: 'text-site';
+    text-transform: uppercase;
+    font-size: 12pt;
+    text-decoration: none;
+    font-weight: 300;
+    color: var(--nuvem-inverno);
+    border-bottom: 2px;
+}
