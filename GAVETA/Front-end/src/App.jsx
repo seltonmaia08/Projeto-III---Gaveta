@@ -1,10 +1,11 @@
 import './App.css'
+import Formulario from './components/formularioUsuario/Formulario'
 
 function App() {
 
   return (
     <>
-      <h1>Hello world!</h1>
+      <Formulario/>
     </>
   )
 }
