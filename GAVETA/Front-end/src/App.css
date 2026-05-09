@@ -3,3 +3,62 @@
  * Configurações gerais do sistema
  *
  */
+
+
+:root {
+   --pedra-cruzeiro: #EDE9E6;
+   --areia-sertao: #FDCD9D;
+   --monolitos: #7A6047;
+   --terra-molhada: #43251D;
+   --sertao-chuvoso: #5C766D;
+   --ceu-nublado: #313131;
+
+}
+
+@font-face {
+   font-family: "Title-h1";
+   src: url(../src/assets/fonts/CourierPrime-Bold.ttf);
+   font-size: 24pt;
+}
+
+@font-face {
+   font-family: "Title-h2";
+   src: url(../src/assets/fonts/CourierPrime-Bold.ttf);
+   font-size: 21pt;
+}
+@font-face {
+   font-family: "Subtitle";
+   src: url(../src/assets/fonts/CourierPrime-Regular.ttf);
+}
+
+ @font-face {
+   font-family: "text-button";
+   src: url(../src/assets/fonts/CourierPrime-Bold.ttf);
+   font-size: 18pt;
+   text-transform: uppercase;
+ }
+
+  @font-face {
+   font-family: "text-site";
+   src: url(../src/assets/fonts/CourierPrime-Regular.ttf);
+   font-size: 12pt;
+ }
+
+@font-face {
+   font-family: "title-h1-CoveredBy";
+   src: url(../src/assets/fonts/CoveredByYourGrace-Regular.ttf);
+   font-size: 24pt;
+   font-weight: bold;
+}
+
+@font-face {
+   font-family: "title-h2-CoveredBy";
+   src: url(../src/assets/fonts/CoveredByYourGrace-Regular.ttf);
+   font-size: 21pt;
+   font-weight: bold;
+}
+* {
+   padding: 0;
+   margin: 0;
+   overflow-x: hidden;
+}
