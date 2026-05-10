@@ -8,10 +8,10 @@ import CompartilharMemoria from '../pages/compartilhar_memoria/compartilharMemor
 const AppRouter = () => {
     return (
         <Routes>
-            <Route element={<MainLayout/>}>
-                <Route path='/' element={<Mural/>} />
+            <Route element={<MainLayout />}>
+                <Route path='/' element={<Mural />} />
                 <Route path='/memoria' element={<Memoria />} />
-                <Route path='/ponto-turistico' element={<PontoTuristico/>} />
+                <Route path='/ponto-turistico' element={<PontoTuristico />} />
                 <Route path='/compartilhar-memoria' element={<CompartilharMemoria />} />
             </Route>
         </Routes>

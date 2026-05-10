@@ -1,0 +1,35 @@
+.polaroide-card {
+    width: 17rem;
+    height: 24rem;
+    padding: 1rem;
+    margin: 2rem;
+
+    background-color: var(--pedra-cruzeiro);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;    
+    box-shadow: 0px 4px 4px 0px #00000025;
+
+    transition: transform 0.3s ease-in;
+    transform: rotate(var(--rotation));
+}
+
+.photo-card {
+    width: 15.5rem;
+    height: 15.5em;
+    margin-bottom: 1rem;
+    background-image: var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.title-card{
+    font-family: 'title-h2-CoveredBy';
+    font-size: 10pt;
+}
+
+.polaroide-card:hover{
+    transform: rotate(var(--rotation)) scale(1.05);
+}
