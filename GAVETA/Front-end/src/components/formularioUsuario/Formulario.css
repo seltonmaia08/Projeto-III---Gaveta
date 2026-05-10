@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     gap: 3rem;
 }
@@ -15,6 +14,7 @@
 
     width: 657px;
     text-align: center;
+    font-size: 16px;
 
     display: flex;
     flex-direction: column;
@@ -26,6 +26,8 @@
     font-weight: bold;
     font-size: 36px;
 }
+
+u {cursor: pointer}
 
 .formulario {
 
@@ -46,29 +48,39 @@
 .item label {
 
     color: var(--pedra-cruzeiro);
-    font-weight: bold;
+    font-family: "text-button";
 }
 
 .item input {
 
     background-color: var(--pedra-cruzeiro);
-    border: none;
+    color: var(--nuvem-inverno);   
 
-    color: var(--nuvem-inverno);
+    font-family: "text-site";
+    font-size: 16px;
     padding-left: 16px;
 
     width: 443px; /*aqui tem desconto do padding acima, se não fica maior.*/
     height: 54px;
 
+    border: none;
     border-radius: 8px;
-    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+}
+
+*::placeholder {
+    
+    font-family: "text-site";
+    font-size: 16px
 }
 
 .item #data {
 
-    width: 120px; /*aqui precisei diminuir, porque ficou muita área em branco.*/
+    margin-bottom: 0.5rem;
+    width: 160px;
     height: 60px;
     padding-right: 16px;
+
+    box-shadow: 0px 3px 4px var(--nuvem-inverno);
 }
 
 .item select {
@@ -76,11 +88,15 @@
     background-color: var(--pedra-cruzeiro);
     outline: none;
     border: none;
+    font-family: "text-site";
+    font-size: 16px;
+
+    margin-bottom: 0.5rem;
 
     color: var(--nuvem-inverno);
     padding-left: 16px;
 
-    width: 459px;
+    width: 443px;
     height: 54px;
 
     border-radius: 8px;
@@ -88,25 +104,25 @@
 }
 
 .item select option {background-color: var(--pedra-cruzeiro)}
-.item select option:hover {background-color: rgb(253, 205, 157)}
-
-input::placeholder {color: var(--nuvem-inverno)}
 input:focus {outline: none} /*quando o usário clica no input, não aparece borda de foco.*/
-
 
 #texto {
 
     background-color: var(--pedra-cruzeiro);
+    color: var(--nuvem-inverno);
+
     outline: none;
     border: none;
 
-    color: var(--nuvem-inverno);
+    font-family: "text-site";    
+    font-size: 16px;
 
     padding-top: 18px;
     padding-left: 16px;
     padding-right: 16px;
+    padding-bottom: 18px;
 
-    width: 427px;
+    width: 443px;
     height: 360px;
 
     border-radius: 8px;
@@ -115,15 +131,13 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     text-align: justify;
 }
 
-#texto::placeholder {
-
-    color: var(--nuvem-inverno)
-}
-
 #imagem {
 
     background-color: var(--pedra-cruzeiro);
     border: none;
+
+    font-family: "text-site";    
+    font-size: 16px;
 
     color: var(--nuvem-inverno);
     text-align: center;
@@ -133,9 +147,14 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 
     border-radius: 8px;
     box-shadow: 0px 3px 4px var(--nuvem-inverno);
+
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.observacao {font-size: 12px}
+#imagem:hover {background-color: rgb(225, 221, 218)}
+#imagem:active {box-shadow: none; transform: translateY(1px);}
+.observacao {font-size: 12px; width: 443px}
 
 #concordo { /*ajustando a formatação do botão de concordar com os termos.*/
 
@@ -154,9 +173,9 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 #concordo:checked {background-color: var(--pedra-cruzeiro)}
 #concordo:checked::after {
 
-    content: "✔";
+    content: "✔"; /*esse caractere dá problema se aumentar o tamanho*/
     color: var(--nuvem-inverno);
-    font-size: 14px;
+    font-size: 10px;
 
     position: absolute;
 
@@ -173,12 +192,20 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 
     color: white;
     text-align: center;
+
     font-weight: bold;
     font-size: 20px;
+    font-family: "text-site";
 
+    margin-bottom: 0.5rem;
     width: 150px;
     height: 60px;
 
     border-radius: 20px;
-    box-shadow: 0px 3px 4px var(--nuvem-inverno);
+    box-shadow: 0px 3px 4px rgb(27, 27, 27);
+
+    transition: 0.2s;
 }
+
+#enviar:hover {transform: translateY(-2px)}
+#enviar:active {box-shadow: none; transform: translateY(1px)}
