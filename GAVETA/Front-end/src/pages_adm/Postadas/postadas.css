@@ -1,0 +1,7 @@
+.postadas-dashboard{
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    background-color: var(--sertao-chuvoso);
+    padding: 10rem;
+}
