@@ -4,32 +4,59 @@
 
     border-top-left-radius: 2.5rem;
     border-top-right-radius: 2.5rem;
-    border: none;
-    background-color: var(--bg-color);
 
-    transition: transform 0.3s ease-in;
+    border: none;
+
+    transition: all 0.3s ease-in;
+
     margin-left: 0.2rem;
     margin-right: 0.2rem;
+
     padding-left: 1rem;
     padding-right: 1rem;
 
-    color: var(--color-text);
     text-decoration: none;
+
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+
     text-align: center;
+    overflow-wrap: break-word;
+
     font-family: "text-button";
     font-size: 13pt;
-    overflow-wrap: break-word;
+
+    background-color: var(--bg-color);
+    color: var(--color-text);
 }
 
-.button-nav.active {
+/* ---------- usuário ---------- */
+
+.button-nav.active:not(.admin-button) {
     transform: scale(1.1);
-    padding: 0 1rem 0 1rem;
+
     border-top-left-radius: 2.7rem;
     border-top-right-radius: 2.7rem;
-    box-shadow: -4px 0 4 0 #00000025;
-    margin: 0;
+
+    box-shadow: -4px 0 4px 0 #00000025;
+}
+
+/* ---------- admin ---------- */
+
+.button-nav.admin-button {
+font-family: 'Inter', sans-serif;
+    font-weight: 700; /* bold */
+    border: 2px solid #5C766D;
+
+    background-color: #EDE9E6;
+    color: #5C766D;
+}
+
+/* botão admin ativo */
+.button-nav.admin-button.active {
+    background-color: #5C766D;
+    color: #EDE9E6;
+
+    transform: scale(1.05);
 }

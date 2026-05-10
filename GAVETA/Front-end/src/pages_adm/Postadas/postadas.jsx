@@ -3,7 +3,7 @@ import './postadas.css'
 const PostadasDashboard = () => {
     return (
         <div className='postadas-dashboard'>
-           asdas
+           Postadas
         </div>
     )
 }

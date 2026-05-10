@@ -3,9 +3,22 @@ import './header.css';
 
 import logo from "../../assets/imgs/logo_gaveta.svg";
 
-const Header = ({ admin = false }) => {
+import { useLocation } from "react-router-dom";
+
+const Header = () => {
+
+    const location = useLocation();
+
+    const adminRoutes = [
+        '/postadasDashboard',
+        '/pendentesDashboard',
+        '/denunciaDashboard'
+    ];
+
+    const isAdmin = adminRoutes.includes(location.pathname);
+
     return (
-        <div className="header-content">
+        <div className={`header-content ${isAdmin ? 'admin-header' : ''}`}>
             <div className="logo">
                 <img
                     src={logo}
@@ -13,7 +26,7 @@ const Header = ({ admin = false }) => {
                 />
             </div>
 
-            <Nav admin={admin} />
+            <Nav admin={isAdmin} />
         </div>
     );
 };
