@@ -4,13 +4,14 @@ import LogoGaveta from "../../assets/imgs/logo_gaveta.svg"
 
 import { FaEye, FaEyeSlash, FaRegUserCircle } from "react-icons/fa"
 import { useState } from "react";
+import { replace, useNavigate } from "react-router-dom";
 
 function LoginAdm() {
 
     const [email, setEmail] = useState("");
     const [emailErro, setEmailErro] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-
+    const navigate = useNavigate()
     function emailValido(valor) {
         return valor.includes("@") && valor.includes(".");
     }
@@ -24,7 +25,8 @@ function LoginAdm() {
             return;
         }
 
-        alert("Formulário enviado");
+        navigate('/postadasDashboard')
+       // alert("Formulário enviado");
     }
 
     function validarEmail() {

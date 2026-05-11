@@ -11,6 +11,7 @@ import LoginAdm from '../pages_adm/Login/LoginAdm'
 import PostadasDashboard from '../pages_adm/Postadas/postadas'
 import PendentesDashboard from '../pages_adm/Pendentes/pendentes'
 import DenunciaDashboard from '../pages_adm/Denuncia/denuncia'
+import MainLayoutADM from '../layout/MainLayoutADM'
 
 const AppRouter = () => {
     return (
@@ -21,12 +22,14 @@ const AppRouter = () => {
                 <Route path='/ponto-turistico' element={<PontoTuristico />} />
                 <Route path='/compartilhar-memoria' element={<CompartilharMemoria />} />
 
-                {/* Rotas do administrador, depois mudar a forma de acesso */}
-                <Route path='/loginADM' element={<LoginAdm />} />
-                <Route path='/postadasDashboardADM' element={<PostadasDashboard />} />
-                <Route path='/pendentesDashboardADM' element={<PendentesDashboard />} />
-                <Route path='/denunciaDashboardADM' element={<DenunciaDashboard />} />
-                
+
+            </Route>
+            {/* Rotas do administrador, depois mudar a forma de acesso */}
+            <Route element={<MainLayoutADM />}>
+                <Route path='/login' element={<LoginAdm />} />
+                <Route path='/postadasDashboard' element={<PostadasDashboard />} />
+                <Route path='/pendentesDashboard' element={<PendentesDashboard />} />
+                <Route path='/denunciaDashboard' element={<DenunciaDashboard />} />
             </Route>
         </Routes>
     )
