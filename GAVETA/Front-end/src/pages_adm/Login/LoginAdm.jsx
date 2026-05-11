@@ -2,22 +2,22 @@ import "./LoginAdm.css";
 
 import LogoGaveta from "../../assets/imgs/logo_gaveta.svg"
 
-import { FaEye, FaEyeSlash, FaRegUserCircle } from "react-icons/fa"
+import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa"
 import { useState } from "react";
-import { replace, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginAdm() {
 
     const [email, setEmail] = useState("");
     const [emailErro, setEmailErro] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     function emailValido(valor) {
-        return valor.includes("@") && valor.includes(".");
-    }
+        return /\S+@\S+\.\S+/.test(valor);
+    }   
 
     function validarFormulario(e) {
-
         e.preventDefault();
 
         if (!emailValido(email)) {
@@ -26,23 +26,19 @@ function LoginAdm() {
         }
 
         navigate('/postadasDashboard')
-       // alert("Formulário enviado");
     }
 
     function validarEmail() {
-        setEmailErro(!emailValido(email));
-    }
+    console.log("blur disparou");
+    setEmailErro(!emailValido(email));
+}
 
     function handleEmail(e) {
-
         const valor = e.target.value;
 
         setEmail(valor);
 
-        if (emailValido(valor)) {
-            setEmailErro(false);
-        }
-
+        setEmailErro(!emailValido(valor));
     }
 
     const toggleShow = () => {
@@ -50,14 +46,14 @@ function LoginAdm() {
     };
 
     return (
-        <>
+        <div className="login_adm_container">
             <div className="lado_esquerdo">
                 <img src={LogoGaveta}/>
             </div>
 
             <div className="login_container lado_direito">
 
-                <FaRegUserCircle id="icon_login"/>
+                <FaUserCircle className="login_icon" />
 
                 <form onSubmit={validarFormulario} noValidate>
 
@@ -68,22 +64,19 @@ function LoginAdm() {
                         <div className="email_container">
 
                             <input
-                                type="email"
+                                type="text"
                                 name="login"
                                 id="login"
-                                placeholder="Digite seu login"
+                                placeholder="Digite seu login. Ex.: usuario@email.com"
                                 value={email}
-                                onBlur={validarEmail}
                                 onChange={handleEmail}
+                                onBlur={validarEmail}
                             />
-
+                            
                             {
-                                emailErro &&
-                                <p id="mensagem_erro">
-                                    Email inválido
-                                </p>
+                                emailErro && 
+                                <span id="mensagem_erro">Email inválido</span>
                             }
-
                         </div>
 
                     </div>
@@ -120,7 +113,7 @@ function LoginAdm() {
                 </form>
 
             </div>
-        </>
+        </div>
         
     );
 }
