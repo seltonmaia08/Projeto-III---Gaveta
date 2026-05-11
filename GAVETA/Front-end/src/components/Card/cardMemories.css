@@ -1,0 +1,54 @@
+.card-content {
+    width: 65rem;
+    height: 17rem;
+    border-radius: 3rem;
+    padding: 2rem;
+    margin: 2.5rem;
+
+    background-color: var(--areia-sertao);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.img-card {
+    width: 15rem;
+    height: 12rem;
+
+    background-image: var(--bg-image-memorie);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-content {
+    width: 40rem;
+    height: 10rem;
+    margin-left: 2rem;
+}
+
+.card-title {
+    font-family: 'title-h2';
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.tags-card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.tags-card p {
+    background-color: var(--sertao-chuvoso);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--pedra-cruzeiro);
+    font-family: 'text-site';
+}
+
+.description {
+    font-family: 'text-site';
+}

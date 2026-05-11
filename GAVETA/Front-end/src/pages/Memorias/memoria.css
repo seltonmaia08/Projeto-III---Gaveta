@@ -4,4 +4,17 @@
     height: auto;
     background-color: var(--sertao-chuvoso);
     padding: 10rem;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.area-search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }

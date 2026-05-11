@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import logo from "../../assets/imgs/logo_gaveta.svg"
 import './footer.css'
 const Footer = () => {
+    
     return (
         <div className="footer">
             <div className="footer-infor">
