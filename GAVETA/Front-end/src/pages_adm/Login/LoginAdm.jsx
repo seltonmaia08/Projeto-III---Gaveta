@@ -1,12 +1,11 @@
 import "./LoginAdm.css";
 
-import imagem from "../../assets/icon_login.png";
-import LogoGaveta from '../../assets/imgs/logo_gaveta.png'
+import LogoGaveta from "../../assets/imgs/logo_gaveta.svg"
 
-import { FaEye, FaEyeSlash } from "react-icons/fa"
+import { FaEye, FaEyeSlash, FaRegUserCircle } from "react-icons/fa"
 import { useState } from "react";
 
-function FormsLogin() {
+function LoginAdm() {
 
     const [email, setEmail] = useState("");
     const [emailErro, setEmailErro] = useState(false);
@@ -56,7 +55,7 @@ function FormsLogin() {
 
             <div className="login_container lado_direito">
 
-                <img src={imagem} alt="Ícone login" />
+                <FaRegUserCircle id="icon_login"/>
 
                 <form onSubmit={validarFormulario} noValidate>
 
@@ -124,4 +123,4 @@ function FormsLogin() {
     );
 }
 
-export default FormsLogin;
+export default LoginAdm;

@@ -7,6 +7,7 @@ import Memoria from '../pages/memorias/memorias'
 import CompartilharMemoria from '../pages/compartilhar_memoria/compartilharMemoria'
 
 // import das paginas do adm
+import LoginAdm from '../pages_adm/Login/LoginAdm'
 import PostadasDashboard from '../pages_adm/Postadas/postadas'
 import PendentesDashboard from '../pages_adm/Pendentes/pendentes'
 import DenunciaDashboard from '../pages_adm/Denuncia/denuncia'
@@ -21,9 +22,10 @@ const AppRouter = () => {
                 <Route path='/compartilhar-memoria' element={<CompartilharMemoria />} />
 
                 {/* Rotas do administrador, depois mudar a forma de acesso */}
-                <Route path='/postadasDashboard' element={<PostadasDashboard />} />
-                <Route path='/pendentesDashboard' element={<PendentesDashboard />} />
-                <Route path='/denunciaDashboard' element={<DenunciaDashboard />} />
+                <Route path='/loginADM' element={<LoginAdm />} />
+                <Route path='/postadasDashboardADM' element={<PostadasDashboard />} />
+                <Route path='/pendentesDashboardADM' element={<PendentesDashboard />} />
+                <Route path='/denunciaDashboardADM' element={<DenunciaDashboard />} />
                 
             </Route>
         </Routes>

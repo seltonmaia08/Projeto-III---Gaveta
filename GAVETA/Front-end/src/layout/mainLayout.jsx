@@ -10,7 +10,7 @@ const MainLayout = () => {
     const location = useLocation();
 
     const isAdminPage =
-        location.pathname.includes("Dashboard");
+        location.pathname.includes("ADM");
 
     return (
         <div className="content-main">
@@ -20,6 +20,7 @@ const MainLayout = () => {
             <Outlet />
 
             {!isAdminPage && <Footer />}
+            {!isAdminPage && <Header />}
 
         </div>
     );
