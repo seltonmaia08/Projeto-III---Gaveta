@@ -14,10 +14,10 @@ import DenunciaDashboard from '../pages_adm/Denuncia/denuncia'
 const AppRouter = () => {
     return (
         <Routes>
-            <Route element={<MainLayout />}>
-                <Route path='/' element={<Mural />} />
+            <Route element={<MainLayout/>}>
+                <Route path='/' element={<Mural/>} />
                 <Route path='/memoria' element={<Memoria />} />
-                <Route path='/ponto-turistico' element={<PontoTuristico />} />
+                <Route path='/ponto-turistico' element={<PontoTuristico/>} />
                 <Route path='/compartilhar-memoria' element={<CompartilharMemoria />} />
 
                 {/* Rotas do administrador, depois mudar a forma de acesso */}
