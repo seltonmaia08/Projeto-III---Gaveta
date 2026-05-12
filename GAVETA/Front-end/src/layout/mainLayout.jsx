@@ -20,7 +20,6 @@ const MainLayout = () => {
             <Outlet />
 
             {!isAdminPage && <Footer />}
-            {!isAdminPage && <Header />}
 
         </div>
     );
