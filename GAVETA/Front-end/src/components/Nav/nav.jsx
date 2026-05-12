@@ -9,9 +9,9 @@ const buttons = [
     {id: 4, title: 'Compartilhar memórias', color: '#7A6047', colorText: '#EDE9E6', router: '/compartilhar-memoria', admin: false},
 
     // admin
-    {id: 5, title: 'Postadas', color: '#5C766D', colorText: '#EDE9E6', router: '/postadasDashboard', admin: true},
-    {id: 6, title: 'Pendentes', color: '#5C766D', colorText: '#EDE9E6', router: '/pendentesDashboard', admin: true},
-    {id: 7, title: 'Denuncia', color: '#5C766D', colorText: '#EDE9E6', router: '/denunciaDashboard', admin: true}
+    {id: 5, title: 'POSTADAS', color: '#EDE9E6', colorText: '#5C766D', router: '/postadasDashboard', admin: true},
+    {id: 6, title: 'PENDENTES', color: '#EDE9E6', colorText: '#5C766D', router: '/pendentesDashboard', admin: true},
+    {id: 7, title: 'DENUNCIA', color: '#EDE9E6', colorText: '#5C766D', router: '/denunciaDashboard', admin: true}
 ]
 
 
@@ -35,6 +35,7 @@ const Nav = ({ admin = false }) => {
                         router={button.router}
                         isActive={activeIndex === button.id}
                         onClick={() => setActiveIndex(button.id)}
+                        admin={button.admin}
                     />
                 )
             }
