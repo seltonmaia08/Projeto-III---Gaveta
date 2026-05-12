@@ -29,9 +29,8 @@ function LoginAdm() {
     }
 
     function validarEmail() {
-    console.log("blur disparou");
-    setEmailErro(!emailValido(email));
-}
+        setEmailErro(!emailValido(email));
+    }
 
     function handleEmail(e) {
         const valor = e.target.value;

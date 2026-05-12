@@ -13,7 +13,7 @@ const Polaroide = ({ image, title, rotation }) => {
                 className='photo-card'
                 style={{ "--bg-image": `url(${image})` }}
             ></div>
-            <div className='title-card'>
+            <div className='title-card-polaroide'>
                 <h2>{title}</h2>
             </div>
         </div>

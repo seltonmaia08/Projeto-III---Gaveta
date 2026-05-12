@@ -67,7 +67,7 @@ u {cursor: pointer}
     border-radius: 8px;
 }
 
-*::placeholder {
+.item input::placeholder {
     
     font-family: "text-site";
     font-size: 16px

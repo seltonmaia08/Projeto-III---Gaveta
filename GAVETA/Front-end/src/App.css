@@ -57,6 +57,12 @@
    font-weight: bold;
 }
 
+@font-face {
+   font-family: 'Inter';
+   src: url(../src/assets/fonts/Inter_18pt-Regular.ttf);
+   font-size: 12pt;
+}
+
 
 html {
    font-size: 78%;
