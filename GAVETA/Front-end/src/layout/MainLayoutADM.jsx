@@ -5,25 +5,22 @@ import "./mainLayout.css";
 
 import Footer from "../components/Footer/footer";
 
-const MainLayout = () => {
+const MainLayoutADM = () => {
 
-    const location = useLocation();
-
-    const isAdminPage =
-        location.pathname.includes("ADM");
+    const location = useLocation()
 
     return (
         <div className="content-main">
-
-            <Header admin={isAdminPage} />
-
+            {
+                location.pathname === '/login'
+                ?
+                <></>
+                :
+                <Header admin={true}/>
+            }
             <Outlet />
-
-            {!isAdminPage && <Footer />}
-            {!isAdminPage && <Header />}
-
         </div>
     );
 };
 
-export default MainLayout;
+export default MainLayoutADM
