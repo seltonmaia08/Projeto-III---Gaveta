@@ -19,3 +19,18 @@
     width: 50%;
     height: 50%;
 }
+
+.card-filter-open {
+    width: auto;
+    height: auto;
+    background-color: aliceblue;
+    position: absolute;
+    transform: translateX(-90%);
+    margin: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    border-radius: 2rem;
+}

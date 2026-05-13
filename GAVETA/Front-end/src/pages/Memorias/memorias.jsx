@@ -40,7 +40,7 @@ const Memoria = () => {
         <div className="memoria">
             <div className='area-search'>
                 <Search />
-                <FilterMemories />
+                <FilterMemories/>
             </div>
             {
                 memorias.map((memoria) =>
