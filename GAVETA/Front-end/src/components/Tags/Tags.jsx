@@ -1,6 +1,11 @@
 import "./Tags.css";
+
+import { FaCircle } from "react-icons/fa";
 import { useState } from "react";
 
+function Tags ({neddTitle, selecionadas, setSelecionadas}) {
+
+    
 function Tags ({needTitle}) {
 
     const [selecionadas, setSelecionadas] = useState([]); //para todasTags
@@ -43,7 +48,7 @@ function Tags ({needTitle}) {
                             ? `active`  : 'tag' }
                         onClick={() => toogleTag(tag.nome)}
                         >
-                            ● {tag.nome}
+                            <FaCircle className="bolinha"/> {tag.nome}
                         </button>
                         )
                     })
