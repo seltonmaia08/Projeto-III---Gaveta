@@ -1,21 +1,21 @@
 import { CiFilter } from 'react-icons/ci'
 import './filterMemories.css'
 import { useState } from 'react'
-import Tags from '../formularioUsuario/Tags'
+import Tags from '../Tags/Tags'
 const FilterMemories = () => {
     const [openFilter, setOpenFilter] = useState(false)
 
     const cardFilter = () => {
         return(
             <div className='card-filter-open'>
-                <Tags />
+                <Tags needTitle={false}/>
             </div>
         )
     }
 
     return(
         <div className="filter-content">
-            <button onClick={() => {openFilter ? setOpenFilter(false) : setOpenFilter(true)}}>
+            <button className='btn-filter' onClick={() => {openFilter ? setOpenFilter(false) : setOpenFilter(true)}}>
                 <CiFilter className='icon-filter'/>
             </button>
 

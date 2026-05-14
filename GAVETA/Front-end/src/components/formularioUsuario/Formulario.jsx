@@ -1,6 +1,6 @@
 import "./Formulario.css";
 import TermosDeUso from "./TermosDeUso";
-import Tags from "./Tags";
+import Tags from "../Tags/Tags";
 
 import { useState } from "react";
 
@@ -14,16 +14,16 @@ function Formulario() {
 
             {
                 termos ? <TermosDeUso
-                    fechar = {() => setTermos(false)}
+                    fechar={() => setTermos(false)}
                 />
-                : null
+                    : null
             }
 
             <div className="aviso">
 
                 <div className="aviso_titulo">Compartilhe uma memória</div>
                 <div>Pense nisso como uma <b>gaveta:</b> um lugar para guardar aquilo que importa.
-                Deixe aqui uma memória que ainda vive em você. Mas antes disso, <u onClick={() => setTermos(true)}>LEIA OS TERMOS DE USO!</u>
+                    Deixe aqui uma memória que ainda vive em você. Mas antes disso, <u onClick={() => setTermos(true)}>LEIA OS TERMOS DE USO!</u>
                 </div>
 
             </div>
@@ -32,13 +32,13 @@ function Formulario() {
 
                 <div className="item">
                     <label htmlFor="nome">Nome: </label>
-                    <input id="nome" type="text" placeholder="Qual o seu nome?" required/>
+                    <input id="nome" type="text" placeholder="Qual o seu nome?" required />
                     <div className="observacao">(Essa informação não será exibida)</div>
                 </div>
 
                 <div className="item">
                     <label htmlFor="titulo">Título: </label>
-                    <input id="titulo" type="text" placeholder="Qual o título da memória?" required/>
+                    <input id="titulo" type="text" placeholder="Qual o título da memória?" required />
                 </div>
 
                 <div className="item">
@@ -49,10 +49,12 @@ function Formulario() {
 
                 <div className="item">
                     <label htmlFor="data">Data da memória: </label>
-                    <input id="data" type="date" required/>
+                    <input id="data" type="date" required />
                 </div>
 
-                <Tags/>
+                <div className="tags-content">
+                    <Tags needTitle={true} />
+                </div>
 
                 <div className="item">
                     <label htmlFor="locais">Local: </label>
@@ -74,7 +76,7 @@ function Formulario() {
 
                 <div className="item">
                     <label htmlFor="email">Email: </label>
-                    <input id="email" type="email" placeholder="Qual o seu email?" required/>
+                    <input id="email" type="email" placeholder="Qual o seu email?" required />
                 </div>
 
                 <div className="item">
@@ -83,7 +85,7 @@ function Formulario() {
                 </div>
 
                 <div className="li_termos">
-                    <input id="concordo" type="checkbox" required/>
+                    <input id="concordo" type="checkbox" required />
                     <label htmlFor="concordo"> Li e concordo com os </label><u onClick={() => setTermos(true)}>termos de uso</u>.
                 </div>
             </div>

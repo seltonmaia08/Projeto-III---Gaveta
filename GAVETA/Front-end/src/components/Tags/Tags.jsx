@@ -1,22 +1,22 @@
 import "./Tags.css";
 import { useState } from "react";
 
-function Tags () {
+function Tags ({needTitle}) {
 
     const [selecionadas, setSelecionadas] = useState([]); //para todasTags
 
     const todasTags = [
-        {nome: "Evento", tipo: "media"},
-        {nome: "Lugar", tipo: "media"},
-        {nome: "Saudade", tipo: "media"},
-        {nome: "Nostalgia", tipo: "media"},
-        {nome: "Personalidade", tipo: "grande"},
-        {nome: "Orgulho", tipo: "media"},
-        {nome: "Infância", tipo: "media"},
-        {nome: "Amigos", tipo: "media"},
-        {nome: "Família", tipo: "media"},
-        {nome: "Antigamente", tipo: "grande"},
-        {nome: "Pertencimento", tipo: "grande"}
+        {nome: "Evento"},
+        {nome: "Lugar"},
+        {nome: "Saudade"},
+        {nome: "Nostalgia"},
+        {nome: "Personalidade"},
+        {nome: "Orgulho"},
+        {nome: "Infância"},
+        {nome: "Amigos"},
+        {nome: "Família"},
+        {nome: "Antigamente"},
+        {nome: "Pertencimento"}
     ];
 
     function toogleTag (nomeTag) {
@@ -32,15 +32,15 @@ function Tags () {
     return (
 
         <>
-            <div id="secTag">Tags: </div>
+            <div id="secTag">{ needTitle ? 'Tags' : '' }</div>
             <div className="tags-container">
                 {
-                    todasTags.map(tag => {
+                    todasTags.map((tag) => {
                         return(
                         <button key={tag.nome} className={
+                            
                             selecionadas.includes(tag.nome)
-                            ? `tag${tag.tipo} active` : `tag${tag.tipo}`
-                        }
+                            ? `active`  : 'tag' }
                         onClick={() => toogleTag(tag.nome)}
                         >
                             ● {tag.nome}
