@@ -23,14 +23,44 @@
 .card-filter-open {
     width: 45rem;
     height: auto;
-    background-color: aliceblue;
+    background-color: var(--pedra-cruzeiro);
     position: absolute;
     transform: translateX(-90%);
     margin: 1rem;
     padding: 2rem;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: end;
 
     border-radius: 2rem;
+    box-shadow: 0px 4px 4px 0 #00000025;
+
+}
+
+.btn-submit-filter {
+    border: none;
+    background-color: var(--sertao-chuvoso);
+    font-family: 'text-button';
+    color: var(--pedra-cruzeiro);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12pt;
+
+    width: auto;
+    height: auto;
+
+    transition: transform 0.3 ease;
+}
+
+.btn-submit-filter:hover{
+    box-shadow: 0px 4px 4px 0 #00000025;
+    transform: scale(1.01);
+}
+
+.btn-submit-filter:active{
+    box-shadow: none;
+    transform: scale(0.99);
 }

@@ -4,19 +4,32 @@ import { useState } from 'react'
 import Tags from '../Tags/Tags'
 const FilterMemories = () => {
     const [openFilter, setOpenFilter] = useState(false)
+    const [selecionadas, setSelecionadas] = useState([]);
+
+    const handleFilter = () => {
+        setOpenFilter(false)
+        console.log(selecionadas)
+    }
 
     const cardFilter = () => {
-        return(
+        return (
             <div className='card-filter-open'>
-                <Tags needTitle={false}/>
+                <Tags
+                    needTitle={false}
+                    selecionadas={selecionadas}
+                    setSelecionadas={setSelecionadas} />
+                <button
+                    onClick={ handleFilter }
+                    className='btn-submit-filter'
+                >Filtrar</button>
             </div>
         )
     }
 
-    return(
+    return (
         <div className="filter-content">
-            <button className='btn-filter' onClick={() => {openFilter ? setOpenFilter(false) : setOpenFilter(true)}}>
-                <CiFilter className='icon-filter'/>
+            <button className='btn-filter' onClick={() => { openFilter ? setOpenFilter(false) : setOpenFilter(true) }}>
+                <CiFilter className='icon-filter' />
             </button>
 
             {

@@ -17,7 +17,6 @@ function Formulario() {
     const [setaCima, setSetaCima] = useState(false);
     const [selecionadas, setSelecionadas] = useState([]); //para todasTags
     const [dados, setDados] = useState({
-
         nome: "",
         titulo: "",
         texto: "",
@@ -39,7 +38,8 @@ function Formulario() {
 
     useEffect(
 
-        () => {setDados({...dados, tags: selecionadas})
+        () => {
+            setDados({ ...dados, tags: selecionadas })
 
         }, [selecionadas]
     );
@@ -55,20 +55,23 @@ function Formulario() {
 
     const alterarDados = (evento) => {
 
-        const {name, value} = evento.target;
-        setDados({...dados, [name]: value});
+        const { name, value } = evento.target;
+        setDados({ ...dados, [name]: value });
     }
 
-    const leituraTermos = () => {setDados({...dados, termos: !dados.termos})}
+    const leituraTermos = () => { setDados({ ...dados, termos: !dados.termos }) }
 
     const pegarImagem = (evento) => {
 
         const imagemAtual = evento.target.files[0]; // o arquivo selecionado pelo usuário ao apertar no botão fica guardado
         //no alvo → arquivos[], que é um vetor de arquivos. Nesse caso, o elemento que disparou o evento não é o botão
         //"fazer upload", mas é o input escondido, com seu html referenciado pela variável de referência inputImagem.
-        setDados({...dados, imagem: imagemAtual});
+        setDados({ ...dados, imagem: imagemAtual });
         console.log(imagemAtual.name);
     }
+    
+    // console.log(JSON.stringify(dados))
+
 
     return (
         <div className="geral">
@@ -114,10 +117,10 @@ function Formulario() {
                 </div>
 
                 <div className="tags-content">
-                    <Tags needTitle={true} 
-                    selecionadas = {selecionadas}
-                    setSelecionadas = {setSelecionadas}
-                />
+                    <Tags needTitle={true}
+                        selecionadas={selecionadas}
+                        setSelecionadas={setSelecionadas}
+                    />
                 </div>
 
                 <div id="newsetinha" className="item">
@@ -135,22 +138,22 @@ function Formulario() {
                     />
                 </div>
 
-                <input id="inputEscondido" type="file" accept="image/*" ref={inputImagem} onChange={pegarImagem}/>
+                <input id="inputEscondido" type="file" accept="image/*" ref={inputImagem} onChange={pegarImagem} />
 
                 <div className="item">
                     <label htmlFor="imagem">Imagem: </label>
-                    <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto"/> Fazer Upload</button>
+                    <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto" /> Fazer Upload</button>
                     <div className="observacao">(Certifique-se de ter a permissão de todas as pessoas na imagem!)</div>
                 </div>
 
                 <div className="item">
                     <label htmlFor="email">Email: </label>
-                    <input id="email" type="email" name="email" placeholder="Qual o seu email?" required onChange={alterarDados}/>
+                    <input id="email" type="email" name="email" placeholder="Qual o seu email?" required onChange={alterarDados} />
                 </div>
 
                 <div className="item">
                     <label htmlFor="contatos">Contato: </label>
-                    <input id="contatos" type="text" placeholder="Algum outro contato?" name="contato" onChange={alterarDados}/>
+                    <input id="contatos" type="text" placeholder="Algum outro contato?" name="contato" onChange={alterarDados} />
                 </div>
 
                 <div className="li_termos">
@@ -160,7 +163,6 @@ function Formulario() {
             </div>
             <button id="enviar" type="submit" onClick={sumbit}>ENVIAR</button>
 
-            <div>{JSON.stringify(dados)}</div>
         </div>
     )
 }

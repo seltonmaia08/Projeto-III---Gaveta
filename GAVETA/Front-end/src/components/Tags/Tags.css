@@ -38,3 +38,6 @@
     color: var(--pedra-cruzeiro);    
 }
 
+button .bolinha {
+    font-size: 10px;
+}
