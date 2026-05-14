@@ -14,7 +14,7 @@ const CardMemories = ({ title, description, image, tags }) => {
                 <div className="tags-card">
                     {
                         tags.map((tag) =>
-                            <p>{tag}</p>
+                            <p key={tag}>{tag}</p>
                         )
                     }
                 </div>
