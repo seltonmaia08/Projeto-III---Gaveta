@@ -1,9 +1,11 @@
 import "./Tags.css";
+
+import { FaCircle } from "react-icons/fa";
 import { useState } from "react";
 
-function Tags () {
+function Tags ({selecionadas, setSelecionadas}) {
 
-    const [selecionadas, setSelecionadas] = useState([]); //para todasTags
+    
 
     const todasTags = [
         {nome: "Evento", tipo: "media"},
@@ -43,7 +45,7 @@ function Tags () {
                         }
                         onClick={() => toogleTag(tag.nome)}
                         >
-                            ● {tag.nome}
+                            <FaCircle className="bolinha"/> {tag.nome}
                         </button>
                         )
                     })
