@@ -2,38 +2,47 @@
 
     display: flex;
     flex-wrap: wrap;
+    gap: 0.6rem;
+
     justify-content: center;
-    align-content: flex-start;
-    width: 100%;
-    height: 100%;
+
+    width: 443px;
+    height: 230px;
+    padding-top: 0.8rem;
 }
 
 #secTag {font-weight: bold}
 
-.tag {
+.tagmedia,
+.taggrande {
 
-    background-color: var(--pedra-cruzeiro); 
+    background-color: var(--pedra-cruzeiro);
     color: var(--nuvem-inverno);
 
-    font-size: 10pt;
+    font-size: 16px;
     font-family: "text-site";
 
     border: none;
     border-radius: 1rem;
-    box-shadow: 0px 4px 4px 0 #00000025;
+    box-shadow: 0px 2px 2px #31313125;
 
-    margin: 0.6rem;
+    width: 125px;
+    height: 40px;
+
     transition: 0.2s;
-
-    width: auto;
-    height: auto;
-    padding: 1rem;
-
 }
 
-.tag:hover {transform: translateY(-2px)}
+.taggrande {
+    width: 170px;
+    height: 40px;
+}
 
-.tag.active {
+.tagmedia:hover,
+.taggrande:hover {transform: translateY(-2px)}
+
+.tagmedia.active,
+.taggrande.active {
+
     background-color: var(--sertao-chuvoso);
     color: var(--pedra-cruzeiro);    
 }
