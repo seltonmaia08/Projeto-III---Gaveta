@@ -43,7 +43,7 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
                             selecionadas.includes(tag.nome)
                             ? `tag${tag.tipo} active` : `tag${tag.tipo}`
                         }
-                        style={!needTitle ? {border: '2px solid var(--sertao-chuvoso)'} : ''}
+                        style={!needTitle ? {border: '2px solid var(--sertao-chuvoso)'} : {}}
                         onClick={() => toogleTag(tag.nome)}
                         >
                             <FaCircle className="bolinha"/> {tag.nome}
