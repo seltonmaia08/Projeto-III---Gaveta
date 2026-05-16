@@ -8,17 +8,17 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
     //const [tSelecionadas, setTSelecionadas] = useState([]); //para todasTags
 
     const todasTags = [
-        { nome: "Evento" },
-        { nome: "Lugar" },
-        { nome: "Saudade" },
-        { nome: "Nostalgia" },
-        { nome: "Personalidade" },
-        { nome: "Orgulho" },
-        { nome: "Infância" },
-        { nome: "Amigos" },
-        { nome: "Família" },
-        { nome: "Antigamente" },
-        { nome: "Pertencimento" }
+         {nome: "Evento", tipo: "media"},
+        {nome: "Lugar", tipo: "media"},
+        {nome: "Saudade", tipo: "media"},
+        {nome: "Nostalgia", tipo: "media"},
+        {nome: "Personalidade", tipo: "grande"},
+        {nome: "Orgulho", tipo: "media"},
+        {nome: "Infância", tipo: "media"},
+        {nome: "Amigos", tipo: "media"},
+        {nome: "Família", tipo: "media"},
+        {nome: "Antigamente", tipo: "grande"},
+        {nome: "Pertencimento", tipo: "grande"}
     ];
 
     function toogleTag(nomeTag) {
@@ -37,17 +37,17 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
             <div id="secTag">{needTitle ? 'Tags' : ''}</div>
             <div className="tags-container">
                 {
-                    todasTags.map((tag) => {
-                        return (
-                            <button key={tag.nome} className={
-                                `tag  
-                                ${selecionadas.includes(tag.nome) ? 'active' : ''}
-                                `}
-                                style={!needTitle ? {border: '1px solid var(--sertao-chuvoso)'} : {}}
-                                onClick={() => toogleTag(tag.nome)}
-                            >
-                                <FaCircle className="bolinha" /> {tag.nome}
-                            </button>
+                    todasTags.map(tag => {
+                        return(
+                        <button key={tag.nome} className={
+                            selecionadas.includes(tag.nome)
+                            ? `tag${tag.tipo} active` : `tag${tag.tipo}`
+                        }
+                        style={!needTitle ? {border: '2px solid var(--sertao-chuvoso)'} : {}}
+                        onClick={() => toogleTag(tag.nome)}
+                        >
+                            <FaCircle className="bolinha"/> {tag.nome}
+                        </button>
                         )
                     })
                 }

@@ -21,7 +21,7 @@
 }
 
 .card-filter-open {
-    width: 45rem;
+    width: auto;
     height: auto;
     background-color: var(--pedra-cruzeiro);
     position: absolute;
