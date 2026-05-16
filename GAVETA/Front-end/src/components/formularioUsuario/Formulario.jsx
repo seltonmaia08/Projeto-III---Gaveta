@@ -28,6 +28,7 @@ function Formulario() {
         contato: "",
         termos: false
     });
+    const [imagemEnviada, setImagemEnviada] = useState(false);
 
     const inputImagem = useRef(null); // essa variável recebe a referência HTML do meu input escondido de enviar imagem
     // esse input é escondido porque se eu usasse ele como vem padrão, eu conseguiria alterar poucas coisas no CSS dele.
@@ -37,11 +38,7 @@ function Formulario() {
     //UseEffect para atualizar a lista de tags selecionadas
 
     useEffect(
-
-        () => {
-            setDados({ ...dados, tags: selecionadas })
-
-        }, [selecionadas]
+        () => {setDados({ ...dados, tags: selecionadas })}, [selecionadas]
     );
 
     //-------------------
@@ -49,8 +46,8 @@ function Formulario() {
 
     const sumbit = (evento) => {
 
-        evento.preventDefault();
-        alert(JSON.stringify(dados));
+        //evento.preventDefault();
+        //alert(JSON.stringify(dados));
     }
 
     const alterarDados = (evento) => {
@@ -61,18 +58,53 @@ function Formulario() {
 
     const leituraTermos = () => { setDados({ ...dados, termos: !dados.termos }) }
 
+    const tirarImagemAnterior = (evento) => {
+        setDados({ ...dados, imagem: null}); // Eu seto "null"
+        setImagemEnviada(false); // para retirar a imagem anterior, e tirar o balão de confirmação
+    }
+
     const pegarImagem = (evento) => {
 
+        const tamanhoMaximo = 10485760; // 10 * 1024 * 1024 bytes
+        
         const imagemAtual = evento.target.files[0]; // o arquivo selecionado pelo usuário ao apertar no botão fica guardado
         //no alvo → arquivos[], que é um vetor de arquivos. Nesse caso, o elemento que disparou o evento não é o botão
         //"fazer upload", mas é o input escondido, com seu html referenciado pela variável de referência inputImagem.
-        setDados({ ...dados, imagem: imagemAtual });
-        console.log(imagemAtual.name);
+
+        //-------------------------- Calculando proporção
+
+        const imagemInstante = new Image();
+        const url = URL.createObjectURL(imagemAtual); // criando uma URL temporária
+        
+        imagemInstante.src = url;
+        imagemInstante.onload = () => {
+
+            const largura = imagemInstante.width;
+            const altura = imagemInstante.height;
+
+            if(largura !== altura) {alert("A imagem deve ser quadrada (proporção 1:1)")}
+            else {
+
+                //-------------------------- Tamanho Aceito?
+                if(imagemAtual.size > tamanhoMaximo) {
+                    alert("O tamanho do arquivo excede 10MB");
+                    setImagemEnviada(false);
+                    setDados({ ...dados, imagem: null});
+                }
+                else {
+        
+                    if(imagemAtual == undefined) {setImagemEnviada(false)}
+                    else {
+                        setDados({ ...dados, imagem: imagemAtual });
+                        setImagemEnviada(true);
+                    }
+                }
+            }
+        }
     }
-    
-    // console.log(JSON.stringify(dados))
 
 
+    //------------------------------------------
     return (
         <div className="geral">
 
@@ -92,7 +124,7 @@ function Formulario() {
 
             </div>
 
-            <div className="formulario">
+            <form className="formulario">
 
                 <div className="item">
                     <label htmlFor="nome">Nome: </label>
@@ -107,7 +139,7 @@ function Formulario() {
 
                 <div className="item">
                     <label htmlFor="texto">Memória: </label>
-                    <textarea required id="texto" placeholder="Qual memória você quer guardar?" maxLength={5000} name="texto" onChange={alterarDados}></textarea>
+                    <textarea required id="textoFormulario" placeholder="Qual memória você quer guardar?" maxLength={5000} name="texto" onChange={alterarDados}></textarea>
                     <div className="observacao">(Máximo: 5000 caracteres)</div>
                 </div>
 
@@ -130,7 +162,7 @@ function Formulario() {
                         <option value={1}>Açude do Cedro</option>
                         <option value={2}>Pedra da Galinha Choca</option>
                         <option value={3}>Museu Jacinto de Sousa</option>
-                        <option value={4}>Praça do Leão</option>
+                        <option value={4}>Casa de Saberes - Cego Aderaldo</option>
                         <option value={5}>Outro</option>
                     </select>
                     <IoArrowDownSharp
@@ -138,12 +170,18 @@ function Formulario() {
                     />
                 </div>
 
-                <input id="inputEscondido" type="file" accept="image/*" ref={inputImagem} onChange={pegarImagem} />
+                <input id="inputEscondido" type="file" accept="image/*" ref={inputImagem} onClick={tirarImagemAnterior} onChange={pegarImagem} />
 
                 <div className="item">
                     <label htmlFor="imagem">Imagem: </label>
-                    <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto" /> Fazer Upload</button>
-                    <div className="observacao">(Certifique-se de ter a permissão de todas as pessoas na imagem!)</div>
+                    <div id="botaoConfirmacao">
+                        <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto" /> Fazer Upload</button>
+                        {
+                            imagemEnviada ? <span id="confirmacao">Arquivo anexado com sucesso!</span>
+                            : null
+                        }
+                    </div>
+                    <div className="observacao">(1:1, tamanho máximo: 10MB)</div>
                 </div>
 
                 <div className="item">
@@ -160,11 +198,11 @@ function Formulario() {
                     <input id="concordo" type="checkbox" required name="termos" onClick={leituraTermos} />
                     <label htmlFor="concordo"> Li e concordo com os </label><u onClick={() => setTermos(true)}>termos de uso</u>.
                 </div>
-            </div>
-            <button id="enviar" type="submit" onClick={sumbit}>ENVIAR</button>
-
+                <button id="enviar" type="submit" onClick={sumbit}>ENVIAR</button>
+            </form>
         </div>
     )
+    //<div>{dados.imagem ? console.log(dados.imagem.name) : console.log("nada")}</div>
 }
 
 export default Formulario;

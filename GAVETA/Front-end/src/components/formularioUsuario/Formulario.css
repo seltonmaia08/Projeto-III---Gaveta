@@ -42,6 +42,7 @@ u {cursor: pointer}
     display: flex;
     flex-direction: column;
     gap: 1.3rem;
+    align-items: flex-start;
 }
 
 .item {
@@ -135,7 +136,7 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     rotate(180deg);
 }
 
-#texto {
+#textoFormulario {
 
     background-color: var(--pedra-cruzeiro);
     color: var(--nuvem-inverno);
@@ -151,8 +152,9 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     padding-right: 16px;
     padding-bottom: 18px;
 
-    max-width: 443px;
+    height: 360px;
     max-height: 360px;
+    max-width: 443px;
 
     border-radius: 8px;
     text-align: justify;
@@ -170,6 +172,8 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 
     color: var(--nuvem-inverno);
     text-align: right;
+
+    margin-bottom: 0.3rem;
     padding-right: 2.2rem;
 
     width: 200px;
@@ -191,6 +195,36 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     position: absolute;
     font-size: 1.3rem;
     left: 2.2rem;
+}
+
+#botaoConfirmacao {
+
+    display: flex;
+    gap: 1rem;
+}
+
+#confirmacao {
+
+    font-size: 12px;
+    width: auto;
+    height: 26px;
+
+    color: var(--nuvem-inverno);
+    background-color: var(--pedra-cruzeiro);
+
+    padding: 0.5rem;
+    padding-left: 1rem;
+    text-align: right;
+
+    border-radius: 0.6rem;
+    border-left: 5px solid var(--nuvem-inverno);
+
+    animation: fade 1.5s forwards; /*faz o elemento manter o estado pós animação*/
+}
+
+@keyframes fade { /*o que a animação fade deve fazer*/
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 #concordo { /*ajustando a formatação do botão de concordar com os termos.*/
@@ -224,6 +258,8 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 
 #enviar {
 
+    align-self: center;
+
     background-color: var(--nuvem-inverno);
     border: none;
 
@@ -234,6 +270,7 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     font-size: 20px;
     font-family: "text-site";
 
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
     width: 150px;
     height: 60px;
