@@ -1,0 +1,180 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(72, 72, 72, 0.4);
+  z-index: 1000;
+}
+
+.container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ede9e6;
+  border-radius: 1.25rem;
+  border: 4px solid #5c766d;
+  padding: 2rem;
+  width: 56.25rem;
+  z-index: 1001;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  align-items: stretch;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.coluna-esquerda {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.coluna-direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 16rem;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.direita-topo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.direita-botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-end;
+}
+
+.campo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: bold;
+  color: black;
+}
+
+.valor {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: black;
+}
+
+.nome-data-gap {
+  margin-left: auto;
+}
+
+.contato-categoria {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.v-texto {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: black;
+  width: 100%;
+  height: 8rem;
+  overflow-y: scroll;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 0.3rem 0.8rem;
+  color: black;
+}
+
+.tag-bolinha {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.contatos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.menu-categoria {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+}
+
+.foto {
+  width: 12rem;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.btn-fechar {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: #5c766d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-aceitar {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 2rem;
+  background-color: #5c766d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 10rem;
+}
+
+.btn-recusar {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 2rem;
+  background-color: #43251d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  width: 10rem;
+}
