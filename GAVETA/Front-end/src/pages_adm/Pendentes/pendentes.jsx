@@ -37,9 +37,9 @@ const PendentesDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
 
-  // function handlePopUpCuradoria() {
-  //   setCuradoriaAberta(true);
-  // }
+  function handlePopUpCuradoria() {
+    setCuradoriaAberta(true);
+  }
 
   function handleAceitarRecusar() {
     setConfirmacaoAberta(true);
@@ -71,6 +71,7 @@ const PendentesDashboard = () => {
           title={memoria.title}
           image={memoria.image}
           rotation={false}
+          onclick={handlePopUpCuradoria}
         />
       ))}
       {curadoriaAberta && (

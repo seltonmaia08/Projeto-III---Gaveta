@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
 import './polaroide.css'
 
-const Polaroide = ({ image, title, rotation }) => {
+const Polaroide = ({ image, title, rotation, onclick }) => {
     const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
     console.log(`Card: ${title} | Rotação ativa:`, rotation);
     return (
         <div
             className='polaroide-card'
             style={{"--rotation": rotation ? `${rotate}deg` : '0deg' }}
+            onClick={onclick}
         >
             <div
                 className='photo-card'
