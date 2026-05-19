@@ -71,7 +71,7 @@ const PendentesDashboard = () => {
           title={memoria.title}
           image={memoria.image}
           rotation={false}
-          onclick={handlePopUpCuradoria}
+          onClick={handlePopUpCuradoria}
         />
       ))}
       {curadoriaAberta && (
