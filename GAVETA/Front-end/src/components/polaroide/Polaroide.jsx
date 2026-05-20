@@ -3,27 +3,25 @@ import { useLocation } from 'react-router-dom';
 import './polaroide.css';
 
 const Polaroide = ({ image, title, rotation, onclick }) => {
-    const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
-    const location = useLocation() 
-    const [colorPolaroide, setColorPolaroide] = useState(null)
-    
-    const setColorPolaroideDiv = () => {
-        const pathName = location.pathname.slice(1)
-        if(pathName.includes('Dashboard')) {
-            setColorPolaroide(pathName)        
-        }
-    }
+  const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
+  const [colorPolaroide, setColorPolaroide] = useState(null)
+  const location = useLocation()
+
 
   useEffect(() => {
-    const pathName = location.pathname.slice(1);
-    setColorPolaroide(pathName);
-  }, [location.pathname]);
-
+    const pathName = location.pathname.slice(1)
+    const validPath = pathName.includes('Dashboard')
+    if (validPath) {
+      setColorPolaroide(pathName)
+      console.log(pathName)
+    }
+  }, [location])
+  
   return (
     <div
       className={`polaroide-card ${colorPolaroide}`}
       style={{ "--rotation": rotation ? `${rotate}deg` : '0deg' }}
-      onClick={onClick}
+      onClick={onclick}
     >
       <div
         className="photo-card"
