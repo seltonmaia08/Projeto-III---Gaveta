@@ -12,6 +12,11 @@
     align-items: center;
 }
 
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .img-card {
     width: 15rem;
     height: 12rem;
