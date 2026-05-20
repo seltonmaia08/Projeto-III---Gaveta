@@ -1,13 +1,28 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import './polaroide.css'
 
-const Polaroide = ({ image, title, rotation }) => {
+const Polaroide = ({ image, title, rotation, onclick }) => {
     const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
-    console.log(`Card: ${title} | Rotação ativa:`, rotation);
+    const location = useLocation() 
+    const [colorPolaroide, setColorPolaroide] = useState(null)
+    
+    const setColorPolaroideDiv = () => {
+        const pathName = location.pathname.slice(1)
+        if(pathName.includes('Dashboard')) {
+            setColorPolaroide(pathName)        
+        }
+    }
+
+    useEffect(() => {
+        setColorPolaroideDiv()
+    }, [])
+    
     return (
         <div
-            className='polaroide-card'
+            className={`polaroide-card ${colorPolaroide}`}
             style={{"--rotation": rotation ? `${rotate}deg` : '0deg' }}
+            onClick={onclick}
         >
             <div
                 className='photo-card'

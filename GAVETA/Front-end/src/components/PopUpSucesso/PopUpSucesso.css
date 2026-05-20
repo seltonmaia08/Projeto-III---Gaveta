@@ -1,0 +1,24 @@
+.container-sucesso {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #5c766d;
+  border-radius: 1.25rem;
+  padding: 2rem 2rem;
+  z-index: 1003;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  width: fit-content;
+}
+
+.titulo-sucesso {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.texto-sucesso {
+  color: white;
+  font-size: 1rem;
+}
