@@ -36,7 +36,7 @@ function CuradoriaPendente({
 
           <div className="campo">
             <span className="label">Tags:</span>
-            <div className="tags-container">
+            <div className="tags-container-curadoria">
               {tags.map((tag) => (
                 <span className="tag" key={tag}>
                   <span className="tag-bolinha"></span>

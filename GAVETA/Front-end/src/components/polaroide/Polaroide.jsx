@@ -9,8 +9,9 @@ const Polaroide = ({ image, title, rotation, onclick }) => {
     
     const setColorPolaroideDiv = () => {
         const pathName = location.pathname.slice(1)
-        console.log(pathName)
-        setColorPolaroide(pathName)        
+        if(pathName.includes('Dashboard')) {
+            setColorPolaroide(pathName)        
+        }
     }
 
     useEffect(() => {
