@@ -3,6 +3,10 @@ import './visualizarMemoria.css'
 import { useParams } from 'react-router-dom'
 import { memorias } from './memorias'
 
+import Voltar from '../../components/Botões/Voltar'
+import Denunciar from '../../components/Botões/Denunciar'
+import Compartilhar from '../../components/Botões/Compartilhar'
+
 function VisualizarMemoria() {
 
     const { id } = useParams()
@@ -17,6 +21,7 @@ function VisualizarMemoria() {
 
     return (
         <div className="container-visu-memoria">
+            <Voltar />
             <div className='visu-memoria'>
                 <img className='img'
                     src={memoriaSelecionada.image}
@@ -34,6 +39,11 @@ function VisualizarMemoria() {
                 </div>
 
                 <p className='text'>{memoriaSelecionada.text}</p>
+            </div>
+
+            <div className='denu-comp'>
+                <Denunciar />
+                <Compartilhar />
             </div>
 
         </div>

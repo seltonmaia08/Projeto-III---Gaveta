@@ -1,0 +1,11 @@
+.icone-compartilhar {
+    background-color: var(--sertao-chuvoso);
+    border-radius: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    color: var(--pedra-cruzeiro);
+    font-size: 2rem;
+
+    position: absolute;
+    top: 70rem;
+    right: 18rem;
+}

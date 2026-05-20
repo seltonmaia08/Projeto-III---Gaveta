@@ -72,3 +72,7 @@
     font-size: 1.18rem;
     margin: 2rem 0 10rem 0;
 }
+
+.denu-comp {
+    display: flex;
+}
