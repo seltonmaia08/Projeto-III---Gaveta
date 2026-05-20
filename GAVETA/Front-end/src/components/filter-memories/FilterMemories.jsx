@@ -34,7 +34,7 @@ const FilterMemories = () => {
 
             {
 
-                openFilter ? cardFilter() : ''
+                openFilter && cardFilter()
 
             }
         </div>

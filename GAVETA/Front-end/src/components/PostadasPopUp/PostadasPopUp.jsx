@@ -1,6 +1,6 @@
-import "./CuradoriaPendente.css";
+import "./PostadasPopUp.css";
 
-function CuradoriaPendente({
+function PostadasPopUp({
   titulo,
   nome,
   data,
@@ -11,7 +11,8 @@ function CuradoriaPendente({
   outroContato,
   foto,
   onFechar,
-  onAceitarRecusar,
+  onEditMode,
+  onDelete,
 }) {
   return (
     <div className="overlay">
@@ -36,7 +37,7 @@ function CuradoriaPendente({
 
           <div className="campo">
             <span className="label">Tags:</span>
-            <div className="tags-container-curadoria">
+            <div className="tags-container">
               {tags.map((tag) => (
                 <span className="tag" key={tag}>
                   <span className="tag-bolinha"></span>
@@ -62,11 +63,8 @@ function CuradoriaPendente({
 
             <div className="campo">
               <span className="label">Categoria:</span>
-              <select className="menu-categoria">
-                <option value="">Selecione...</option>
-                <option value="historica">Memória histórica</option>
-                <option value="cotidiana">Memória cotidiana</option>
-              </select>
+              <span className="valor">Memória histórica</span>
+              
             </div>
           </div>
         </div>
@@ -83,11 +81,11 @@ function CuradoriaPendente({
           </div>
 
           <div className="direita-botoes">
-            <button className="btn-aceitar" onClick={onAceitarRecusar}>
-              ACEITAR
+            <button className="btn-editar" onClick={onEditMode}>
+              ICONE EDITAR
             </button>
-            <button className="btn-recusar" onClick={onAceitarRecusar}>
-              RECUSAR
+            <button className="btn-excluir" onClick={onDelete}> 
+              ICONE DELETAR
             </button>
           </div>
         </div>
@@ -96,4 +94,4 @@ function CuradoriaPendente({
   );
 }
 
-export default CuradoriaPendente;
+export default PostadasPopUp;

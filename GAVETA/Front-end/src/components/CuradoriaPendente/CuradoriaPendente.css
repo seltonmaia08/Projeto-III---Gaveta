@@ -102,13 +102,13 @@
   text-align: left;
 }
 
-.tags-container {
+.tags-container-curadoria {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.tag {
+.tags-container-curadoria .tag {
   display: flex;
   align-items: center;
   gap: 0.4rem;

@@ -16,7 +16,7 @@ const PontoTuristico = () => {
             <div className='campo-busca'>
                 <Search />
             </div>
-            <div className='content-ponto'>
+            <div className='content-ponto-turistico'>
                 {
                     memorias.map((memoria) =>
                         <Polaroide
