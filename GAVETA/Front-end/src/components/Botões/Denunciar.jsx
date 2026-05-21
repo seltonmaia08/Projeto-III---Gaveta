@@ -4,9 +4,9 @@ import './Denunciar.css'
 
 function Denunciar() {
     return(
-        <div className="icone-denunciar">
+        <button className="icone-denunciar">
             <MdOutlineReport />
-        </div>
+        </button>
     )
 }
 

@@ -21,31 +21,42 @@ function VisualizarMemoria() {
 
     return (
         <div className="container-visu-memoria">
+
             <Voltar />
+
             <div className='visu-memoria'>
-                <img className='img'
+
+                <img
+                    className='img'
                     src={memoriaSelecionada.image}
                     alt={memoriaSelecionada.title}
                 />
 
-                <h1 className='title'>{memoriaSelecionada.title}</h1>
-            
-                <div className="tags">
-                    {
-                        memoriaSelecionada.tags.map((tag) =>
-                            <p key={tag}>{tag}</p>
-                        )
-                    }
+                <div className='conteudo-memoria'>
+
+                    <h1 className='title'>
+                        {memoriaSelecionada.title}
+                    </h1>
+
+                    <div className="tags">
+                        {
+                            memoriaSelecionada.tags.map((tag) =>
+                                <p key={tag}>{tag}</p>
+                            )
+                        }
+                    </div>
+
+                    <p className='text'>
+                        {memoriaSelecionada.text}
+                    </p>
+
+                    <div className='denu-comp'>
+                        <Denunciar />
+                        <Compartilhar />
+                    </div>
+
                 </div>
-
-                <p className='text'>{memoriaSelecionada.text}</p>
             </div>
-
-            <div className='denu-comp'>
-                <Denunciar />
-                <Compartilhar />
-            </div>
-
         </div>
     )
 }
