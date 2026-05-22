@@ -1,6 +1,8 @@
 .overlay {
 
     position: fixed;
+    z-index: 999; /* Evitar que apareceçam os inputs de anexo e caixa de seleção */
+
     top: 0;
     left: 0;
     /*Os atributos acima são para manter a camada de blur opaco fixa na tela, começando do canto superior esquerdo*/
@@ -38,6 +40,13 @@
     gap: 2rem;
     align-items: center;
     text-align: justify;
+
+    animation: fade 0.5s forwards;
+}
+
+@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
 }
 
 .cima {
