@@ -8,7 +8,7 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
     //const [tSelecionadas, setTSelecionadas] = useState([]); //para todasTags
 
     const todasTags = [
-         {nome: "Evento", tipo: "media"},
+        {nome: "Evento", tipo: "media"},
         {nome: "Lugar", tipo: "media"},
         {nome: "Saudade", tipo: "media"},
         {nome: "Nostalgia", tipo: "media"},
@@ -39,7 +39,7 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
                 {
                     todasTags.map(tag => {
                         return(
-                        <button key={tag.nome} className={
+                        <button type="button" key={tag.nome} className={
                             selecionadas.includes(tag.nome)
                             ? `tag${tag.tipo} active` : `tag${tag.tipo}`
                         }
