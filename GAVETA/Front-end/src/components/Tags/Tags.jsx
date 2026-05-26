@@ -8,7 +8,7 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
     //const [tSelecionadas, setTSelecionadas] = useState([]); //para todasTags
 
     const todasTags = [
-         {nome: "Evento", tipo: "media"},
+        {nome: "Evento", tipo: "media"},
         {nome: "Lugar", tipo: "media"},
         {nome: "Saudade", tipo: "media"},
         {nome: "Nostalgia", tipo: "media"},

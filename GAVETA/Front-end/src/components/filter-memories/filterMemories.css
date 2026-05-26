@@ -25,8 +25,8 @@
     height: auto;
     background-color: var(--pedra-cruzeiro);
     position: absolute;
-    transform: translateX(-90%);
-    margin: 1rem;
+    transform: translateX(-91%);
+    margin-top: 1rem;
     padding: 2rem;
     display: flex;
     flex-direction: row;
@@ -35,10 +35,10 @@
 
     border-radius: 2rem;
     box-shadow: 0px 4px 4px 0 #00000025;
-
 }
 
-.btn-submit-filter {
+.btn-submit-filter,
+.btn-clean-filter {
     border: none;
     background-color: var(--sertao-chuvoso);
     font-family: 'text-button';
@@ -48,7 +48,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 12pt;
-
+    margin-left: 1rem;
     width: auto;
     height: auto;
 
@@ -63,4 +63,10 @@
 .btn-submit-filter:active{
     box-shadow: none;
     transform: scale(0.99);
+}
+
+.btn-clean-filter{
+    background-color: var(--pedra-cruzeiro);
+    color: var(--monolitos);
+    border: 2px solid var(--monolitos);
 }

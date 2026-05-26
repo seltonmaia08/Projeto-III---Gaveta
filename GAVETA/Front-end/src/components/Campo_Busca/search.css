@@ -1,10 +1,9 @@
 .search-content{
-    width: 37rem;
+    width: 40rem;
     height: 5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 1.5rem;
 }
 
 .search-content input {
@@ -20,8 +19,27 @@
 
 .icone-search{
     position: relative;
-    left: 4rem;
+    left: 3rem;
     width: 1.8rem;
     height: 1.8rem;
     color: var(--sertao-chuvoso);
+}
+
+.buscar-memoria {
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+    color: var(--sertao-chuvoso);
+    font-family: 'text-button';
+    font-weight: bold;
+}
+
+.icone-clean{
+    position: relative;
+    right: 3rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    color: var(--sertao-chuvoso);
+    cursor: pointer;
 }

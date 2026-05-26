@@ -1,4 +1,4 @@
-import Nav from "../Nav/Nav";
+import Nav from "../Nav/nav";
 import './header.css';
 
 import logo from "../../assets/imgs/logo_gaveta.svg";

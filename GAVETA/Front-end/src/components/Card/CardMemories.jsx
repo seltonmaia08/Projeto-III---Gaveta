@@ -1,12 +1,12 @@
 import './cardMemories.css'
 
-const CardMemories = ({ title, description, image, tags }) => {
+const CardMemories = ({ title, description, imagem, tags }) => {
 
     return (
         <div className="card-content">
             <div 
                 className="img-card"
-                style={{ "--bg-image-memorie": `url(${image})`}}></div>
+                style={{ "--bg-image-memorie": `url(${imagem})`}}></div>
             <div className="text-content">
                 <div className="card-title">
                     <h3>{ title }</h3>

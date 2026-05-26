@@ -18,3 +18,18 @@
     justify-content: center;
     gap: 2rem;
 }
+
+.messageItemNotFound{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.messageItemNotFound p {
+    color: var(--pedra-cruzeiro);
+    font-family: "Title-h2";
+    font-size: 16pt;
+}

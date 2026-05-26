@@ -1,30 +1,39 @@
 import Search from '../../components/Campo_Busca/Search'
 import Polaroide from '../../components/polaroide/Polaroide'
 import './pontosTuristicos.css'
-
-const memorias = [
-    { id: 1, title: 'Titulo para a polaroide do mural', image: 'https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640' },
-    { id: 2, title: 'Titulo para a polaroide do mural', image: 'https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640' },
-    { id: 3, title: 'Titulo para a polaroide do mural', image: 'https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640' },
-    { id: 4, title: 'Titulo para a polaroide do mural', image: 'https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640' },
-]
+import Dados from '../../services/dados.json'
+import { useState } from 'react'
 
 
 const PontoTuristico = () => {
+    const [exibirDados, setExibirDados] = useState(Dados)
+    const [buscarConteudo, setBuscarConteudo] = useState([])
+
     return (
         <div className='ponto-turistico'>
+            <div className='varal'></div>
             <div className='campo-busca'>
-                <Search />
+                <Search
+                    setBuscarConteudo={setExibirDados}
+                    buscaConteudo={buscarConteudo}
+                />
             </div>
             <div className='content-ponto-turistico'>
                 {
-                    memorias.map((memoria) =>
-                        <Polaroide
-                            key={memoria.id}
-                            title={memoria.title}
-                            image={memoria.image}
-                            rotation={false} />
-                    )
+                    exibirDados.length == 0 ?
+                        <div className='messageItemNotFound'>
+                            <p>Ops... Nenhuma memória foi encontrada.</p>
+                            <p>Por favor tente outras palavras!</p>
+                        </div>
+                        :
+                        exibirDados.map((memoria) =>
+                            <Polaroide
+                                key={memoria.id}
+                                title={memoria.titulo}
+                                imagem={memoria.imagem}
+                                rotation={false}
+                            />
+                        )
                 }
             </div>
         </div>

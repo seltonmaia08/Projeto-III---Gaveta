@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './polaroide.css';
 
-const Polaroide = ({ image, title, rotation, onClick }) => {
+const Polaroide = ({ imagem, title, rotation, onClick }) => {
   const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
   const [colorPolaroide, setColorPolaroide] = useState(null)
   const location = useLocation()
@@ -25,7 +25,7 @@ const Polaroide = ({ image, title, rotation, onClick }) => {
     >
       <div
         className="photo-card"
-        style={{ "--bg-image": `url(${image})` }}
+        style={{ "--bg-image": `url(${imagem})` }}
       ></div>
 
       <div className="title-card-polaroide">
