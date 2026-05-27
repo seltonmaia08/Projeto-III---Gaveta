@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from "react";
 
 
 function Formulario({termos, setTermos}) {
+    console.log(termos)
 
     //Variáveis
     const hoje = new Date().toISOString().split("T")[0]; //nova data, em string padrão internacional, dividida em data/hora,
