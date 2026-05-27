@@ -39,7 +39,7 @@ function Tags({ needTitle, selecionadas, setSelecionadas }) {
                 {
                     todasTags.map(tag => {
                         return(
-                        <button key={tag.nome} className={
+                        <button type="button" key={tag.nome} className={
                             selecionadas.includes(tag.nome)
                             ? `tag${tag.tipo} active` : `tag${tag.tipo}`
                         }

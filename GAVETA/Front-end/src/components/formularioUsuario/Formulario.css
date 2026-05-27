@@ -41,7 +41,7 @@ u {cursor: pointer}
 
     display: flex;
     flex-direction: column;
-    gap: 1.3rem;
+    gap: 1.5rem;
     align-items: flex-start;
 }
 
@@ -56,6 +56,10 @@ u {cursor: pointer}
 
     color: var(--pedra-cruzeiro);
     font-family: "text-button";
+}
+
+.item .obrigatorio {
+    color: rgb(255, 122, 122);
 }
 
 .item input {
@@ -87,8 +91,8 @@ u {cursor: pointer}
     width: 160px;
     height: 60px;
     padding-right: 16px;
-    cursor: pointer;
 
+    cursor: pointer;
     box-shadow: 0px 3px 4px var(--nuvem-inverno);
 }
 

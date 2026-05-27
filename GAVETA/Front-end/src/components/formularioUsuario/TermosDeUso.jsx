@@ -32,8 +32,7 @@ function TermosDeUso (props) {
                         violento ou ofensivo não será publicado. Apenas conteúdo adequado para o público geral é permitido.
                         </div>
                         <div className="conteudo">4. Respeito à comunidade: não é permitido publicar discurso de ódio,
-                        bullying ou qualquer forma de intolerância. Conteúdos assim serão removidos e a conta poderá
-                        ser suspensa.
+                        bullying ou qualquer forma de intolerância. Conteúdos assim serão removidos.
                         </div>
                         <div className="conteudo">5. Licença de uso do conteúdo: ao publicar, você autoriza o site a exibir
                         seu conteúdo na plataforma. Você continua sendo o proprietário. O site não usará suas publicações
