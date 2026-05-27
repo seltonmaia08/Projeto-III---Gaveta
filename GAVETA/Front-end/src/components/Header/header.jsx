@@ -1,4 +1,5 @@
 import Nav from "../Nav/Nav";
+import ButtonExit from "../Button-exit/ButtonExit";
 import './header.css';
 
 import logo from "../../assets/imgs/logo_gaveta.svg";

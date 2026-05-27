@@ -5,6 +5,5 @@
     display: flex;
     align-items: self-end;
     overflow: hidden;
-    padding-right: 1rem;
     padding-left: 1rem;
 }

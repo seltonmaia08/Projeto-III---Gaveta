@@ -1,0 +1,25 @@
+.sairAdm {
+
+    font-size: 18px;
+    font-weight: bold;
+
+    color: white;
+    background-color: var(--nuvem-inverno);
+
+    width: 130px;
+    height: 50px;
+
+    border: none;
+    border-radius: 1rem;
+    margin-left: 2.5rem;
+    margin-bottom: 1.5rem;
+
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+.sairAdm:hover {background-color: rgb(90, 90, 90)}

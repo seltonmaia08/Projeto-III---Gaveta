@@ -263,6 +263,18 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     transform: translate(-50%, -50%);
 }
 
+.botaoTermos {
+
+    background: none;
+    border: none;
+
+    font-family: "text-site";
+    font-size: 16px;
+    color: var(--pedra-cruzeiro);
+
+    cursor: pointer;
+}
+
 #enviar {
 
     align-self: center;

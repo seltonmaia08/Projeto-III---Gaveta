@@ -5,6 +5,7 @@ import Tags from "../Tags/Tags";
 
 import { IoArrowDownSharp } from "react-icons/io5";
 import { LuUpload } from "react-icons/lu";
+
 import { useState, useEffect, useRef } from "react";
 
 
@@ -23,7 +24,7 @@ function Formulario({termos, setTermos}) {
         texto: "",
         data: "",
         tags: selecionadas,
-        local: 0,
+        local: "",
         imagem: null,
         email: "",
         contato: "",
@@ -172,7 +173,7 @@ function Formulario({termos, setTermos}) {
                     <label htmlFor="locais">Local:<span className="obrigatorio">*</span></label>
 
                     <select id="locais" required name="local" value={dados.local} onChange={alterarDados} onClick={() => setSetaCima(!setaCima)} onBlur={() => setSetaCima(false)}>
-                        <option id="local_padrao" value={0} disabled>Selecione um local</option>
+                        <option id="local_padrao" value="" disabled>Selecione um local</option>
                         <option value={1}>Açude do Cedro</option>
                         <option value={2}>Pedra da Galinha Choca</option>
                         <option value={3}>Museu Jacinto de Sousa</option>
@@ -211,7 +212,7 @@ function Formulario({termos, setTermos}) {
 
                 <div className="li_termos">
                     <input id="concordo" type="checkbox" required name="termos" onClick={leituraTermos} />
-                    <label htmlFor="concordo"> Li e concordo com os </label><button type="button" onClick={() => setTermos(true)}>termos de uso</button>.
+                    <label htmlFor="concordo"> Li e concordo com os </label><button type="button" className="botaoTermos" onClick={() => setTermos(true)}><u>termos de uso</u></button>.
                 </div>
                 <button id="enviar" type="submit">ENVIAR</button>
             </form>

@@ -1,4 +1,5 @@
 import "./TermosDeUso.css"
+import { IoCloseOutline } from "react-icons/io5";
 
 function TermosDeUso (props) {
 
@@ -10,7 +11,7 @@ function TermosDeUso (props) {
 
                     <div className="cima">
                         <div className="titulo">TERMOS DE USO</div>
-                        <button type="button" className="fechar" onClick={props.fechar}>X</button>
+                        <button type="button" className="fechar" onClick={props.fechar}><IoCloseOutline/></button>
                     </div>
 
                     <div>
