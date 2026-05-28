@@ -1,5 +1,5 @@
 .container-denunciar {
-    width: fit-content;
+    overflow: hidden;
 }
 
 .icone-denunciar {
@@ -12,15 +12,9 @@
     font-size: 2rem;
 
     border: none;
-    appearance: none;
-    outline: none;
-    overflow: hidden;
-
     border-radius: 0.8rem;
     padding: 0.6rem;
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
 .icone-denunciar:hover {

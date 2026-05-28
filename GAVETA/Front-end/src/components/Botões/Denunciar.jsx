@@ -11,7 +11,12 @@ function Denunciar() {
 
     const [abrirPopup, setAbrirPopup] = useState(false);
     const [mostrarPopupSucesso, setMostrarPopupSucesso] = useState(false);
-    const [posicao, setPosicao] = useState({ top: 0, right: 0 });
+
+    const [posicao, setPosicao] = useState({
+        top: 0,
+        right: 0
+    });
+
     const botaoRef = useRef(null);
 
     useEffect(() => {
@@ -20,13 +25,17 @@ function Denunciar() {
         }
 
         const rect = botaoRef.current.getBoundingClientRect();
+
         const alturaPopup = 410;
-        const temEspacoAcima = rect.top > alturaPopup;
+        const espaco = 16;
+
+        const temEspacoAcima =
+            rect.top > alturaPopup + espaco;
 
         setPosicao({
             top: temEspacoAcima
-                ? rect.top + window.scrollY - alturaPopup
-                : rect.bottom + window.scrollY,
+                ? rect.top + window.scrollY - alturaPopup - espaco
+                : rect.bottom + window.scrollY + espaco,
 
             right: window.innerWidth - rect.right
         });
@@ -34,8 +43,12 @@ function Denunciar() {
 
     useEffect(() => {
         function fecharPopup(event) {
-            const clicouNoPopup = event.target.closest(".popup-denuncia-portal");
-            const clicouNoBotao = event.target.closest(".icone-denunciar");
+
+            const clicouNoPopup =
+                event.target.closest(".popup-denuncia-portal");
+
+            const clicouNoBotao =
+                event.target.closest(".icone-denunciar");
 
             if (!clicouNoPopup && !clicouNoBotao) {
                 setAbrirPopup(false);
@@ -53,11 +66,15 @@ function Denunciar() {
 
     function abrirPopupSucesso() {
         setAbrirPopup(false);
-        setMostrarPopupSucesso(true);
+
+        requestAnimationFrame(() => {
+            setMostrarPopupSucesso(true);
+        });
+
         setTimeout(() => {
             setMostrarPopupSucesso(false);
         }, 3000);
-    }
+    }   
 
     return (
         <div className="container-denunciar">
@@ -87,6 +104,7 @@ function Denunciar() {
                     document.body
                 )
             }
+
             {
                 mostrarPopupSucesso &&
                 createPortal(

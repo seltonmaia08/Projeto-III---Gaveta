@@ -4,16 +4,17 @@
     align-items: center;
 
     background-color: var(--sertao-chuvoso);
+    color: var(--pedra-cruzeiro);
+    font-size: 2rem;
+    
     border: none;
     border-radius: 0.8rem;
     padding: 0.6rem;
-    color: var(--pedra-cruzeiro);
-    font-size: 2rem;
+    cursor: pointer;
 
     position: absolute;
     top: 13rem;
     left: 18rem;
-    cursor: pointer
 }
 
 .icone-back:hover {
