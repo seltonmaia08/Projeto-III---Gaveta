@@ -1,7 +1,7 @@
 import Nav from "../Nav/Nav";
-import ButtonExit from "../Button-exit/ButtonExit";
 import './header.css';
 
+import ButtonExit from "../Button-exit/ButtonExit";
 import logo from "../../assets/imgs/logo_gaveta.svg";
 
 import { useLocation } from "react-router-dom";
@@ -28,6 +28,9 @@ const Header = () => {
             </div>
 
             <Nav admin={isAdmin} />
+            {
+                isAdmin ? <ButtonExit/> : <></>
+            }
         </div>
     );
 };

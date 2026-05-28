@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ButtonNav from "../Button-nav/Button-nav";
+import ButtonNav from "../Button-nav/button-nav";
 import './nav.css'
 
 import { RxExit } from "react-icons/rx";

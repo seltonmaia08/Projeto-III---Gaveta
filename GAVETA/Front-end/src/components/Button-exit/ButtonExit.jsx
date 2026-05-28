@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { RxExit } from "react-icons/rx";
 import "./ButtonExit.css"
 
 function ButtonExit() {
@@ -9,7 +10,7 @@ function ButtonExit() {
     return (
 
         <>
-            <button className="sairAdm" onClick={logout}><RxExit></RxExit><span>SAIR</span></button>        
+            <button className="sairAdm" onClick={logout}><RxExit></RxExit>SAIR</button>
         </>
     )
 }

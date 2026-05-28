@@ -3,8 +3,8 @@ import App from "../App"
 import MainLayout from '../layout/mainLayout'
 import Mural from '../pages/Mural/mural'
 import PontoTuristico from '../pages/Pontos_turisticos/pontosTuristicos'
-import Memoria from '../pages/memorias/memorias'
-import CompartilharMemoria from '../pages/compartilhar_memoria/compartilharMemoria'
+import Memoria from '../pages/Memorias/memorias'
+import CompartilharMemoria from '../pages/Compartilhar_memoria/CompartilharMemoria'
 
 // import das paginas do adm
 import LoginAdm from '../pages_adm/Login/LoginAdm'

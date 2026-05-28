@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from "react";
 
 
 function Formulario({termos, setTermos}) {
+    console.log(termos)
 
     //Variáveis
     const hoje = new Date().toISOString().split("T")[0]; //nova data, em string padrão internacional, dividida em data/hora,
@@ -98,7 +99,8 @@ function Formulario({termos, setTermos}) {
             const largura = imagemInstante.width;
             const altura = imagemInstante.height;
 
-            if(largura !== altura) {alert("A imagem deve ser quadrada (proporção 1:1)")}
+            if(Math.abs(largura - altura) > 10) {alert("A imagem deve ser quadrada (proporção 1:1)")}
+            // imagem com range de 20 pixels de tolerância (1080 - 1060, ou 1060 - 1080 = 20 em módulo)
             else {
 
                 //-------------------------- Tamanho Aceito?
