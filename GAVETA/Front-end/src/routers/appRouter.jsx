@@ -3,14 +3,9 @@ import App from "../App"
 import MainLayout from '../layout/mainLayout'
 import Mural from '../pages/Mural/mural'
 import PontoTuristico from '../pages/Pontos_turisticos/pontosTuristicos'
-<<<<<<< HEAD
-import Memoria from '../pages/Memorias/memorias'
 import CompartilharMemoria from '../pages/Compartilhar_memoria/CompartilharMemoria'
-=======
 import Memoria from '../pages/memorias/memorias'
 import VisualizarMemoria from '../pages/Memorias/vizualizarMemoria'
-import CompartilharMemoria from '../pages/compartilhar_memoria/compartilharMemoria'
->>>>>>> 545d46df47cb1462ccda97102593d2a5137b2304
 
 // import das paginas do adm
 import LoginAdm from '../pages_adm/Login/LoginAdm'
