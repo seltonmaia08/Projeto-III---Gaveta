@@ -7,7 +7,8 @@ import MemoriasDao from '../../services/firebase/dao/MemoriaDao'
 const Mural = () => {
     const [exibirDados, setExibirDados] = useState(Dados)
 
-    console.log(MemoriasDao)
+    // O firebase está funcionando corretamente. Aguardando para implementação futura das outras funcções...
+    // console.log(MemoriasDao.getAll()) 
     return (
         <div className="mural">
             
