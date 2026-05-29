@@ -6,6 +6,31 @@
     padding: 10rem;
 
     display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: start;
+}
+
+.memorias-postadas {
+    display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+}
+
+.filtro-postadas{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
+    z-index: 100;
+
+
+}
+
+.filtro-postadas h3{
+    font-family: 'Inter';
+    font-size: 18pt;
 }

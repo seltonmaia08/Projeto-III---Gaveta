@@ -1,14 +1,46 @@
 import { CiFilter } from 'react-icons/ci'
 import './filterMemories.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Tags from '../Tags/Tags'
-const FilterMemories = () => {
-    const [openFilter, setOpenFilter] = useState(false)
+import { useMemo } from 'react'
+import Dados from '../../services/dados.json'
+
+const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
     const [selecionadas, setSelecionadas] = useState([]);
+    const [dadoFiltrado, setDadoFiltrado] = useState(false)
 
     const handleFilter = () => {
+
+        const filtroBusca = selecionadas.map(e => e.toLowerCase())
+        if (filtroBusca.length === 0) {
+            setExibirDados(Dados)
+            setDadoFiltrado(false)
+            setOpenFilter(false)
+
+            return
+        }
+
+        const filtrar = Dados.filter((filtro) =>
+            filtro.tags.some(tag => filtroBusca.includes(tag.toLowerCase())))
+        setExibirDados(filtrar.map(e => ({
+            id: e.id,
+            titulo: e.titulo,
+            descricao: e.descricao,
+            imagem: e.imagem,
+            tags: e.tags
+        })))
+
         setOpenFilter(false)
-        console.log(selecionadas)
+        setDadoFiltrado(true)
+
+    }
+
+    const cleanFilter = () => {
+        setSelecionadas([])
+        setExibirDados(Dados)
+        setOpenFilter(false)
+        setDadoFiltrado(false)
+
     }
 
     const cardFilter = () => {
@@ -19,9 +51,18 @@ const FilterMemories = () => {
                     selecionadas={selecionadas}
                     setSelecionadas={setSelecionadas} />
                 <button
-                    onClick={ handleFilter }
+                    onClick={handleFilter}
                     className='btn-submit-filter'
                 >Filtrar</button>
+                {
+
+                    dadoFiltrado
+                    &&
+                    <button
+                        onClick={cleanFilter}
+                        className='btn-clean-filter'
+                    >Limpar</button>
+                }
             </div>
         )
     }

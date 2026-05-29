@@ -1,21 +1,14 @@
 import { Link } from "react-router-dom"
 import './cardMemories.css'
 
-const CardMemories = ({ id, title, description, image, tags }) => {
+const CardMemories = ({ title, description, imagem, tags }) => {
+
     return (
-
-        <Link
-            to={`/visualizar-memoria/${id}`}
-            className='card-link'
-        >
-
+        <Link>
             <div className="card-content">
-
                 <div
                     className="img-card"
-                    style={{ "--bg-image-memorie": `url(${image})` }}
-                ></div>
-
+                    style={{ "--bg-image-memorie": `url(${imagem})` }}></div>
                 <div className="text-content">
                     <div className="card-title">
                         <h3>{title}</h3>
@@ -30,8 +23,8 @@ const CardMemories = ({ id, title, description, image, tags }) => {
                     <div className="description">
                         <p>{description}</p>
                     </div>
-                </div>
 
+                </div>
             </div>
 
         </Link>

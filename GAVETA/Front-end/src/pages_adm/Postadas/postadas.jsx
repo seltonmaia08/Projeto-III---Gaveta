@@ -7,34 +7,11 @@ import PostadasEdit from '../../components/PostadasEdit/PostadasEdit';
 import PopUpSucesso from '../../components/PopUpSucesso/PopUpSucesso';
 import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao';
 
+import Dados from '../../services/dados.json'
+import FilterMemories from '../../components/filter-memories/FilterMemories';
+
 import './postadas.css';
 
-const memorias = [
-  {
-    id: 1,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 2,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 3,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 4,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-];
 
 const PostadasDashboard = () => {
 
@@ -42,6 +19,9 @@ const PostadasDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [exibirDados, serExibirDados] = useState(Dados)
+  const [openFilter, setOpenFilter] = useState(false)
+  const [filtrarConteudo, setFiltrarConteudo] = useState([])
 
   // ABRIR POPUP DETALHES
   function handlePostadasPopUp() {
@@ -88,17 +68,26 @@ const PostadasDashboard = () => {
 
   return (
     <div className='postadas-dashboard'>
-
-      {/* POLAROIDES */}
-      {memorias.map((memoria) => (
-        <Polaroide
-          key={memoria.id}
-          title={memoria.title}
-          image={memoria.image}
-          rotation={false}
-          onClick={handlePostadasPopUp}
+      <div className='filtro-postadas'>
+        <h3>Postadas</h3>
+        <FilterMemories
+          setExibirDados={serExibirDados}
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
         />
-      ))}
+      </div>
+      <div className='memorias-postadas'>
+        {/* POLAROIDES */}
+        {exibirDados.map((memoria) => (
+          <Polaroide
+            key={memoria.id}
+            titulo={memoria.titulo}
+            imagem={memoria.imagem}
+            rotation={false}
+            onClick={handlePostadasPopUp}
+          />
+        ))}
+      </div>
 
       {/* POPUP DETALHES */}
       {postadasInfoShow && (

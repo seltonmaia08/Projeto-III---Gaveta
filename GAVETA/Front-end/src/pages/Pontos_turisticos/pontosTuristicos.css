@@ -15,5 +15,15 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    z-index: 100;
+    margin-top: 4rem;
+}
 
+.varal {
+    width: 100%;
+    height: 1rem;
+    background-color: var(--areia-sertao);
+    position: absolute;
+    z-index: 0;
+    top: 28.5rem;
 }
