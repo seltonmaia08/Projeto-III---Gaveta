@@ -37,7 +37,8 @@ const PendentesDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
 
-  function handlePopUpCuradoria() {
+  function handlePopUpCuradoria(e) {
+    e.preventDefault();
     setCuradoriaAberta(true);
   }
 

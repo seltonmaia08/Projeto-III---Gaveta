@@ -11,6 +11,8 @@ const Memoria = () => {
     const [filtrarConteudo, setFiltrarConteudo] = useState([])
     const [buscarConteudo, setBuscarConteudo] = useState([])
 
+    console.log(exibirDados)
+
     return (
         <div className="memoria">
             <div className='area-search'>
@@ -34,6 +36,7 @@ const Memoria = () => {
                     exibirDados.map((memoria) =>
                         <CardMemories
                             key={memoria.id}
+                            id={memoria.id}
                             title={memoria.titulo}
                             description={memoria.descricao}
                             imagem={memoria.imagem}

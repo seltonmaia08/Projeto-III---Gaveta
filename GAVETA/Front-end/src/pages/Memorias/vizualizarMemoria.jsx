@@ -1,16 +1,19 @@
 import './visualizarMemoria.css'
 
 import { useParams } from 'react-router-dom'
-import Memoria from './memorias'
 import Voltar from '../../components/Botões/Voltar'
 import Denunciar from '../../components/Botões/Denunciar'
 import Compartilhar from '../../components/Botões/Compartilhar'
+import Dados from '../../services/dados.json'
 
 function VisualizarMemoria() {
 
+    
     const { id } = useParams()
+    
+    console.log(Dados, id)
 
-    const memoriaSelecionada = memorias.find(
+    const memoriaSelecionada = Dados.find(
         (memoria) => memoria.id === Number(id)
     )
 
@@ -27,14 +30,14 @@ function VisualizarMemoria() {
 
                 <img
                     className='img'
-                    src={memoriaSelecionada.image}
-                    alt={memoriaSelecionada.title}
+                    src={memoriaSelecionada.imagem}
+                    alt={memoriaSelecionada.titulo}
                 />
 
                 <div className='conteudo-memoria'>
 
                     <h1 className='title'>
-                        {memoriaSelecionada.title}
+                        {memoriaSelecionada.titulo}
                     </h1>
 
                     <div className="tags">
@@ -46,7 +49,7 @@ function VisualizarMemoria() {
                     </div>
 
                     <p className='text'>
-                        {memoriaSelecionada.text}
+                        {memoriaSelecionada.descricao}
                     </p>
 
                     <div className='denu-comp'>

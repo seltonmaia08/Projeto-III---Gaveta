@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './polaroide.css';
 
-const Polaroide = ({ imagem, titulo, rotation, onClick }) => {
+const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
   const rotate = useMemo(() => Math.floor(Math.random() * 20) - 10, []);
   const [colorPolaroide, setColorPolaroide] = useState(null)
   const location = useLocation()
@@ -16,22 +16,27 @@ const Polaroide = ({ imagem, titulo, rotation, onClick }) => {
       console.log(pathName)
     }
   }, [location])
-  
+
   return (
-    <div
-      className={`polaroide-card ${colorPolaroide}`}
-      style={{ "--rotation": rotation ? `${rotate}deg` : '0deg' }}
-      onClick={onClick}
+    <Link
+      to={`/visualizar-memoria/${id}`}
+      className='card-link'
     >
       <div
-        className="photo-card"
-        style={{ "--bg-image": `url(${imagem})` }}
-      ></div>
+        className={`polaroide-card ${colorPolaroide}`}
+        style={{ "--rotation": rotation ? `${rotate}deg` : '0deg' }}
+        onClick={onClick}
+      >
+        <div
+          className="photo-card"
+          style={{ "--bg-image": `url(${imagem})` }}
+        ></div>
 
-      <div className="title-card-polaroide">
-        <h2>{titulo}</h2>
+        <div className="title-card-polaroide">
+          <h2>{titulo}</h2>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

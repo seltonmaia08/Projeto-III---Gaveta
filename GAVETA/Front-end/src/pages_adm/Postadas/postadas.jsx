@@ -24,7 +24,8 @@ const PostadasDashboard = () => {
   const [filtrarConteudo, setFiltrarConteudo] = useState([])
 
   // ABRIR POPUP DETALHES
-  function handlePostadasPopUp() {
+  function handlePostadasPopUp(e) {
+    e.preventDefault();
     setPostadasInfoShow(true);
   }
 

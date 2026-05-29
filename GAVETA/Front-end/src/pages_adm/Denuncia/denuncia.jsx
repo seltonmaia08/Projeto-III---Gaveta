@@ -41,7 +41,8 @@ const DenunciaDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
 
-  function handleDenunciaPopUp() {
+  function handleDenunciaPopUp(e) {
+    e.preventDefault();
     setDenunciaInfoShow(true);
   }
 

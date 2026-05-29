@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import Polaroide from '../../components/polaroide/Polaroide'
 import './mural.css'
 import Dados from '../../services/dados.json'
@@ -16,7 +16,8 @@ const Mural = () => {
                 exibirDados.map((memoria) => 
                     <Polaroide 
                     key={memoria.id}
-                    title={memoria.titulo}
+                    id={memoria.id}
+                    titulo={memoria.titulo}
                     imagem={memoria.imagem}
                     rotation={true}/>
                 )
