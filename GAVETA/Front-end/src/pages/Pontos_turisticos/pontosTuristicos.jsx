@@ -11,8 +11,15 @@ const PontoTuristico = () => {
 
     return (
         <div className='ponto-turistico'>
-            <div className='varal'></div>
             <div className='campo-busca'>
+                {
+                    exibirDados.length > 0
+                        ?
+                        <div className='varal'></div>
+                        :
+                        <></>
+                }
+
                 <Search
                     setBuscarConteudo={setExibirDados}
                     buscaConteudo={buscarConteudo}
@@ -29,7 +36,7 @@ const PontoTuristico = () => {
                         exibirDados.map((memoria) =>
                             <Polaroide
                                 key={memoria.id}
-                                title={memoria.titulo}
+                                titulo={memoria.titulo}
                                 imagem={memoria.imagem}
                                 rotation={false}
                             />
