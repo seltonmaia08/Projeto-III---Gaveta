@@ -1,8 +1,7 @@
 import './visualizarMemoria.css'
 
 import { useParams } from 'react-router-dom'
-import { memorias } from './memorias'
-
+import Memoria from './memorias'
 import Voltar from '../../components/Botões/Voltar'
 import Denunciar from '../../components/Botões/Denunciar'
 import Compartilhar from '../../components/Botões/Compartilhar'
