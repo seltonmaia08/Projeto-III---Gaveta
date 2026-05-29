@@ -1,0 +1,72 @@
+.container-compartilhar {
+  overflow: hidden;
+}
+
+.icone-compartilhar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--sertao-chuvoso);
+  color: var(--pedra-cruzeiro);
+  font-size: 2rem;
+
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.icone-compartilhar svg {
+  display: block;
+}
+
+.icone-compartilhar:hover {
+  transform: scale(1.05);
+}
+
+.icone-compartilhar:active {
+  transform: scale(0.95);
+}
+
+.modal-copiado {
+  position: fixed;
+
+  bottom: 5rem;
+  right: 37%;
+
+  font-family: 'text-site';
+  font-size: 1.1rem;
+
+  background-color: var(--terra-molhada);
+  color: white;
+
+  padding: 1rem 1.4rem;
+  border-radius: 0.6rem;
+
+  z-index: 999;
+  opacity: 1;
+  transform: translateY(0);
+  animation: entradaModal 0.35s ease;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.modal-copiado.saindo {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+@keyframes entradaModal {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

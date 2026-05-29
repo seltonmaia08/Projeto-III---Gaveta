@@ -1,0 +1,38 @@
+.container-denunciar {
+    overflow: hidden;
+}
+
+.icone-denunciar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--terra-molhada);
+    color: white;
+    font-size: 2rem;
+
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.6rem;
+    cursor: pointer;
+}
+
+.icone-denunciar:hover {
+    transform: scale(1.05);
+}
+
+.icone-denunciar:active {
+    transform: scale(0.95);
+}
+
+.popup-denuncia-portal {
+    position: absolute;
+    z-index: 999;
+}
+
+.popup-sucesso-global {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 999999;
+}

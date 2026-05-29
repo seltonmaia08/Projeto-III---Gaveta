@@ -1,0 +1,26 @@
+.icone-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--sertao-chuvoso);
+    color: var(--pedra-cruzeiro);
+    font-size: 2rem;
+    
+    border: none;
+    border-radius: 0.8rem;
+    padding: 0.6rem;
+    cursor: pointer;
+
+    position: absolute;
+    top: 13rem;
+    left: 18rem;
+}
+
+.icone-back:hover {
+  transform: scale(1.05);
+}
+
+.icone-back:active {
+  transform: scale(0.95);
+}
