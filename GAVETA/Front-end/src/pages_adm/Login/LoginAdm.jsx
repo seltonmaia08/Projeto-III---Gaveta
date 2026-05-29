@@ -1,95 +1,99 @@
-import "./LoginAdm.css";
-
-import LogoGaveta from "../../assets/imgs/logo_gaveta.svg"
-
-import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa";
+
+import "./LoginAdm.css";
+import LogoGaveta from "../../assets/imgs/logo_gaveta.svg";
 
 function LoginAdm() {
-
     const [email, setEmail] = useState("");
-    const [emailErro, setEmailErro] = useState(false);
+    const [emailErro, setEmailErro] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
     const navigate = useNavigate();
 
     function emailValido(valor) {
         return /\S+@\S+\.\S+/.test(valor);
-    }   
-
-    function validarFormulario(e) {
-        e.preventDefault();
-
-        if (!emailValido(email)) {
-            setEmailErro(true);
-            return;
-        }
-
-        navigate('/postadasDashboard')
     }
 
-    function validarEmail() {
-        setEmailErro(!emailValido(email));
+    function validarEmail(valor) {
+        if (valor.trim() === "") {
+                return "";
+            }
+        return emailValido(valor) ? "" : "Digite um email válido";
     }
 
     function handleEmail(e) {
         const valor = e.target.value;
-
         setEmail(valor);
 
-        setEmailErro(!emailValido(valor));
+        if (emailErro) {
+            setEmailErro(validarEmail(valor));
+        }
     }
 
+    function validarFormulario(e) {
+        e.preventDefault();
+        const form = e.target;
+        
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+        const erro = validarEmail(email);
+        setEmailErro(erro);
+
+        if (erro) {
+            return;
+        }
+
+        navigate("/postadasDashboard");
+    }
     const toggleShow = () => {
         setShowPassword(prev => !prev);
     };
 
     return (
+
         <div className="login_adm_container">
             <div className="lado_esquerdo">
-                <img src={LogoGaveta}/>
+                <img src={LogoGaveta} />
             </div>
 
             <div className="login_container lado_direito">
-
                 <FaUserCircle className="login_icon" />
 
-                <form onSubmit={validarFormulario} noValidate>
-
+                <form onSubmit={validarFormulario}>
                     <div className="form_group">
-
-                        <label htmlFor="login">LOGIN</label>
-
+                        <label htmlFor="login">EMAIL</label>
                         <div className="email_container">
-
                             <input
                                 type="text"
-                                name="login"
                                 id="login"
-                                placeholder="Digite seu login. Ex.: usuario@email.com"
+                                name="email"
+                                required
+                                placeholder="Digite seu email. Ex.: exemplo@email.com"
                                 value={email}
                                 onChange={handleEmail}
-                                onBlur={validarEmail}
+                                onBlur={() => setEmailErro(validarEmail(email))}
                             />
-                            
-                            {
-                                emailErro && 
-                                <span id="mensagem_erro">Email inválido</span>
-                            }
                         </div>
-
+                        {
+                            emailErro &&
+                            <span className="mensagem_erro">
+                                {emailErro}
+                            </span>
+                        }
                     </div>
 
                     <div className="form_group">
-
                         <label htmlFor="senha">SENHA</label>
-
                         <div className="password_container">
-
                             <input
                                 type={showPassword ? "text" : "password"}
-                                name="senha"
                                 id="senha"
+                                name="senha"
+                                required
                                 placeholder="Digite sua senha"
                             />
 
@@ -100,9 +104,7 @@ function LoginAdm() {
                                         : <FaEyeSlash />
                                 }
                             </span>
-
                         </div>
-
                     </div>
 
                     <button type="submit" id="entrar">
@@ -110,10 +112,8 @@ function LoginAdm() {
                     </button>
 
                 </form>
-
             </div>
         </div>
-        
     );
 }
 
