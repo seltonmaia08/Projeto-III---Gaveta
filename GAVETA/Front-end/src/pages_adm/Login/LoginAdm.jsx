@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa";
 import "./LoginAdm.css";
 import LogoGaveta from "../../assets/imgs/logo_gaveta.svg";
 
-function LoginAdm() {
+function LoginAdm({ setIsAdminLogado }) {
     const [email, setEmail] = useState("");
     const [emailErro, setEmailErro] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +47,7 @@ function LoginAdm() {
             return;
         }
 
+        setIsAdminLogado(true)
         navigate("/postadasDashboard");
     }
     const toggleShow = () => {
