@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 import Tags from '../Tags/Tags'
 import { useMemo } from 'react'
 import Dados from '../../services/dados.json'
+import { useLocation } from 'react-router-dom'
 
 const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
     const [selecionadas, setSelecionadas] = useState([]);
     const [dadoFiltrado, setDadoFiltrado] = useState(false)
+    const location = useLocation().pathname.includes('Dashboard')
+    console.log(location)
 
     const handleFilter = () => {
 
@@ -45,7 +48,9 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
 
     const cardFilter = () => {
         return (
-            <div className='card-filter-open'>
+            <div className='card-filter-open'
+                style={location === true ? {backgroundColor: 'var(--nuvem-inverno) !important'} : {}}
+            >
                 <Tags
                     needTitle={false}
                     selecionadas={selecionadas}
@@ -69,7 +74,9 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
 
     return (
         <div className="filter-content">
-            <button className='btn-filter' onClick={() => { openFilter ? setOpenFilter(false) : setOpenFilter(true) }}>
+            <button className='btn-filter' 
+                style={location === true ? {backgroundColor: 'var(--nuvem-inverno) !important', color: 'var(--pedra-cruzeiro) !important'} : {}}
+                onClick={() => { openFilter ? setOpenFilter(false) : setOpenFilter(true) }}>
                 <CiFilter className='icon-filter' />
             </button>
 

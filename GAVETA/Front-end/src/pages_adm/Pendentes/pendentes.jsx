@@ -4,38 +4,16 @@ import CuradoriaPendente from "../../components/CuradoriaPendente/CuradoriaPende
 import PopUpConfirmacao from "../../components/PopUpConfirmacao/PopUpConfirmacao";
 import PopUpSucesso from "../../components/PopUpSucesso/PopUpSucesso";
 import Polaroide from "../../components/polaroide/Polaroide";
-
-const memorias = [
-  {
-    id: 1,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 2,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 3,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-  {
-    id: 4,
-    title: "Titulo para a polaroide do mural",
-    image:
-      "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-  },
-];
+import Dados from '../../services/dados.json'
+import FilterMemories from "../../components/filter-memories/FilterMemories";
 
 const PendentesDashboard = () => {
   const [curadoriaAberta, setCuradoriaAberta] = useState(false);
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
+  const [exibirDados, serExibirDados] = useState(Dados)
+  const [openFilter, setOpenFilter] = useState(false)
+  const [filtrarConteudo, setFiltrarConteudo] = useState([])
 
   function handlePopUpCuradoria(e) {
     e.preventDefault();
@@ -66,15 +44,25 @@ const PendentesDashboard = () => {
 
   return (
     <div className="pendentes-dashboard">
-      {memorias.map((memoria) => (
-        <Polaroide
-          key={memoria.id}
-          title={memoria.title}
-          image={memoria.image}
-          rotation={false}
-          onClick={handlePopUpCuradoria}
+      <div className='filtro-pendentes'>
+        <h3>Pendentes</h3>
+        <FilterMemories
+          setExibirDados={serExibirDados}
+          openFilter={openFilter}
+          setOpenFilter={setOpenFilter}
         />
-      ))}
+      </div>
+      <div className="memorias-pendentes">
+        {exibirDados.map((memoria) => (
+          <Polaroide
+            key={memoria.id}
+            titulo={memoria.titulo}
+            imagem={memoria.imagem}
+            rotation={false}
+            onClick={handlePopUpCuradoria}
+          />
+        ))}
+      </div>
       {curadoriaAberta && (
         <CuradoriaPendente
           titulo="Trilha da Galinha Choca"
