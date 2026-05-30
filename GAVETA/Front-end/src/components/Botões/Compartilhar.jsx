@@ -31,7 +31,7 @@ function Compartilhar() {
   };
 
   return (
-    <div className="container-compartilhar">
+    <>
       <button
         onClick={compartilhar}
         className="icone-compartilhar"
@@ -44,7 +44,7 @@ function Compartilhar() {
           Link copiado para a área de transferência!
         </div>
       )}
-    </div>
+    </>
   );
 }
 

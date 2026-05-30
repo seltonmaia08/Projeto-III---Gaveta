@@ -5,7 +5,7 @@ import "./PopUpDenuncia.css";
 
 function PopUpDenuncia({ fecharPopup, mostrarSucesso }) {
 
-    const [selecionados, setSelecionados] = useState([]);
+    const [selecionado, setSelecionado] = useState("");
 
     const denuncias = [
         "Direito de Imagem",
@@ -18,47 +18,47 @@ function PopUpDenuncia({ fecharPopup, mostrarSucesso }) {
     ];
 
     function toggleSelecionado(item) {
-        if (selecionados.includes(item)) {
-            setSelecionados(selecionados.filter(denuncia => denuncia !== item));
+        if (selecionado === item) {
+            setSelecionado("");
         } else {
-            setSelecionados([...selecionados, item]);
+            setSelecionado(item);
         }
     }
-
+    
     function enviarDenuncia() {
+        if (!selecionado) return;
+
         fecharPopup();
         mostrarSucesso();
     }
 
     return (
-
         <div className="container-denuncia">
-            {
-                denuncias.map((item) => (
-                    <p
-                        key={item}
-                        className={`item-denuncia ${ selecionados.includes(item) ? "ativo" : "" }`}
-                        onClick={() => toggleSelecionado(item)}
-                    >
-                        {item}
-                        <span>
-                            {
-                                selecionados.includes(item) &&
-                                <IoCheckmarkOutline />
-                            }
-                        </span>
-                    </p>
-                ))
-                
-            }
+            {denuncias.map((item) => (
+                <p
+                    key={item}
+                    className={`item-denuncia ${
+                        selecionado === item ? "ativo" : ""
+                    }`}
+                    onClick={() => toggleSelecionado(item)}
+                >
+                    {item}
+                    <span>
+                        {selecionado === item && (
+                            <IoCheckmarkOutline />
+                        )}
+                    </span>
+                </p>
+            ))}
+
             <button
-                className={`btn-enviar ${ selecionados.length >= 1 ? "ativo" : "" }`}
+                className={`btn-enviar ${ selecionado ? "ativo" : "" }`}
                 onClick={enviarDenuncia}
+                disabled={!selecionado}
             >
                 ENVIAR
             </button>
         </div>
-
     );
 }
 

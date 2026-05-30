@@ -66,18 +66,14 @@ function Denunciar() {
 
     function abrirPopupSucesso() {
         setAbrirPopup(false);
-
-        requestAnimationFrame(() => {
-            setMostrarPopupSucesso(true);
-        });
-
+        setMostrarPopupSucesso(true);
         setTimeout(() => {
             setMostrarPopupSucesso(false);
         }, 3000);
     }   
 
     return (
-        <div className="container-denunciar">
+        <>
             <button
                 ref={botaoRef}
                 className="icone-denunciar"
@@ -116,7 +112,7 @@ function Denunciar() {
                     document.body
                 )
             }
-        </div>
+        </>
     );
 }
 
