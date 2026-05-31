@@ -4,16 +4,16 @@ import CuradoriaPendente from "../../components/CuradoriaPendente/CuradoriaPende
 import PopUpConfirmacao from "../../components/PopUpConfirmacao/PopUpConfirmacao";
 import PopUpSucesso from "../../components/PopUpSucesso/PopUpSucesso";
 import Polaroide from "../../components/polaroide/Polaroide";
-import Dados from '../../services/dados.json'
+import Dados from "../../services/dados.json";
 import FilterMemories from "../../components/filter-memories/FilterMemories";
 
 const PendentesDashboard = () => {
   const [curadoriaAberta, setCuradoriaAberta] = useState(false);
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
-  const [exibirDados, serExibirDados] = useState(Dados)
-  const [openFilter, setOpenFilter] = useState(false)
-  const [filtrarConteudo, setFiltrarConteudo] = useState([])
+  const [exibirDados, serExibirDados] = useState(Dados);
+  const [openFilter, setOpenFilter] = useState(false);
+  const [filtrarConteudo, setFiltrarConteudo] = useState([]);
 
   function handlePopUpCuradoria(e) {
     e.preventDefault();
@@ -44,7 +44,7 @@ const PendentesDashboard = () => {
 
   return (
     <div className="pendentes-dashboard">
-      <div className='filtro-pendentes'>
+      <div className="filtro-pendentes">
         <h3>Pendentes</h3>
         <FilterMemories
           setExibirDados={serExibirDados}
@@ -70,7 +70,11 @@ const PendentesDashboard = () => {
           data="27/04/2025"
           texto="Era uma tarde quente em Quixadá quando saímos para a trilha da Pedra da Galinha Choca. O sol parecia mais forte que o normal, refletindo nas rochas e deixando o ar seco, daqueles que fazem a garganta pedir água a cada poucos minutos. Éramos quatro amigos, cada um carregando uma mochila simples, celular no bolso e a falsa confiança de quem acredita conhecer bem o sertão.
 
-        No começo, a subida parecia fácil. Entre risadas e histórias antigas, alguém apontava formações rochosas que lembravam animais, rostos ou objetos. O vento surgia às vezes, breve, quebrando o calor. Mas quanto mais avançávamos, mais o silêncio tomava conta do lugar. A cidade ficava distante e o único som constante era o dos passos sobre pedras soltas."
+        No começo, a subida parecia fácil. Entre risadas e histórias antigas, alguém apontava formações rochosas que lembravam animais, rostos ou objetos. O vento surgia às vezes, breve, quebrando o calor. Mas quanto mais avançávamos, mais o silêncio tomava conta do lugar. A cidade ficava distante e o único som constante era o dos passos sobre pedras soltas.
+        
+        Foi perto do topo que encontramos algo estranho: uma pequena cruz de madeira fincada entre duas rochas, envelhecida pelo tempo, sem nome ou data. A madeira estava tão desgastada que parecia ter passado décadas enfrentando sol, chuva e ventania. Ao lado dela havia uma garrafa de vidro parcialmente enterrada na areia avermelhada. A curiosidade falou mais alto. Um dos meus amigos retirou a garrafa com cuidado e percebeu que havia um papel dobrado dentro. Depois de alguma dificuldade para abrir a tampa enferrujada, conseguimos retirar o bilhete. A mensagem era curta, escrita com uma letra irregular e já desbotada pelo tempo: “Nem toda memória quer ser lembrada.” Por alguns segundos ficamos em silêncio, encarando aquelas palavras. Tentamos imaginar quem teria escrito aquilo, por qual motivo e há quanto tempo o bilhete estava ali. Surgiram hipóteses de todo tipo: uma brincadeira de turistas, uma lenda local ou até alguma espécie de homenagem esquecida. Apesar das piadas que fazíamos para aliviar a tensão, havia algo naquele lugar que despertava um desconforto difícil de explicar.
+
+        Decidimos continuar a caminhada, mas o clima já não era o mesmo. O caminho parecia mais longo e o silêncio mais pesado, como se o sertão ao nosso redor tivesse mudado de comportamento. As conversas diminuíram e passamos a prestar atenção em detalhes que antes ignorávamos: marcas estranhas em algumas pedras, o som distante de algo que parecia um assobio levado pelo vento e a sensação constante de que não estávamos sozinhos. Quando finalmente alcançamos um ponto mais alto da trilha e olhamos para a imensidão de Quixadá, o cenário continuava tão bonito quanto antes, mas nenhum de nós conseguiu apreciar a vista da mesma forma. Havia uma estranha impressão de que aquele bilhete não tinha sido deixado para qualquer pessoa, mas para alguém que um dia pisaria exatamente naquele lugar. E, pela primeira vez desde que começamos a subida, tive a sensação de que a trilha não era apenas um caminho entre as pedras: era um lugar onde histórias antigas permaneciam vivas, escondidas entre as rochas, esperando por alguém disposto a encontrá-las."
           tags={["conto", "turismo", "lenda popular", "nostálgico", "lugar"]}
           lugar="Açude do Cedro"
           email="robertoss2016@gmail.com"
