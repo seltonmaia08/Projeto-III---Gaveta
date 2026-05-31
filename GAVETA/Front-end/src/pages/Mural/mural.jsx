@@ -5,26 +5,23 @@ import Dados from '../../services/dados.json'
 //import MemoriasDao from '../../services/firebase/dao/MemoriaDao'
 
 const Mural = () => {
-    const [exibirDados, setExibirDados] = useState(Dados)
+  const [exibirDados, setExibirDados] = useState(Dados);
 
-    // O firebase está funcionando corretamente. Aguardando para implementação futura das outras funcções...
-    // console.log(MemoriasDao.getAll()) 
-    return (
-        <div className="mural">
-            
-            {
-                exibirDados.map((memoria) => 
-                    <Polaroide 
-                    key={memoria.id}
-                    id={memoria.id}
-                    titulo={memoria.titulo}
-                    imagem={memoria.imagem}
-                    rotation={true}/>
-                )
-            }
+  // O firebase está funcionando corretamente. Aguardando para implementação futura das outras funcções...
+  // console.log(MemoriasDao.getAll())
+  return (
+    <div className="mural">
+      {exibirDados.map((memoria) => (
+        <Polaroide
+          key={memoria.id}
+          id={memoria.id}
+          titulo={memoria.titulo}
+          imagem={memoria.imagem}
+          rotation={true}
+        />
+      ))}
+    </div>
+  );
+};
 
-        </div>
-    )
-}
-
-export default Mural
+export default Mural;

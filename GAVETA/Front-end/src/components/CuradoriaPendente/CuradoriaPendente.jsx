@@ -83,11 +83,11 @@ function CuradoriaPendente({
           </div>
 
           <div className="direita-botoes">
-            <button className="btn-aceitar" onClick={onAceitarRecusar}>
-              ACEITAR
-            </button>
             <button className="btn-recusar" onClick={onAceitarRecusar}>
               RECUSAR
+            </button>
+            <button className="btn-aceitar" onClick={onAceitarRecusar}>
+              ACEITAR
             </button>
           </div>
         </div>

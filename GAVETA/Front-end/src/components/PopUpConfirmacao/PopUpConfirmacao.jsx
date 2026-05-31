@@ -6,11 +6,11 @@ function PopUpConfirmacao({ onSim, onNao }) {
       <div className="container-confir">
         <p className="texto-confir">Tem certeza que quer concluir essa ação?</p>
         <div className="botoes-confir">
-          <button className="btn-sim" onClick={onSim}>
-            SIM
-          </button>
           <button className="btn-nao" onClick={onNao}>
             NÃO
+          </button>
+          <button className="btn-sim" onClick={onSim}>
+            SIM
           </button>
         </div>
       </div>
