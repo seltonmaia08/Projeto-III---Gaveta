@@ -20,7 +20,7 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
   return (
     <Link
       to={`/visualizar-memoria/${id}`}
-      className='card-link'
+      className='polaroide-link'
     >
       <div
         className={`polaroide-card ${colorPolaroide}`}

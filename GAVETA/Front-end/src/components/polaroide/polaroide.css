@@ -40,6 +40,11 @@
     transform: rotate(var(--rotation)) scale(1.05);
 }
 
+.polaroide-link{
+    cursor: default;
+    text-decoration: none;
+}
+
 /* Configuração para mudar a cor de fundo do polaroide de acordo com a tela que ele se encontra no modulo do ADM */
 .postadasDashboard{
     background-color: var(--sertao-chuvoso);
@@ -59,3 +64,4 @@
 .denunciaDashboard h2 {
     color: var(--pedra-cruzeiro);
 }
+
