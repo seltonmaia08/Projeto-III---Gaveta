@@ -9,83 +9,89 @@ function DenunciaPopUp({
   lugar,
   email,
   outroContato,
+  denuncia,
   foto,
   onFechar,
   onIgnore,
   onDelete,
 }) {
   return (
-    <div className="overlay">
-      <div className="container">
-        <div className="coluna-esquerda">
-          <div className="campo">
-            <span className="label">Título:</span>
-            <span className="valor">{titulo}</span>
+    <div className="overlay-denu">
+      <div className="container-denu">
+        <div className="coluna-esquerda-denu">
+          <div className="campo-denu">
+            <span className="label-denu">Título:</span>
+            <span className="valor-denu">{titulo}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Nome:</span>
-            <span className="valor">{nome}</span>
-            <span className="label nome-data-gap">Data:</span>
-            <span className="valor">{data}</span>
+          <div className="campo-denu">
+            <span className="label-denu">Nome:</span>
+            <span className="valor-denu">{nome}</span>
+            <span className="label-denu nome-data-gap-denu">Data:</span>
+            <span className="valor-denu">{data}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Texto:</span>
-            <span className="v-texto">{texto}</span>
+          <div className="campo-denu">
+            <span className="label-denu">Texto:</span>
+            <span className="v-texto-denu">{texto}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Tags:</span>
-            <div className="tags-container">
+          <div className="campo-denu">
+            <span className="label-denu">Tags:</span>
+            <div className="tags-container-denu">
               {tags.map((tag) => (
-                <span className="tag" key={tag}>
-                  <span className="tag-bolinha"></span>
+                <span className="tag-denu" key={tag}>
+                  <span className="tag-bolinha-denu"></span>
                   {tag}
                 </span>
               ))}
             </div>
           </div>
 
-          <div className="campo">
-            <span className="label">Lugar:</span>
-            <span className="valor">{lugar}</span>
-          </div>
 
-          <div className="contato-categoria">
-            <div className="campo">
-              <span className="label">Contato:</span>
-              <div className="contatos">
-                <span className="valor">{email}</span>
-                {outroContato && <span className="valor">{outroContato}</span>}
+          <div className="contato-categoria-denu">
+            <div className="campo-denu">
+              <span className="label-denu">Lugar:</span>
+              <span className="valor-denu">{lugar}</span>
+            </div>
+
+            <div className="campo-denu">
+              <span className="label-denu">Contato:</span>
+              <div className="contatos-denu">
+                <span className="valor-denu">{email}</span>
+                {outroContato && <span className="valor-denu">{outroContato}</span>}
               </div>
             </div>
 
-            <div className="campo">
-              <span className="label">Categoria:</span>
-              <span className="valor">Memória histórica</span>
-              
+            <div className="campo-denu">
+              <span className="label-denu">Categoria:</span>
+              <span className="valor-denu">Memória histórica</span>
             </div>
           </div>
+
+          <div className="denuncia"> 
+              <span className="label-denu">Denúncia:</span>
+              <span className="valor-denu">{denuncia}</span>
+            </div>
         </div>
 
-        <div className="coluna-direita">
-          <div className="direita-topo">
-            <button className="btn-fechar" onClick={onFechar}>
+        <div className="coluna-direita-denu">
+          <div className="direita-topo-denu">
+            <button className="btn-fechar-denu" onClick={onFechar}>
               X
             </button>
-            <div className="campo">
-              <span className="label">Foto:</span>
-              <img className="foto" src={foto} alt="Foto da memória" />
+            <div className="campo-denu">
+              <span className="label-denu">Foto:</span>
+              <img className="foto-denu" src={foto} alt="Foto da memória" />
             </div>
           </div>
 
-          <div className="direita-botoes">
-            <button className="btn-ignorar" onClick={onIgnore}>
-              IGNORAR DENÚNCIA
-            </button>
+          <div className="direita-botoes-denu">
             <button className="btn-excluir-memoria" onClick={onDelete}> 
               EXCLUIR MEMÓRIA
+            </button>
+            <button className="btn-ignorar" onClick={onIgnore}>
+              IGNORAR DENÚNCIA
             </button>
           </div>
         </div>
