@@ -8,6 +8,7 @@ import CompartilharMemoria from '../pages/Compartilhar_memoria/CompartilharMemor
 import Memoria from '../pages/memorias/memorias'
 import VisualizarMemoria from '../pages/Memorias/vizualizarMemoria'
 
+import PontoTuristicoEspecifico from '../pages/Ponto_Turistico_Especifico/PontoTuristicoEspecifico'
 // import das paginas do adm
 import LoginAdm from '../pages_adm/Login/LoginAdm'
 import PostadasDashboard from '../pages_adm/Postadas/postadas'
@@ -49,6 +50,7 @@ const AppRouter = () => {
                     <Route path='/denunciaDashboard' element={<DenunciaDashboard />} />
                 </Route>
             </Route>
+
         </Routes>
     )
 }
