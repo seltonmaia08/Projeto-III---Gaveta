@@ -14,7 +14,7 @@
 .content-ponto-turistico {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     z-index: 100;
     margin-top: 4rem;
 }
