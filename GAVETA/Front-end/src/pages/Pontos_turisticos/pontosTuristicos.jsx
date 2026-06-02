@@ -41,6 +41,7 @@ const PontoTuristico = () => {
                         exibirDados.map((memoria) =>
                             <Polaroide
                                 key={memoria.id}
+                                id={memoria.id}
                                 titulo={memoria.titulo}
                                 imagem={memoria.imagem}
                                 rotation={false}
