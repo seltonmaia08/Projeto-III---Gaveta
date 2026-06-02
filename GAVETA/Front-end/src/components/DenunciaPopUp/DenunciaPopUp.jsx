@@ -1,4 +1,5 @@
 import "./DenunciaPopUp.css";
+import { IoCloseOutline } from "react-icons/io5";
 
 function DenunciaPopUp({
   titulo,
@@ -16,7 +17,7 @@ function DenunciaPopUp({
   onDelete,
 }) {
   return (
-    <div className="overlay-denu">
+    <div className="overlay">
       <div className="container-denu">
         <div className="coluna-esquerda-denu">
           <div className="campo-denu">
@@ -77,9 +78,7 @@ function DenunciaPopUp({
 
         <div className="coluna-direita-denu">
           <div className="direita-topo-denu">
-            <button className="btn-fechar-denu" onClick={onFechar}>
-              X
-            </button>
+            <button className="btn-fechar-denu" onClick={onFechar}> <IoCloseOutline/> </button>
             <div className="campo-denu">
               <span className="label-denu">Foto:</span>
               <img className="foto-denu" src={foto} alt="Foto da memória" />

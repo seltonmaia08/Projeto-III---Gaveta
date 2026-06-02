@@ -50,7 +50,7 @@ const DenunciaDashboard = () => {
     <div className='denuncia-dashboard'>
 
       <div className='filtro-denuncias'>
-        <h3>Pendentes</h3>
+        <h3>Denúncia</h3>
         <FilterMemories
           setExibirDados={serExibirDados}
           openFilter={openFilter}
