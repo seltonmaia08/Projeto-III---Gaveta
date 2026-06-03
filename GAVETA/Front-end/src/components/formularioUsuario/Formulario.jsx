@@ -2,6 +2,8 @@ import "./Formulario.css";
 
 import TermosDeUso from "./TermosDeUso";
 import Tags from "../Tags/Tags";
+import PopUpSucesso from "../PopUpSucesso/PopUpSucesso";
+import PopUpFracasso from "../PopUpFracasso/PopUpFracasso";
 
 import { IoArrowDownSharp } from "react-icons/io5";
 import { LuUpload } from "react-icons/lu";
@@ -16,7 +18,8 @@ function Formulario({termos, setTermos}) {
     const hoje = new Date().toISOString().split("T")[0]; //nova data, em string padrão internacional, dividida em data/hora,
     // separada por T, mas só quero o primeiro resultado (a data);
 
-    //const [termos, setTermos] = useState(false);
+    const [mensagem, setMensagem] = useState("");
+    const [popFracasso, setPopFracasso] = useState(false);
     const [setaCima, setSetaCima] = useState(false);
     const [selecionadas, setSelecionadas] = useState([]); //para todasTags
     const [dados, setDados] = useState({
@@ -121,6 +124,11 @@ function Formulario({termos, setTermos}) {
         }
     }
 
+    const mostrarErro = (mensagem) => {
+
+        setMensagem(mensagem);
+        setPopFracasso(true);
+    }
 
     //------------------------------------------
     return (
