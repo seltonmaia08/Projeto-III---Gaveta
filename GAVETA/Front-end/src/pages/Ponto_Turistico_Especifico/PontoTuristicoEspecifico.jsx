@@ -1,85 +1,70 @@
-import { useNavigate, useParams } from 'react-router-dom'
-
+import { useParams, useLocation } from 'react-router-dom' // Importado o useLocation
 import './PontoTuristicoEspecifico.css'
-
-import { FaArrowLeft, FaShareAlt } from 'react-icons/fa'
+import Voltar from '../../components/Botões/Voltar'
+import { FaShareAlt } from 'react-icons/fa' 
 
 const PontoTuristicoEspecifico = () => {
-
-    const navigate = useNavigate()
     const { id } = useParams()
+    
+    // 1. Ativamos o useLocation para capturar os dados vindos do clique
+    const location = useLocation()
 
-    const PontoTuristicoEspecifico = () => {
-    console.log("CARREGOU PONTO ESPECIFICO")
+    // 2. Pegamos o ponto que foi passado no navigate
+    const ponto = location.state?.ponto
+
+    // Se tentar acessar a página direto sem clicar (ou der F5), exibe o aviso
+    if (!ponto) {
+        return (
+            <h1 style={{ textAlign: 'center', color: 'white', marginTop: '5rem' }}>
+                Ponto não encontrado ou página recarregada.
+            </h1>
+        )
     }
 
     return (
-        <div className='ponto-especifico'>
+        <div className="ponto-especifico">
 
             {/* TOPO */}
-            <div className='topo-ponto'>
+            <div className="topo-ponto">
+                <Voltar />
 
-                <button
-                    className='btn-voltar'
-                    onClick={() => navigate(-1)}
-                >
-                    <FaArrowLeft />
-                </button>
+                <h1>{ponto.titulo}</h1>
 
-                <h1>A pedra da galinha continua linda</h1>
-
+                {/* 3. Mantive a div fantasma aqui para o seu Grid CSS deixar o título centralizado */}
+                <div></div> 
             </div>
 
             {/* CONTEÚDO */}
-            <div className='conteudo-ponto'>
+            <div className="conteudo-ponto">
 
-                <div className='imagem-texto'>
-
+                <div className="imagem-texto">
                     <img
-                        src='https://images.unsplash.com/photo-1506744038136-46273834b3fb'
-                        alt='Ponto turístico'
+                        src={ponto.imagem}
+                        alt={ponto.titulo}
                     />
 
                     <p>
-                        A trilha da Pedra da Galinha é conhecida pelas suas
-                        paisagens naturais, vegetação abundante e clima
-                        agradável. O percurso é relativamente simples,
-                        permitindo que visitantes apreciem a natureza ao longo
-                        do caminho.
+                        {ponto.descricao}
                     </p>
-
                 </div>
 
-                <div className='texto-imagem'>
-
-                    <p>
-                        Durante o trajeto é possível observar diferentes tipos
-                        de vegetação, além de áreas ideais para fotografias e
-                        contemplação da paisagem.
-                    </p>
-
-                    <img
-                        src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee'
-                        alt='Paisagem'
-                    />
-
-                </div>
-
-                <div className='compartilhar'>
-
+                <div className="compartilhar">
                     <button>
                         <FaShareAlt />
                     </button>
-
                 </div>
 
             </div>
 
             {/* MEMÓRIAS RELACIONADAS */}
-            <div className='memorias-relacionadas'>
+            <div className="memorias-relacionadas">
+                <h2>
+                    Memórias relacionadas a esse lugar
+                </h2>
 
-                <h2>Memórias relacionadas a esse lugar</h2>
-
+                <div className="cards-relacionados">
+                    {/* Aqui você pode renderizar os Polaroides futuramente */}
+                </div>
             </div>
 
         </div>
