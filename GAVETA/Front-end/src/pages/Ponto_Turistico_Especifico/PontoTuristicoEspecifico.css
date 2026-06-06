@@ -1,0 +1,107 @@
+.ponto-especifico{
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--pedra-cruzeiro)
+}
+
+/* TOPO */
+
+.topo-ponto{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 30px 80px;
+}
+
+.topo-ponto h1{
+    font-size: 28px;
+    color: #3b2a24;
+}
+
+.btn-voltar{
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #5b2d1f;
+    color: white;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* CONTEÚDO */
+
+.conteudo-ponto{
+    width: 100%;
+    padding: 20px 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.imagem-texto,
+.texto-imagem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.imagem-texto img,
+.texto-imagem img{
+    width: 320px;
+    height: 220px;
+
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.imagem-texto p,
+.texto-imagem p{
+    flex: 1;
+
+    text-align: justify;
+    line-height: 1.7;
+
+    color: #2e2e2e;
+}
+
+/* BOTÃO SHARE */
+
+.compartilhar{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.compartilhar button{
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #5f7f67;
+    color: white;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* MEMÓRIAS RELACIONADAS */
+
+.memorias-relacionadas{
+    margin-top: 60px;
+
+    background-color: #4b1f14;
+
+    padding: 50px 80px;
+}
+
+.memorias-relacionadas h2{
+    color: white;
+}

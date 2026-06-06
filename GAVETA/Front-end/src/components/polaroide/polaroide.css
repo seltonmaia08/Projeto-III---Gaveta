@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;    
+    align-items: center;
     box-shadow: 0px 4px 4px 0px #00000025;
 
     transition: transform 0.3s ease-in;
@@ -27,21 +27,29 @@
 
 }
 
-.title-card-polaroide{
+.title-card-polaroide {
     font-family: 'title-h2-CoveredBy';
     font-size: 10pt;
 }
 
-.title-card-polaroide h2{
+.title-card-polaroide h2 {
     color: var(--nuvem-inverno);
 }
 
-.polaroide-card:hover{
+
+.polaroide-link {
+    cursor: default;
+    text-decoration: none;
+    width: auto;
+    transform: rotate(var(--rotation));
+}
+
+.polaroide-card:hover {
     transform: rotate(var(--rotation)) scale(1.05);
 }
 
 /* Configuração para mudar a cor de fundo do polaroide de acordo com a tela que ele se encontra no modulo do ADM */
-.postadasDashboard{
+.postadasDashboard {
     background-color: var(--sertao-chuvoso);
 }
 
@@ -49,9 +57,10 @@
     color: var(--pedra-cruzeiro);
 }
 
-.pendentesDashboard{
+.pendentesDashboard {
     background-color: var(--areia-sertao);
 }
+
 .denunciaDashboard {
     background-color: var(--monolitos);
 }

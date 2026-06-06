@@ -12,11 +12,13 @@
     align-items: center;
 
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .card-link {
     text-decoration: none;
     color: inherit;
+    cursor: default;
 }
 
 .img-card {
