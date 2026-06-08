@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './polaroide.css';
 
 const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
@@ -7,6 +7,7 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
   const [isPontoTuristico, setIsPontoTuristico] = useState(false)
 
   const location = useLocation()
+  const navigation = useNavigate()
 
   const randomValue = Math.floor(Math.random() * 20) - 10
   const rotate = useMemo(() => randomValue, []);
@@ -27,14 +28,12 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
 
   }, [location])
 
+  const handleNavigation = () => {
+    navigation(isPontoTuristico ? `/visualizar-ponto-turistico/${id}` : `/visualizar-memoria/${id}`)
+    console.log('clicado')
+  }
+
   return (
-    <Link
-      to={`/visualizar-memoria/${id}`}
-      className='polaroide-link'
-      style={{
-          "--rotation": rotation ? `${rotate}deg` : '0deg',
-        }}  
-    >
       <div
         id='polaroide'
         className={`polaroide-card ${colorPolaroide}`}
@@ -42,7 +41,10 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
           "--rotation": rotation ? `${rotate}deg` : '0deg',
           marginRight: isPontoTuristico ? `${distancePolaroide}rem` : undefined
         }}
-        onClick={onClick}
+        onClick={() => {
+          navigation(isPontoTuristico ? `/visualizar-ponto-turistico/${id}` : `/visualizar-memoria/${id}`);
+          onClick
+        }}
       >
         <div
           className="photo-card"
@@ -53,7 +55,6 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
           <h2>{titulo}</h2>
         </div>
       </div>
-    </Link>
   );
 };
 

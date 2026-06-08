@@ -153,7 +153,7 @@ function Formulario({termos, setTermos}) {
                     mensagem={mensagemFracasso}
                     onFechar={() => setPopFracasso(false)}
                 />
-                : null
+                    : null
             }
 
             {

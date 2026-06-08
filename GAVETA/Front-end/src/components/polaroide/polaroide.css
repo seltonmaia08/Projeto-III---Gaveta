@@ -36,14 +36,6 @@
     color: var(--nuvem-inverno);
 }
 
-
-.polaroide-link {
-    cursor: default;
-    text-decoration: none;
-    width: auto;
-    transform: rotate(var(--rotation));
-}
-
 .polaroide-card:hover {
     transform: rotate(var(--rotation)) scale(1.05);
 }
