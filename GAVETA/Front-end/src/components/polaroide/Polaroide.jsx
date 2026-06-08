@@ -28,21 +28,15 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
 
   }, [location])
 
-  const handleNavigation = () => {
-    navigation(isPontoTuristico ? `/visualizar-ponto-turistico/${id}` : `/visualizar-memoria/${id}`)
-    console.log('clicado')
-  }
-
   return (
       <div
-        id='polaroide'
         className={`polaroide-card ${colorPolaroide}`}
         style={{
           "--rotation": rotation ? `${rotate}deg` : '0deg',
           marginRight: isPontoTuristico ? `${distancePolaroide}rem` : undefined
         }}
         onClick={() => {
-          navigation(isPontoTuristico ? `/visualizar-ponto-turistico/${id}` : `/visualizar-memoria/${id}`);
+          navigation(isPontoTuristico ? `/ponto-turistico-especifico/${id}` : `/visualizar-memoria/${id}`);
           onClick
         }}
       >

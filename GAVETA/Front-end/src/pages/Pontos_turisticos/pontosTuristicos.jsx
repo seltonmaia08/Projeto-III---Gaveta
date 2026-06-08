@@ -44,7 +44,6 @@ const PontoTuristico = () => {
                             <div 
                                 key={memoria.id} 
                                 onClick={() => handleCardClick(memoria)}
-                                style={{ cursor: 'pointer' }}
                             >
                                 <Polaroide
                                     id={memoria.id}

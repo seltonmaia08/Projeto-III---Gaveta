@@ -1,10 +1,11 @@
-import { useParams, useLocation } from 'react-router-dom' // Importado o useLocation
+import { useParams, useLocation, useNavigate } from 'react-router-dom' // Importado o useLocation e useNavigate
 import './PontoTuristicoEspecifico.css'
-import Voltar from '../../components/Botões/Voltar'
 import { FaShareAlt } from 'react-icons/fa' 
+import { MdArrowBack } from 'react-icons/md' 
 
 const PontoTuristicoEspecifico = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     
     // 1. Ativamos o useLocation para capturar os dados vindos do clique
     const location = useLocation()
@@ -26,7 +27,9 @@ const PontoTuristicoEspecifico = () => {
 
             {/* TOPO */}
             <div className="topo-ponto">
-                <Voltar />
+                <button className="btn-voltar" onClick={() => navigate('/ponto-turistico')}>
+                    <MdArrowBack/>
+                </button>
 
                 <h1>{ponto.titulo}</h1>
 
