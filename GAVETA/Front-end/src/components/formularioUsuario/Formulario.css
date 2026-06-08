@@ -214,17 +214,21 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
 
     font-size: 12px;
     width: auto;
-    height: 26px;
+    max-width: 230px;
+    height: 40px;
 
     color: var(--nuvem-inverno);
     background-color: var(--pedra-cruzeiro);
 
     padding: 0.5rem;
     padding-left: 1rem;
-    text-align: right;
+    text-align: center;
 
     border-radius: 0.6rem;
     border-left: 5px solid var(--nuvem-inverno);
+
+    display: flex;
+    flex-wrap: wrap;
 
     animation: fade 1.5s forwards; /*faz o elemento manter o estado pós animação*/
 }

@@ -1,4 +1,6 @@
 import "./PostadasPopUp.css";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { MdOutlineEdit } from "react-icons/md";
 
 function PostadasPopUp({
   titulo,
@@ -16,28 +18,28 @@ function PostadasPopUp({
 }) {
   return (
     <div className="overlay">
-      <div className="container">
-        <div className="coluna-esquerda">
-          <div className="campo">
-            <span className="label">Título:</span>
-            <span className="valor">{titulo}</span>
+      <div className="container-postada">
+        <div className="coluna-esquerda-postada">
+          <div className="campo-postada">
+            <span className="label-postada">Título:</span>
+            <span className="valor-postada">{titulo}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Nome:</span>
-            <span className="valor">{nome}</span>
-            <span className="label nome-data-gap">Data:</span>
-            <span className="valor">{data}</span>
+          <div className="campo-postada">
+            <span className="label-postada">Nome:</span>
+            <span className="valor-postada">{nome}</span>
+            <span className="label-postada nome-data-gap-postada">Data:</span>
+            <span className="valor-postada">{data}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Texto:</span>
-            <span className="v-texto">{texto}</span>
+          <div className="campo-postada-topo">
+            <span className="label-postada">Texto:</span>
+            <span className="v-texto-postada">{texto}</span>
           </div>
 
-          <div className="campo">
-            <span className="label">Tags:</span>
-            <div className="tags-container">
+          <div className="campo-postada">
+            <span className="label-postada">Tags:</span>
+            <div className="tags-container-postada">
               {tags.map((tag) => (
                 <span className="tag" key={tag}>
                   <span className="tag-bolinha"></span>
@@ -47,45 +49,44 @@ function PostadasPopUp({
             </div>
           </div>
 
-          <div className="campo">
-            <span className="label">Lugar:</span>
-            <span className="valor">{lugar}</span>
+          <div className="campo-postada">
+            <span className="label-postada">Lugar:</span>
+            <span className="valor-postada">{lugar}</span>
           </div>
 
-          <div className="contato-categoria">
-            <div className="campo">
-              <span className="label">Contato:</span>
-              <div className="contatos">
-                <span className="valor">{email}</span>
-                {outroContato && <span className="valor">{outroContato}</span>}
+          <div className="contato-categoria-postada">
+            <div className="campo-postada-topo">
+              <span className="label-postada">Contato:</span>
+              <div className="contatos-postada">
+                <span className="valor-postada">{email}</span>
+                {outroContato && <span className="valor-postada">{outroContato}</span>}
               </div>
             </div>
 
-            <div className="campo">
-              <span className="label">Categoria:</span>
-              <span className="valor">Memória histórica</span>
-              
+            <div className="campo-postada">
+              <span className="label-postada">Categoria:</span>
+              <span className="valor-postada">Memória histórica</span>
             </div>
           </div>
         </div>
 
-        <div className="coluna-direita">
-          <div className="direita-topo">
-            <button className="btn-fechar" onClick={onFechar}>
+        <div className="coluna-direita-postada">
+          <div className="direita-topo-postada">
+            <button className="btn-fechar-postada" onClick={onFechar}>
               X
             </button>
-            <div className="campo">
-              <span className="label">Foto:</span>
-              <img className="foto" src={foto} alt="Foto da memória" />
+            <div className="campo-postada-topo">
+              <span className="label-postada">Foto:</span>
+              <img className="foto-postada" src={foto} alt="Foto da memória" />
             </div>
           </div>
 
-          <div className="direita-botoes">
-            <button className="btn-editar" onClick={onEditMode}>
-              ICONE EDITAR
+          <div className="direita-botoes-postada">
+            <button className="btn-excluir-postada" onClick={onDelete}> 
+              <FaRegTrashAlt/>
             </button>
-            <button className="btn-excluir" onClick={onDelete}> 
-              ICONE DELETAR
+            <button className="btn-editar-postada" onClick={onEditMode}>
+              <MdOutlineEdit/>
             </button>
           </div>
         </div>

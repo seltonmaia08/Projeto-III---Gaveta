@@ -1,0 +1,189 @@
+/*.overlay-postada {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(72, 72, 72, 0.4);
+  z-index: 1000;
+  overscroll-behavior: contain;
+}*/
+
+.container-postada {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 1.25rem;
+  border: 4px solid #5c766d;
+  padding: 3rem;
+  width: 100vw;
+  max-width: 90rem;
+  min-height: 80vh;
+  z-index: 1001;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  align-items: stretch;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+.coluna-esquerda-postada {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.campo-postada-topo,
+.campo-postada {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.campo-postada-topo {align-items: flex-start}
+
+.label-postada {
+  font-weight: bold;
+  color: black;
+  min-width: 4rem;
+}
+
+.valor-postada {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: black;
+}
+
+.nome-data-gap-postada {margin-left: auto}
+
+.v-texto-postada {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  color: black;
+  width: 100%;
+  height: 20rem;
+  overflow-y: scroll;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.tags-container-postada {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tags-container-postada .tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 0.3rem 0.8rem;
+  color: black;
+}
+
+.tag-bolinha {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.contato-categoria-postada {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.contatos-postada {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.coluna-direita-postada {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  min-width: 16rem;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.direita-topo-postada {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.btn-fechar-postada {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--sertao-chuvoso);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.foto-postada {
+  width: 16rem;
+  height: 18rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.direita-botoes-postada {
+
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.btn-editar-postada {
+  border: none;
+  border-radius: 1rem;
+
+  background-color: #5c766d;
+  color: white;
+
+  font-size: 28px;
+  padding-top: 7px;
+
+  cursor: pointer;
+  font-weight: bold;
+
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.btn-excluir-postada {
+
+  border: none;
+  border-radius: 1rem;
+
+  background-color: var(--terra-molhada);
+  color: white;
+
+  font-size: 25px;
+  padding-top: 5px;
+
+  cursor: pointer;
+  font-weight: bold;
+
+  width: 3.5rem;
+  height: 3.5rem;
+}

@@ -2,6 +2,8 @@ import "./Formulario.css";
 
 import TermosDeUso from "./TermosDeUso";
 import Tags from "../Tags/Tags";
+import PopUpSucesso from "../PopUpSucesso/PopUpSucesso";
+import PopUpFracasso from "../PopUpFracasso/PopUpFracasso";
 
 import { IoArrowDownSharp } from "react-icons/io5";
 import { LuUpload } from "react-icons/lu";
@@ -16,7 +18,10 @@ function Formulario({termos, setTermos}) {
     const hoje = new Date().toISOString().split("T")[0]; //nova data, em string padrão internacional, dividida em data/hora,
     // separada por T, mas só quero o primeiro resultado (a data);
 
-    //const [termos, setTermos] = useState(false);
+    const [mensagemFracasso, setMensagemFracasso] = useState("");
+    const [popFracasso, setPopFracasso] = useState(false);
+    const [popSucesso, setPopSucesso] = useState(false);
+
     const [setaCima, setSetaCima] = useState(false);
     const [selecionadas, setSelecionadas] = useState([]); //para todasTags
     const [dados, setDados] = useState({
@@ -60,11 +65,13 @@ function Formulario({termos, setTermos}) {
 
         if(!dados.imagem) { // caso não tenha feito envio de imagem.
 
-            alert("Envie uma imagem."); 
+            mostrarErro("Envie uma imagem."); 
             return;
             // isso é necessário porque o "required" de um botão hidden pode falhar em alguns navegadores.
         } 
         //alert(JSON.stringify(dados));
+
+        setPopSucesso(true);
     }
 
     const alterarDados = (evento) => {
@@ -99,13 +106,13 @@ function Formulario({termos, setTermos}) {
             const largura = imagemInstante.width;
             const altura = imagemInstante.height;
 
-            if(Math.abs(largura - altura) > 10) {alert("A imagem deve ser quadrada (proporção 1:1)")}
+            if(Math.abs(largura - altura) > 10) {mostrarErro("A imagem deve ser quadrada")}
             // imagem com range de 20 pixels de tolerância (1080 - 1060, ou 1060 - 1080 = 20 em módulo)
             else {
 
                 //-------------------------- Tamanho Aceito?
                 if(imagemAtual.size > tamanhoMaximo) {
-                    alert("O tamanho do arquivo excede 10MB");
+                    mostrarErro("O tamanho do arquivo excede 10MB");
                     setImagemEnviada(false);
                     setDados({ ...dados, imagem: null});
                 }
@@ -119,17 +126,39 @@ function Formulario({termos, setTermos}) {
                 }
             }
         }
+
+        // a linha abaixo vai limpar o input. Por isso, ela deve vir apenas depois do devido tratamento
+        // da imagem. Ela existe pra evitar o problema dos popups não dispararem por falta de onChange (alteração),
+        // que acontece quando a mesma imagem é selecionada.
+        evento.target.value = "";
     }
 
+    const mostrarErro = (mensagemFracasso) => {
+
+        setMensagemFracasso(mensagemFracasso);
+        setPopFracasso(true);
+    }
 
     //------------------------------------------
     return (
         <div className="geral">
+
             {
-                termos ? <TermosDeUso
-                    fechar={() => setTermos(false)}
+                termos ? <TermosDeUso fechar={() => setTermos(false)}/>
+                : null
+            }
+
+            {
+                popFracasso ? <PopUpFracasso
+                    mensagem={mensagemFracasso}
+                    onFechar={() => setPopFracasso(false)}
                 />
-                    : null
+                : null
+            }
+
+            {
+                popSucesso ? <PopUpSucesso onFechar={() => setPopSucesso(false)}/>
+                : null
             }
 
             <div className="aviso">
@@ -195,7 +224,7 @@ function Formulario({termos, setTermos}) {
                     <div id="botaoConfirmacao">
                         <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto"/>Fazer Upload</button>
                         {
-                            imagemEnviada ? <span id="confirmacao">Arquivo anexado com sucesso!</span>
+                            imagemEnviada ? <span id="confirmacao">"{dados.imagem.name.slice(0, 21)}..." anexado com sucesso!</span>
                             : null
                         }
                     </div>
