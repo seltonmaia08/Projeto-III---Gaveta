@@ -6,59 +6,46 @@ import "./LoginAdm.css";
 import LogoGaveta from "../../assets/imgs/logo_gaveta.svg";
 
 function LoginAdm({ setIsAdminLogado }) {
-    const [email, setEmail] = useState("");
-    const [emailErro, setEmailErro] = useState("");
     const [showPassword, setShowPassword] = useState(false);
+
+    const [dados, setDados] = useState({
+        email: "",
+        senha: ""
+    });
 
     const navigate = useNavigate();
 
-    function emailValido(valor) {
-        return /\S+@\S+\.\S+/.test(valor);
-    }
+    const alterarDados = (e) => {
+        const { name, value } = e.target;
 
-    function validarEmail(valor) {
-        if (valor.trim() === "") {
-                return "";
-            }
-        return emailValido(valor) ? "" : "Digite um email válido";
-    }
-
-    function handleEmail(e) {
-        const valor = e.target.value;
-        setEmail(valor);
-
-        if (emailErro) {
-            setEmailErro(validarEmail(valor));
-        }
-    }
+        setDados({
+            ...dados,
+            [name]: value
+        });
+    };
 
     function validarFormulario(e) {
         e.preventDefault();
-        const form = e.target;
-        
+
+        const form = e.currentTarget;
+
         if (!form.checkValidity()) {
             form.reportValidity();
             return;
         }
-        const erro = validarEmail(email);
-        setEmailErro(erro);
 
-        if (erro) {
-            return;
-        }
-
-        setIsAdminLogado(true)
+        setIsAdminLogado(true);
         navigate("/postadasDashboard");
     }
+
     const toggleShow = () => {
-        setShowPassword(prev => !prev);
+        setShowPassword((prev) => !prev);
     };
 
     return (
-
         <div className="login_adm_container">
             <div className="lado_esquerdo">
-                <img src={LogoGaveta} />
+                <img src={LogoGaveta} alt="Logo Gaveta27" />
             </div>
 
             <div className="login_container lado_direito">
@@ -67,28 +54,30 @@ function LoginAdm({ setIsAdminLogado }) {
                 <form onSubmit={validarFormulario}>
                     <div className="form_group">
                         <label htmlFor="login">EMAIL</label>
+
                         <div className="email_container">
                             <input
-                                type="text"
+                                type="email"
                                 id="login"
                                 name="email"
                                 required
+                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                onInvalid={(e) =>
+                                    e.target.setCustomValidity(
+                                        "Digite um email válido no formato exemplo@email.com"
+                                    )
+                                }
+                                onInput={(e) => e.target.setCustomValidity("")}
                                 placeholder="Digite seu email. Ex.: exemplo@email.com"
-                                value={email}
-                                onChange={handleEmail}
-                                onBlur={() => setEmailErro(validarEmail(email))}
+                                value={dados.email}
+                                onChange={alterarDados}
                             />
                         </div>
-                        {
-                            emailErro &&
-                            <span className="mensagem_erro">
-                                {emailErro}
-                            </span>
-                        }
                     </div>
 
                     <div className="form_group">
                         <label htmlFor="senha">SENHA</label>
+
                         <div className="password_container">
                             <input
                                 type={showPassword ? "text" : "password"}
@@ -96,14 +85,12 @@ function LoginAdm({ setIsAdminLogado }) {
                                 name="senha"
                                 required
                                 placeholder="Digite sua senha"
+                                value={dados.senha}
+                                onChange={alterarDados}
                             />
 
                             <span onClick={toggleShow}>
-                                {
-                                    showPassword
-                                        ? <FaEye />
-                                        : <FaEyeSlash />
-                                }
+                                {showPassword ? <FaEye /> : <FaEyeSlash />}
                             </span>
                         </div>
                     </div>
@@ -111,7 +98,6 @@ function LoginAdm({ setIsAdminLogado }) {
                     <button type="submit" id="entrar">
                         ENTRAR
                     </button>
-
                 </form>
             </div>
         </div>
