@@ -10,23 +10,18 @@
 /* --- TOPO --- */
 .topo-ponto {
     width: 70%;
-    height: auto;
+    height: 5rem;
     display: grid;
     grid-template-columns: 45px 1fr 45px; 
     align-items: start; 
+    padding: 0.5rem;
     
     /* Margem do topo reduzida de 3rem para 1.5rem para aproximar da barra */
     margin: 1.5rem 0 2rem 0;
 }
 
-/* Posição do componente Voltar */
-.topo-ponto > :first-child {
-    grid-column: 1; 
-    margin: 0; 
-}
 
 /* Visual do botão Voltar */
-.topo-ponto button,
 .btn-voltar {
     position: static; 
     border: none;
@@ -34,7 +29,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: auto;
     
     /* Herdando as características do componente Voltar original */
     background-color: var(--sertao-chuvoso) !important;
@@ -45,12 +39,10 @@
     transition: transform 0.2s;
 }
 
-.topo-ponto button:hover,
 .btn-voltar:hover {
     transform: scale(1.05);
+    border-radius: 0.9rem;
 }
-
-.topo-ponto button:active,
 .btn-voltar:active {
     transform: scale(0.95);
 }
