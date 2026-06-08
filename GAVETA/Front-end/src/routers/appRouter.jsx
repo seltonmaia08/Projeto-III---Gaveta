@@ -38,7 +38,7 @@ const AppRouter = () => {
                     <Route path='/visualizar-memoria/:id' element={<VisualizarMemoria />} />
                     <Route path='/ponto-turistico' element={<PontoTuristico/>} />
                     <Route path='/compartilhar-memoria' element={<CompartilharMemoria />} />
-                    <Route path='/visualizar-ponto-turistico/:id' element={<PontoTuristicoEspecifico />} />
+                    <Route path='/ponto-turistico-especifico/:id' element={<PontoTuristicoEspecifico />}/>
                 </Route>
             </Route>
             
