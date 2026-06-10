@@ -24,7 +24,7 @@
 .img-card {
     width: 15rem;
     height: 12rem;
-
+    
     background-image: var(--bg-image-memorie);
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,6 +34,7 @@
     width: 40rem;
     height: 10rem;
     margin-left: 2rem;
+    overflow: hidden;
 }
 
 .card-title {
@@ -57,6 +58,12 @@
     color: var(--pedra-cruzeiro);
     font-family: 'text-site';
 }
+
+.tags-card p:first-child {
+    background-color: var(--pedra-cruzeiro) !important;
+    color: var(--sertao-chuvoso);
+    border: 2px solid var(--sertao-chuvoso);
+} 
 
 .description {
     font-family: 'text-site';

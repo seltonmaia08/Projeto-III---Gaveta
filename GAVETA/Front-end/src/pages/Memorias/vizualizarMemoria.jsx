@@ -1,5 +1,5 @@
 import './visualizarMemoria.css'
-
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Voltar from '../../components/Botões/Voltar'
 import Denunciar from '../../components/Botões/Denunciar'
@@ -11,7 +11,11 @@ function VisualizarMemoria() {
     
     const { id } = useParams()
     
-    console.log(Dados, id)
+
+    useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })  
+    },[])
+
 
     const memoriaSelecionada = Dados.find(
         (memoria) => memoria.id === Number(id)

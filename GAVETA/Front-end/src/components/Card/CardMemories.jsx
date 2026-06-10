@@ -1,38 +1,37 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import './cardMemories.css'
 
-const CardMemories = ({ title, description, imagem, tags, id }) => {
+const CardMemories = ({ title, description, imagem, tags, id, onClick }) => {
 
-    console.log(id)
+    const navigation = useNavigate()
 
     return (
-        <Link
-            to={`/visualizar-memoria/${id}`}
-            className='card-link'
+        <div className="card-content"
+            onClick={() => {
+                navigation(`/visualizar-memoria/${id}`);
+                onClick
+            }}
         >
-            <div className="card-content">
-                <div
-                    className="img-card"
-                    style={{ "--bg-image-memorie": `url(${imagem})` }}></div>
-                <div className="text-content">
-                    <div className="card-title">
-                        <h3>{title}</h3>
-                    </div>
-                    <div className="tags-card">
-                        {
-                            tags.map((tag) =>
-                                <p key={tag}>{tag}</p>
-                            )
-                        }
-                    </div>
-                    <div className="description">
-                        <p>{description}</p>
-                    </div>
-
+            <div
+                className="img-card"
+                style={{ "--bg-image-memorie": `url(${imagem})` }}></div>
+            <div className="text-content">
+                <div className="card-title">
+                    <h3>{title}</h3>
                 </div>
-            </div>
+                <div className="tags-card">
+                    {
+                        tags.map((tag) =>
+                            <p className="tag-card-m" key={tag}>{tag}</p>
+                        )
+                    }
+                </div>
+                <div className="description">
+                    <p>{description}</p>
+                </div>
 
-        </Link>
+            </div>
+        </div>
     )
 }
 

@@ -2,6 +2,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom' // Import
 import './PontoTuristicoEspecifico.css'
 import { FaShareAlt } from 'react-icons/fa' 
 import { MdArrowBack } from 'react-icons/md' 
+import Compartilhar from '../../components/Botões/Compartilhar'
 
 const PontoTuristicoEspecifico = () => {
     const { id } = useParams()
@@ -52,9 +53,7 @@ const PontoTuristicoEspecifico = () => {
                 </div>
 
                 <div className="compartilhar">
-                    <button>
-                        <FaShareAlt />
-                    </button>
+                    <Compartilhar />
                 </div>
 
             </div>

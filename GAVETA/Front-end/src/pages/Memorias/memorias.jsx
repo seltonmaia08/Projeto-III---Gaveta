@@ -41,6 +41,7 @@ const Memoria = () => {
                             description={memoria.descricao}
                             imagem={memoria.imagem}
                             tags={memoria.tags}
+                            onClick={onClick}
                         />
                     )
             }
