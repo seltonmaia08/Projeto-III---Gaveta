@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import './cardMemories.css'
 
-const CardMemories = ({ title, description, imagem, tags, id, onClick }) => {
+const CardMemories = ({ titulo, descricao, imagem, tags, id, onClick }) => {
 
     const navigation = useNavigate()
 
@@ -17,7 +17,7 @@ const CardMemories = ({ title, description, imagem, tags, id, onClick }) => {
                 style={{ "--bg-image-memorie": `url(${imagem})` }}></div>
             <div className="text-content">
                 <div className="card-title">
-                    <h3>{title}</h3>
+                    <h3>{titulo}</h3>
                 </div>
                 <div className="tags-card">
                     {
@@ -27,7 +27,7 @@ const CardMemories = ({ title, description, imagem, tags, id, onClick }) => {
                     }
                 </div>
                 <div className="description">
-                    <p>{description}</p>
+                    <p>{descricao}</p>
                 </div>
 
             </div>

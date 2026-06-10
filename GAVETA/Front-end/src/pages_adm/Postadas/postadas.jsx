@@ -85,7 +85,7 @@ const PostadasDashboard = () => {
             titulo={memoria.titulo}
             imagem={memoria.imagem}
             rotation={false}
-            onClick={handlePostadasPopUp}
+            onClick={(event) => handlePostadasPopUp(event)}
           />
         ))}
       </div>

@@ -3,15 +3,11 @@ import "./PontoTuristicoEspecifico.css";
 import Polaroide from "../../components/polaroide/Polaroide";
 import { FaShareAlt } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
-import { useParams, useLocation, useNavigate } from 'react-router-dom' // Importado o useLocation e useNavigate
-import './PontoTuristicoEspecifico.css'
-import { FaShareAlt } from 'react-icons/fa' 
-import { MdArrowBack } from 'react-icons/md' 
 import Compartilhar from '../../components/Botões/Compartilhar'
 
 const PontoTuristicoEspecifico = () => {
   const { id } = useParams();
-  const navigate = useNavigate(id);
+  const navigate = useNavigate();
 
   // 1. Ativamos o useLocation para capturar os dados vindos do clique
   const location = useLocation();
@@ -61,9 +57,6 @@ const PontoTuristicoEspecifico = () => {
         </button>
 
         <h1>{ponto.titulo}</h1>
-
-        {/* 3. Mantive a div fantasma aqui para o seu Grid CSS deixar o título centralizado */}
-        <div></div>
       </div>
 
       {/* CONTEÚDO */}
@@ -80,11 +73,9 @@ const PontoTuristicoEspecifico = () => {
           </button>
         </div>
       </div>
-                <div className="compartilhar">
-                    <Compartilhar />
-                </div>
-
-            </div>
+      <div className="compartilhar">
+          <Compartilhar />
+      </div>
 
       {/* MEMÓRIAS RELACIONADAS */}
       <div className="memorias-relacionadas">

@@ -29,7 +29,9 @@ const Mural = () => {
       {exibirDados.map((memoria) => (
         <Polaroide
           key={memoria.id}
-          {...memoria}
+          titulo={memoria.titulo}
+          id={memoria.id}
+          onClick={onClick}
           rotation={true}
         />
       ))}

@@ -36,12 +36,7 @@ const Memoria = () => {
                     exibirDados.map((memoria) =>
                         <CardMemories
                             key={memoria.id}
-                            id={memoria.id}
-                            title={memoria.titulo}
-                            description={memoria.descricao}
-                            imagem={memoria.imagem}
-                            tags={memoria.tags}
-                            onClick={onClick}
+                            {...memoria}
                         />
                     )
             }

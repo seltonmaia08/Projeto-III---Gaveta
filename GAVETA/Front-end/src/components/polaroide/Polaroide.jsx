@@ -22,33 +22,37 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
       console.log(pathName)
     }
 
-    if(pathName == 'ponto-turistico'){
+    if (pathName == 'ponto-turistico') {
       setIsPontoTuristico(true)
     }
 
   }, [location])
 
-  return (
-      <div
-        className={`polaroide-card ${colorPolaroide}`}
-        style={{
-          "--rotation": rotation ? `${rotate}deg` : '0deg',
-          marginRight: isPontoTuristico ? `${distancePolaroide}rem` : undefined
-        }}
-        onClick={() => {
-          navigation(isPontoTuristico ? `/ponto-turistico-especifico/${id}` : `/visualizar-memoria/${id}`);
-          onClick
-        }}
-      >
-        <div
-          className="photo-card"
-          style={{ "--bg-image": `url(${imagem})` }}
-        ></div>
 
-        <div className="title-card-polaroide">
-          <h2>{titulo}</h2>
-        </div>
+  return (
+    <div
+      className={`polaroide-card ${colorPolaroide}`}
+      style={{
+        "--rotation": rotation ? `${rotate}deg` : '0deg',
+        marginRight: isPontoTuristico ? `${distancePolaroide}rem` : undefined
+      }}
+      onClick={(e) => {
+        if(onClick) onClick(e);
+        const path = location.pathname.slice(1)
+        if (path.includes('Dashboard') !== true) {
+          navigation(isPontoTuristico ? `/ponto-turistico-especifico/${id}` : `/visualizar-memoria/${id}`)
+        };
+      }}
+    >
+      <div
+        className="photo-card"
+        style={{ "--bg-image": `url(${imagem})` }}
+      ></div>
+
+      <div className="title-card-polaroide">
+        <h2>{titulo}</h2>
       </div>
+    </div>
   );
 };
 
