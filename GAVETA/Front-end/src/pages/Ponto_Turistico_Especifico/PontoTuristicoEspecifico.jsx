@@ -1,3 +1,8 @@
+import { useParams, useLocation, useNavigate } from "react-router-dom"; // Importado o useLocation e useNavigate
+import "./PontoTuristicoEspecifico.css";
+import Polaroide from "../../components/polaroide/Polaroide";
+import { FaShareAlt } from "react-icons/fa";
+import { MdArrowBack } from "react-icons/md";
 import { useParams, useLocation, useNavigate } from 'react-router-dom' // Importado o useLocation e useNavigate
 import './PontoTuristicoEspecifico.css'
 import { FaShareAlt } from 'react-icons/fa' 
@@ -5,72 +10,100 @@ import { MdArrowBack } from 'react-icons/md'
 import Compartilhar from '../../components/Botões/Compartilhar'
 
 const PontoTuristicoEspecifico = () => {
-    const { id } = useParams()
-    const navigate = useNavigate()
-    
-    // 1. Ativamos o useLocation para capturar os dados vindos do clique
-    const location = useLocation()
+  const { id } = useParams();
+  const navigate = useNavigate(id);
 
-    // 2. Pegamos o ponto que foi passado no navigate
-    const ponto = location.state?.ponto
+  // 1. Ativamos o useLocation para capturar os dados vindos do clique
+  const location = useLocation();
 
-    // Se tentar acessar a página direto sem clicar (ou der F5), exibe o aviso
-    if (!ponto) {
-        return (
-            <h1 style={{ textAlign: 'center', color: 'white', marginTop: '5rem' }}>
-                Ponto não encontrado ou página recarregada.
-            </h1>
-        )
-    }
+  // 2. Pegamos o ponto que foi passado no navigate
+  const ponto = location.state?.ponto;
 
+  // Se tentar acessar a página direto sem clicar (ou der F5), exibe o aviso
+  if (!ponto) {
     return (
-        <div className="ponto-especifico">
+      <h1 style={{ textAlign: "center", color: "white", marginTop: "5rem" }}>
+        Ponto não encontrado ou página recarregada.
+      </h1>
+    );
+  }
 
-            {/* TOPO */}
-            <div className="topo-ponto">
-                <button className="btn-voltar" onClick={() => navigate('/ponto-turistico')}>
-                    <MdArrowBack/>
-                </button>
+  const memorias = [
+    {
+      id: 1,
+      titulo: "Minha trilha preferida",
+      imagem:
+        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
+    },
+    {
+      id: 2,
+      titulo: "Pôr do sol na Pedra",
+      imagem:
+        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
+    },
+    {
+      id: 3,
+      titulo: "A trilha e o vento",
+      imagem:
+        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
+    },
+  ];
 
-                <h1>{ponto.titulo}</h1>
+  return (
+    <div className="ponto-especifico">
+      {/* TOPO */}
+      <div className="topo-ponto">
+        <button
+          className="btn-voltar"
+          onClick={() => navigate("/ponto-turistico")}
+        >
+          <MdArrowBack />
+        </button>
 
-                {/* 3. Mantive a div fantasma aqui para o seu Grid CSS deixar o título centralizado */}
-                <div></div> 
-            </div>
+        <h1>{ponto.titulo}</h1>
 
-            {/* CONTEÚDO */}
-            <div className="conteudo-ponto">
+        {/* 3. Mantive a div fantasma aqui para o seu Grid CSS deixar o título centralizado */}
+        <div></div>
+      </div>
 
-                <div className="imagem-texto">
-                    <img
-                        src={ponto.imagem}
-                        alt={ponto.titulo}
-                    />
+      {/* CONTEÚDO */}
+      <div className="conteudo-ponto">
+        <div className="imagem-texto">
+          <img src={ponto.imagem} alt={ponto.titulo} />
 
-                    <p>
-                        {ponto.descricao}
-                    </p>
-                </div>
+          <p>{ponto.descricao}</p>
+        </div>
 
+        <div className="compartilhar">
+          <button>
+            <FaShareAlt />
+          </button>
+        </div>
+      </div>
                 <div className="compartilhar">
                     <Compartilhar />
                 </div>
 
             </div>
 
-            {/* MEMÓRIAS RELACIONADAS */}
-            <div className="memorias-relacionadas">
-                <h2>
-                    Memórias relacionadas a esse lugar
-                </h2>
+      {/* MEMÓRIAS RELACIONADAS */}
+      <div className="memorias-relacionadas">
+        <h2>Memórias relacionadas a esse lugar</h2>
 
-                <div className="cards-relacionados">
-                    {/* Aqui você pode renderizar os Polaroides futuramente */}
-                </div>
-            </div>
-
+        <div className="cards-relacionados">
+          {memorias.map((memoria) => (
+            <Polaroide
+              key={memoria.id}
+              id={memoria.id}
+              titulo={memoria.titulo}
+              imagem={memoria.imagem}
+              rotation={false}
+            />
+          ))}
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default PontoTuristicoEspecifico
+export default PontoTuristicoEspecifico;
