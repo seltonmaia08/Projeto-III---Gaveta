@@ -28,7 +28,6 @@
   max-height: 90vh;
   overflow-y: auto;
   align-items: stretch;
-
   font-family: "Inter", sans-serif;
   font-size: 1rem;
 }
@@ -158,28 +157,14 @@
   border-radius: 0.5rem;
 }
 
-/*.btn-fechar-denu {
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.8rem;
-  background-color: #5c766d;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}*/
-
 .btn-fechar-denu {
     display: flex;
-
     background-color: var(--sertao-chuvoso);
     color: white;
     font-weight: bold;
-
     font-size: 2rem;
     margin-bottom: 0.3rem;
-
     padding: 0.2rem;
-
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;

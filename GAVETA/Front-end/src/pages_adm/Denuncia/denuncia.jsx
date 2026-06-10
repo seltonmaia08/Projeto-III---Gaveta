@@ -89,6 +89,7 @@ const DenunciaDashboard = () => {
           foto="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/80/20/ac/img-20190503-092801729.jpg?w=1000&h=1000&s=1"
           onFechar={handleFechar}
           onDelete={handleAceitarRecusar}
+          onIgnore={handleAceitarRecusar}
         />
       )}
 

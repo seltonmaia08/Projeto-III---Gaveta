@@ -1,6 +1,7 @@
 import "./PostadasPopUp.css";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { MdOutlineEdit } from "react-icons/md";
+import { IoCloseOutline } from "react-icons/io5";
 
 function PostadasPopUp({
   titulo,
@@ -72,9 +73,7 @@ function PostadasPopUp({
 
         <div className="coluna-direita-postada">
           <div className="direita-topo-postada">
-            <button className="btn-fechar-postada" onClick={onFechar}>
-              X
-            </button>
+            <button className="btn-fechar-postada" onClick={onFechar}> <IoCloseOutline/> </button>
             <div className="campo-postada-topo">
               <span className="label-postada">Foto:</span>
               <img className="foto-postada" src={foto} alt="Foto da memória" />

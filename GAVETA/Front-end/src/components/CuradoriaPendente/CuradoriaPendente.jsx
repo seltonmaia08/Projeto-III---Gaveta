@@ -1,4 +1,5 @@
 import "./CuradoriaPendente.css";
+import { IoCloseOutline } from "react-icons/io5";
 
 function CuradoriaPendente({
   titulo,
@@ -73,9 +74,7 @@ function CuradoriaPendente({
 
         <div className="coluna-direita">
           <div className="direita-topo">
-            <button className="btn-fechar" onClick={onFechar}>
-              X
-            </button>
+            <button className="btn-fechar" onClick={onFechar}> <IoCloseOutline/> </button>
             <div className="campo">
               <span className="label">Foto:</span>
               <img className="foto" src={foto} alt="Foto da memória" />

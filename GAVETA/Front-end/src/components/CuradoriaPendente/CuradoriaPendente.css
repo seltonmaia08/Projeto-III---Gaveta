@@ -152,13 +152,16 @@
 }
 
 .btn-fechar {
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.8rem;
-  background-color: #5c766d;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
+    display: flex;
+    background-color: var(--sertao-chuvoso);
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 0.3rem;
+    padding: 0.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .btn-aceitar {

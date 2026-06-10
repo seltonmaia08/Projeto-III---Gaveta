@@ -13,8 +13,8 @@ function DenunciaPopUp({
   denuncia,
   foto,
   onFechar,
-  onIgnore,
   onDelete,
+  onIgnore,
 }) {
   return (
     <div className="overlay">
