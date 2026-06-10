@@ -8,7 +8,7 @@ const Mural = () => {
     const [exibirDados, setExibirDados] = useState(Dados)
 
     // O firebase está funcionando corretamente. Aguardando para implementação futura das outras funcções...
-    // console.log(MemoriasDao.getAll()) 
+    console.log(MemoriasDao.getAll()) 
     return (
         <div className="mural">
             
