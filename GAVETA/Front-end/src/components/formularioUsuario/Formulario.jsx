@@ -233,7 +233,19 @@ function Formulario({termos, setTermos}) {
 
                 <div className="item">
                     <label htmlFor="email">Email:<span className="obrigatorio">*</span></label>
-                    <input id="email" type="email" name="email" placeholder="Qual o seu email?" required onChange={alterarDados} />
+                    <input
+                        id="email"
+                        type="email" 
+                        name="email" 
+                        placeholder="Qual o seu email?" 
+
+                        pattern="^[^\s@]+@[^\s@]+.[^\s@]+$"
+                        onInvalid={(e) => e.target.setCustomValidity("Digite um email válido (ex.: nome@gmail.com)")}
+                        onInput={(e) => e.target.setCustomValidity("")}
+
+                        required
+                        onChange={alterarDados}
+                    />
                 </div>
 
                 <div className="item">
