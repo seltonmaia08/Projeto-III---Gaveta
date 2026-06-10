@@ -11,7 +11,7 @@ const MemoriaDao = {
         const querySnapshot = await getDocs(memoriaRef)
         querySnapshot.forEach(
             memorias => {
-                console.log(`ID: ${memorias.id} titulo: ${memorias.data().titulo}`)
+                console.log(memorias)
             });
     }
 
