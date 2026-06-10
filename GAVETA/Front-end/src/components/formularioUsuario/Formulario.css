@@ -162,6 +162,7 @@ input:focus {outline: none} /*quando o usário clica no input, não aparece bord
     height: 360px;
     max-height: 360px;
     max-width: 443px;
+    resize: none;
 
     border-radius: 8px;
     text-align: justify;
