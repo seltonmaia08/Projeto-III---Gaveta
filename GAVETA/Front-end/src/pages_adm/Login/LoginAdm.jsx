@@ -61,7 +61,7 @@ function LoginAdm({ setIsAdminLogado }) {
                                 id="login"
                                 name="email"
                                 required
-                                pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                                 onInvalid={(e) =>
                                     e.target.setCustomValidity(
                                         "Digite um email válido no formato exemplo@email.com"
