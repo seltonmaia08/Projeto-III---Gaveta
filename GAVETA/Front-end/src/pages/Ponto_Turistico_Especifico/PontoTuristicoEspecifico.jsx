@@ -4,6 +4,7 @@ import Polaroide from "../../components/polaroide/Polaroide";
 import { FaShareAlt } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
 import Compartilhar from '../../components/Botões/Compartilhar'
+import { useEffect } from "react";
 
 const PontoTuristicoEspecifico = () => {
   const { id } = useParams();
@@ -23,6 +24,10 @@ const PontoTuristicoEspecifico = () => {
       </h1>
     );
   }
+
+  useEffect(() => {
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+  },[])
 
   const memorias = [
     {
@@ -66,14 +71,8 @@ const PontoTuristicoEspecifico = () => {
 
           <p>{ponto.descricao}</p>
         </div>
-
-        <div className="compartilhar">
-          <button>
-            <FaShareAlt />
-          </button>
-        </div>
       </div>
-      <div className="compartilhar">
+      <div className="btn-compartilhar">
           <Compartilhar />
       </div>
 

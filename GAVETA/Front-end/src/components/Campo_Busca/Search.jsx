@@ -1,21 +1,17 @@
 import { IoClose, IoSearchOutline } from "react-icons/io5";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dados from '../../services/dados.json'
 import './search.css'
 
 const Search = ({ setBuscarConteudo }) => {
     const [busca, setBusca] = useState('')
 
-    const normalizeTextSearch = (text) => {
-        if (!text || typeof text !== 'string') return '';
-        return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
-    }
-
-    const buscaMemoria = () => {
-        if (busca === '') {
-            setBuscarConteudo(Dados)
-            return
+    useEffect(() => {
+        const normalizeTextSearch = (text) => {
+            if (!text || typeof text !== 'string') return '';
+            return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
         }
+
 
         const buscando = Dados.filter((procurando) => {
             const titleNormalize = normalizeTextSearch(procurando.titulo)
@@ -30,9 +26,14 @@ const Search = ({ setBuscarConteudo }) => {
             imagem: e.imagem,
             tags: e.tags
         })))
+    }, [busca])
 
+    const buscaMemoria = () => {
+        if (busca === '') {
+            setBuscarConteudo(Dados)
+            return
+        }
     }
-
     return (
         <div className='search-content'>
             <IoSearchOutline className="icone-search" />
@@ -56,5 +57,4 @@ const Search = ({ setBuscarConteudo }) => {
         </div>
     )
 }
-
 export default Search
