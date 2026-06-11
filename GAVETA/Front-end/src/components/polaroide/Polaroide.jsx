@@ -39,7 +39,7 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
       onClick={(e) => {
         if(onClick) onClick(e);
         const path = location.pathname.slice(1)
-        if (path.includes('Dashboard') !== true) {
+        if (!path.includes('Dashboard')) {
           navigation(isPontoTuristico ? `/ponto-turistico-especifico/${id}` : `/visualizar-memoria/${id}`)
         };
       }}

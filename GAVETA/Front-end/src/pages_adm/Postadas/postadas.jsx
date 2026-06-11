@@ -36,7 +36,6 @@ const PostadasDashboard = () => {
 
   // ABRIR EDIÇÃO
   function handleAbrirEdicao() {
-    setPostadasInfoShow(false);
     setEditMode(true);
   }
 
@@ -53,12 +52,14 @@ const PostadasDashboard = () => {
   // CANCELAR CONFIRMAÇÃO
   function handleNao() {
     setConfirmacaoAberta(false);
+    if(editMode) setEditMode(true)
   }
 
   // CONFIRMAR AÇÃO
   function handleSim() {
     setConfirmacaoAberta(false);
     setPostadasInfoShow(false);
+    if(editMode) setEditMode(false)
     setSucessoAberto(true);
   }
 
@@ -123,10 +124,12 @@ const PostadasDashboard = () => {
           foto="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/80/20/ac/img-20190503-092801729.jpg?w=1000&h=1000&s=1"
 
           onClose={handleFecharEdicao}
-          onSave={(dados) => {
+          onSave={
+            (dados) => {
             console.log("Salvo:", dados);
-            setEditMode(false);
-          }}
+            handleAceitarRecusar();
+          }
+        }
           onDelete={handleAceitarRecusar}
         />
       )}

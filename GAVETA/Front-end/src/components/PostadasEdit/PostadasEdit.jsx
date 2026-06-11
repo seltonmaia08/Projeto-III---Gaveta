@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoCloseOutline } from "react-icons/io5";
 import "./PostadasEdit.css";
 
 function PostadasEdit({
@@ -126,7 +127,7 @@ function PostadasEdit({
           <div className="direita-topo-editando">
             {/* O botão X agora chama a função onClose vinda do Dashboard */}
             <button type="button" className="btn-fechar" onClick={onClose}>
-              X
+              <IoCloseOutline/>
             </button>
             <div className="campo-editando-topo">
               <span className="label-editando">Foto:</span>
@@ -139,7 +140,7 @@ function PostadasEdit({
             <button type="button" className="btn-recusar-edit" onClick={onDelete}>
               <span>DESCARTAR</span>
             </button>
-            <button type="submit" className="btn-aceitar-edit">
+            <button type="submit" className="btn-aceitar-edit" onClick={onSave}>
               <span>SALVAR</span>
             </button>
           </div>

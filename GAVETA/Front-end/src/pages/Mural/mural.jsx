@@ -30,8 +30,8 @@ const Mural = () => {
         <Polaroide
           key={memoria.id}
           titulo={memoria.titulo}
+          imagem={memoria.imagem}
           id={memoria.id}
-          onClick={onClick}
           rotation={true}
         />
       ))}
