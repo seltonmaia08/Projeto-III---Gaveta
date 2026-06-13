@@ -36,7 +36,7 @@ function Compartilhar() {
         onClick={compartilhar}
         className="icone-compartilhar"
       >
-        <PiShareFatBold />
+        <PiShareFatBold /> <span className="texto-btn-comp"> Compartilhar </span>
       </button>
 
       {mostrarModal && (

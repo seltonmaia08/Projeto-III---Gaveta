@@ -9,7 +9,6 @@ function PopUpDenuncia({ fecharPopup, mostrarSucesso }) {
 
     const denuncias = [
         "Direito de Imagem",
-        "Conteúdo Sensível",
         "Difamação",
         "Conteúdo Falso",
         "Linguagem Inadequada",

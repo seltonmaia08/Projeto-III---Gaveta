@@ -26,7 +26,7 @@ function Denunciar() {
 
         const rect = botaoRef.current.getBoundingClientRect();
 
-        const alturaPopup = 410;
+        const alturaPopup = 356;
         const espaco = 16;
 
         const temEspacoAcima =
@@ -79,7 +79,7 @@ function Denunciar() {
                 className="icone-denunciar"
                 onClick={() => setAbrirPopup(prev => !prev)}
             >
-                <MdOutlineReport />
+                <MdOutlineReport /> <span className="texto-btn-denu"> Denunciar </span>
             </button>
 
             {
