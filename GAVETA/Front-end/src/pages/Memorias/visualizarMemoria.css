@@ -46,7 +46,16 @@
     font-family: 'title-h2';
     font-size: 2.25rem;
 
-    padding: 2rem 0;
+    padding: 2rem 0 0.4rem 0;
+}
+
+.infos {
+    display: flex;
+    justify-content: center;
+    font-family: 'text-site';
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    
 }
 
 .tags {
@@ -75,7 +84,12 @@
     justify-content: center;
 }
 
+/*.tags p:first-child {
+    background-color: var(--pedra-cruzeiro);
+    color: var(--sertao-chuvoso);
 
+    border: 0.2rem solid var(--sertao-chuvoso);
+}*/
 
 .text {
     width: 100%;
@@ -91,8 +105,7 @@
 .denu-comp {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 4rem;
     overflow: hidden;
     padding: 0.5rem;

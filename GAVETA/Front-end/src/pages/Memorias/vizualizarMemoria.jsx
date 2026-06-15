@@ -44,6 +44,10 @@ function VisualizarMemoria() {
                         {memoriaSelecionada.titulo}
                     </h1>
 
+                    <p className='infos'> 
+                        {memoriaSelecionada.lugar} | {memoriaSelecionada.tagAdm} | {memoriaSelecionada.data}
+                    </p>
+
                     <div className="tags">
                         {
                             memoriaSelecionada.tags.map((tag) =>
