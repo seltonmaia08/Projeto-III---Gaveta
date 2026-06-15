@@ -75,12 +75,7 @@
     justify-content: center;
 }
 
-.tags p:first-child {
-    background-color: var(--pedra-cruzeiro);
-    color: var(--sertao-chuvoso);
 
-    border: 0.2rem solid var(--sertao-chuvoso);
-}
 
 .text {
     width: 100%;

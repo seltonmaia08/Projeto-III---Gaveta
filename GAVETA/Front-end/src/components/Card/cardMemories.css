@@ -59,12 +59,6 @@
     font-family: 'text-site';
 }
 
-.tags-card p:first-child {
-    background-color: var(--pedra-cruzeiro) !important;
-    color: var(--sertao-chuvoso);
-    border: 2px solid var(--sertao-chuvoso);
-} 
-
 .description {
     font-family: 'text-site';
 }
