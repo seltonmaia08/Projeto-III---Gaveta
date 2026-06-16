@@ -9,9 +9,8 @@ import { IoArrowDownSharp } from "react-icons/io5";
 import { LuUpload } from "react-icons/lu";
 
 import { useState, useEffect, useRef } from "react";
-
-
-function Formulario({termos, setTermos}) {
+import { SendMemories } from '../../services/api'
+function Formulario({ termos, setTermos }) {
     console.log(termos)
 
     //Variáveis
@@ -46,7 +45,7 @@ function Formulario({termos, setTermos}) {
     //UseEffect para atualizar a lista de tags selecionadas
 
     useEffect(
-        () => {setDados({ ...dados, tags: selecionadas })}, [selecionadas]
+        () => { setDados({ ...dados, tags: selecionadas }) }, [selecionadas]
     );
 
     //-------------------
@@ -56,22 +55,28 @@ function Formulario({termos, setTermos}) {
 
         const form = evento.currentTarget;
 
-        if(!form.checkValidity()) { // se as informações obrigatórias não estão validadas
+        if (!form.checkValidity()) { // se as informações obrigatórias não estão validadas
             form.reportValidity();   // informe o usuário que ainda faltam campos obrigatórios
             return;
         }
 
-        evento.preventDefault();
 
-        if(!dados.imagem) { // caso não tenha feito envio de imagem.
+        if (!dados.imagem) { // caso não tenha feito envio de imagem.
 
-            mostrarErro("Envie uma imagem."); 
+            mostrarErro("Envie uma imagem.");
             return;
             // isso é necessário porque o "required" de um botão hidden pode falhar em alguns navegadores.
-        } 
+        }
         //alert(JSON.stringify(dados));
 
-        setPopSucesso(true);
+        try {
+            SendMemories(dados)
+            setPopSucesso(true);
+
+        }
+        catch (error) {
+            mostrarErro('Algo deu errado. Por favor check os dados e tente novamente...')
+        }
     }
 
     const alterarDados = (evento) => {
@@ -83,14 +88,14 @@ function Formulario({termos, setTermos}) {
     const leituraTermos = () => { setDados({ ...dados, termos: !dados.termos }) }
 
     const tirarImagemAnterior = (evento) => {
-        setDados({ ...dados, imagem: null}); // Eu seto "null"
+        setDados({ ...dados, imagem: null }); // Eu seto "null"
         setImagemEnviada(false); // para retirar a imagem anterior, e tirar o balão de confirmação
     }
 
     const pegarImagem = (evento) => {
 
         const tamanhoMaximo = 10485760; // 10 * 1024 * 1024 bytes
-        
+
         const imagemAtual = evento.target.files[0]; // o arquivo selecionado pelo usuário ao apertar no botão fica guardado
         //no alvo → arquivos[], que é um vetor de arquivos. Nesse caso, o elemento que disparou o evento não é o botão
         //"fazer upload", mas é o input escondido, com seu html referenciado pela variável de referência inputImagem.
@@ -99,26 +104,26 @@ function Formulario({termos, setTermos}) {
 
         const imagemInstante = new Image();
         const url = URL.createObjectURL(imagemAtual); // criando uma URL temporária
-        
+
         imagemInstante.src = url;
         imagemInstante.onload = () => {
 
             const largura = imagemInstante.width;
             const altura = imagemInstante.height;
 
-            if(Math.abs(largura - altura) > 10) {mostrarErro("A imagem deve ser quadrada")}
+            if (Math.abs(largura - altura) > 10) { mostrarErro("A imagem deve ser quadrada") }
             // imagem com range de 20 pixels de tolerância (1080 - 1060, ou 1060 - 1080 = 20 em módulo)
             else {
 
                 //-------------------------- Tamanho Aceito?
-                if(imagemAtual.size > tamanhoMaximo) {
+                if (imagemAtual.size > tamanhoMaximo) {
                     mostrarErro("O tamanho do arquivo excede 10MB");
                     setImagemEnviada(false);
-                    setDados({ ...dados, imagem: null});
+                    setDados({ ...dados, imagem: null });
                 }
                 else {
-        
-                    if(imagemAtual == undefined) {setImagemEnviada(false)}
+
+                    if (imagemAtual == undefined) { setImagemEnviada(false) }
                     else {
                         setDados({ ...dados, imagem: imagemAtual });
                         setImagemEnviada(true);
@@ -144,8 +149,8 @@ function Formulario({termos, setTermos}) {
         <div className="geral">
 
             {
-                termos ? <TermosDeUso fechar={() => setTermos(false)}/>
-                : null
+                termos ? <TermosDeUso fechar={() => setTermos(false)} />
+                    : null
             }
 
             {
@@ -157,8 +162,8 @@ function Formulario({termos, setTermos}) {
             }
 
             {
-                popSucesso ? <PopUpSucesso onFechar={() => setPopSucesso(false)}/>
-                : null
+                popSucesso ? <PopUpSucesso onFechar={() => setPopSucesso(false)} />
+                    : null
             }
 
             <div className="aviso">
@@ -189,7 +194,7 @@ function Formulario({termos, setTermos}) {
 
                 <div className="item">
                     <label htmlFor="data">Data da memória<span className="obrigatorio">*</span></label>
-                    <input id="data" type="date" required name="data" onChange={alterarDados} max={hoje} onClick={(evento) => {evento.target.showPicker()}}/>
+                    <input id="data" type="date" required name="data" onChange={alterarDados} max={hoje} onClick={(evento) => { evento.target.showPicker() }} />
                 </div>
 
                 <div className="tags-content">
@@ -222,10 +227,10 @@ function Formulario({termos, setTermos}) {
                 <div className="item">
                     <label htmlFor="imagem">Imagem:<span className="obrigatorio">*</span></label>
                     <div id="botaoConfirmacao">
-                        <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto"/>Fazer Upload</button>
+                        <button id="imagem" type="button" onClick={() => inputImagem.current.click()} placeholder="..."><LuUpload id="loadfoto" />Fazer Upload</button>
                         {
                             imagemEnviada ? <span id="confirmacao">"{dados.imagem.name.slice(0, 21)}..." anexado com sucesso!</span>
-                            : null
+                                : null
                         }
                     </div>
                     <div className="observacao">(1:1, tamanho máximo: 10MB)</div>
@@ -235,9 +240,9 @@ function Formulario({termos, setTermos}) {
                     <label htmlFor="email">Email:<span className="obrigatorio">*</span></label>
                     <input
                         id="email"
-                        type="email" 
-                        name="email" 
-                        placeholder="Qual o seu email?" 
+                        type="email"
+                        name="email"
+                        placeholder="Qual o seu email?"
 
                         pattern="^[^\s@]+@[^\s@]+.[^\s@]+$"
                         onInvalid={(e) => e.target.setCustomValidity("Digite um email válido (ex.: nome@gmail.com)")}
