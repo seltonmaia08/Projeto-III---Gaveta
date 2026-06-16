@@ -51,9 +51,10 @@ function Formulario({ termos, setTermos }) {
     //-------------------
     //funções
 
-    const submit = (evento) => {
+    const submit = async (evento) => {
 
         const form = evento.currentTarget;
+        evento.preventDefault()
 
         if (!form.checkValidity()) { // se as informações obrigatórias não estão validadas
             form.reportValidity();   // informe o usuário que ainda faltam campos obrigatórios
@@ -70,8 +71,9 @@ function Formulario({ termos, setTermos }) {
         //alert(JSON.stringify(dados));
 
         try {
-            SendMemories(dados)
-            setPopSucesso(true);
+             await SendMemories(dados)
+             popSucesso ? <PopUpSucesso onFechar={() => window.location.reload()} />
+                    : null
 
         }
         catch (error) {
