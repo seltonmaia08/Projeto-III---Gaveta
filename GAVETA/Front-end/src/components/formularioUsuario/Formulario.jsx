@@ -36,6 +36,7 @@ function Formulario({ termos, setTermos }) {
         termos: false
     });
     const [imagemEnviada, setImagemEnviada] = useState(false);
+    const [carregando, setCarregando] = useState(false)
 
     const inputImagem = useRef(null); // essa variável recebe a referência HTML do meu input escondido de enviar imagem
     // esse input é escondido porque se eu usasse ele como vem padrão, eu conseguiria alterar poucas coisas no CSS dele.
@@ -71,13 +72,40 @@ function Formulario({ termos, setTermos }) {
         //alert(JSON.stringify(dados));
 
         try {
-             await SendMemories(dados)
-             popSucesso ? <PopUpSucesso onFechar={() => window.location.reload()} />
-                    : null
 
+            setCarregando(true)
+            await SendMemories(dados)
+            setPopSucesso(true)
+
+            limparFormulario()
+            
+            setCarregando(false)
         }
         catch (error) {
             mostrarErro('Algo deu errado. Por favor check os dados e tente novamente...')
+            setCarregando(false)
+
+        }
+    }
+
+    const limparFormulario = () => {
+        setDados({
+            nome: "",
+            titulo: "",
+            texto: "",
+            data: "",
+            tags: [],
+            local: "",
+            imagem: null,
+            email: "",
+            contato: "",
+            termos: false
+        })
+
+        setSelecionadas([])
+        setImagemEnviada(false)
+        if (inputImagem.current) {
+            inputImagem.current.value = ""
         }
     }
 
@@ -179,24 +207,24 @@ function Formulario({ termos, setTermos }) {
 
                 <div className="item">
                     <label htmlFor="nome">Nome<span className="obrigatorio">*</span></label>
-                    <input id="nome" type="text" placeholder="Qual o seu nome?" required name="nome" onChange={alterarDados} />
+                    <input id="nome" type="text" placeholder="Qual o seu nome?" required name="nome" value={dados.nome} onChange={alterarDados} />
                     <div className="observacao">(Essa informação não será exibida)</div>
                 </div>
 
                 <div className="item">
                     <label htmlFor="titulo">Título<span className="obrigatorio">*</span></label>
-                    <input id="titulo" type="text" placeholder="Qual o título da memória?" required name="titulo" onChange={alterarDados} />
+                    <input id="titulo" type="text" placeholder="Qual o título da memória?" required name="titulo" value={dados.titulo} onChange={alterarDados} />
                 </div>
 
                 <div className="item">
                     <label htmlFor="texto">Memória<span className="obrigatorio">*</span></label>
-                    <textarea required id="textoFormulario" placeholder="Qual memória você quer guardar?" maxLength={5000} name="texto" onChange={alterarDados}></textarea>
+                    <textarea required id="textoFormulario" placeholder="Qual memória você quer guardar?" maxLength={5000} name="texto" value={dados.texto} onChange={alterarDados}></textarea>
                     <div className="observacao">(Máximo: 5000 caracteres)</div>
                 </div>
 
                 <div className="item">
                     <label htmlFor="data">Data da memória<span className="obrigatorio">*</span></label>
-                    <input id="data" type="date" required name="data" onChange={alterarDados} max={hoje} onClick={(evento) => { evento.target.showPicker() }} />
+                    <input id="data" type="date" required name="data" onChange={alterarDados} max={hoje} value={dados.data} onClick={(evento) => { evento.target.showPicker() }} />
                 </div>
 
                 <div className="tags-content">
@@ -249,7 +277,7 @@ function Formulario({ termos, setTermos }) {
                         pattern="^[^\s@]+@[^\s@]+.[^\s@]+$"
                         onInvalid={(e) => e.target.setCustomValidity("Digite um email válido (ex.: nome@gmail.com)")}
                         onInput={(e) => e.target.setCustomValidity("")}
-
+                        value={dados.email}
                         required
                         onChange={alterarDados}
                     />
@@ -257,14 +285,14 @@ function Formulario({ termos, setTermos }) {
 
                 <div className="item">
                     <label htmlFor="contatos">Contato: </label>
-                    <input id="contatos" type="text" placeholder="Algum outro contato?" name="contato" onChange={alterarDados} />
+                    <input id="contatos" type="text" placeholder="Algum outro contato?" name="contato" value={dados.contato} onChange={alterarDados} />
                 </div>
 
                 <div className="li_termos">
-                    <input id="concordo" type="checkbox" required name="termos" onClick={leituraTermos} />
+                    <input id="concordo" type="checkbox" required name="termos" checked={dados.termos} onClick={leituraTermos} />
                     <label htmlFor="concordo"> Li e concordo com os </label><button type="button" className="botaoTermos" onClick={() => setTermos(true)}><u>termos de uso</u></button>.
                 </div>
-                <button id="enviar" type="submit">ENVIAR</button>
+                <button id="enviar" type="submit" disabled={carregando}>{carregando ? "ENVIANDO..." : "ENVIAR"}</button>
             </form>
         </div>
     )
