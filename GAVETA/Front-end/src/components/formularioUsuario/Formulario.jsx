@@ -10,8 +10,8 @@ import { LuUpload } from "react-icons/lu";
 
 import { useState, useEffect, useRef } from "react";
 import { SendMemories } from '../../services/api'
+
 function Formulario({ termos, setTermos }) {
-    console.log(termos)
 
     //Variáveis
     const hoje = new Date().toISOString().split("T")[0]; //nova data, em string padrão internacional, dividida em data/hora,
@@ -61,20 +61,17 @@ function Formulario({ termos, setTermos }) {
             return;
         }
 
-
         if (!dados.imagem) { // caso não tenha feito envio de imagem.
 
             mostrarErro("Envie uma imagem.");
             return;
             // isso é necessário porque o "required" de um botão hidden pode falhar em alguns navegadores.
         }
-        //alert(JSON.stringify(dados));
 
         try {
-             await SendMemories(dados)
-             popSucesso ? <PopUpSucesso onFechar={() => window.location.reload()} />
-                    : null
-
+            await SendMemories(dados)
+            popSucesso ? <PopUpSucesso onFechar={() => window.location.reload()} />
+            : null
         }
         catch (error) {
             mostrarErro('Algo deu errado. Por favor check os dados e tente novamente...')
@@ -212,11 +209,11 @@ function Formulario({ termos, setTermos }) {
 
                     <select id="locais" required name="local" value={dados.local} onChange={alterarDados} onClick={() => setSetaCima(!setaCima)} onBlur={() => setSetaCima(false)}>
                         <option id="local_padrao" value="" disabled>Selecione um local</option>
-                        <option value={1}>Açude do Cedro</option>
-                        <option value={2}>Pedra da Galinha Choca</option>
-                        <option value={3}>Museu Jacinto de Sousa</option>
-                        <option value={4}>Casa de Saberes - Cego Aderaldo</option>
-                        <option value={5}>Outro</option>
+                        <option value="Açude do Cedro">Açude do Cedro</option>
+                        <option value="Pedra da Galinha Choca">Pedra da Galinha Choca</option>
+                        <option value="Museu Jacinto de Sousa">Museu Jacinto de Sousa</option>
+                        <option value="Casa de Saberes - Cego Aderaldo">Casa de Saberes - Cego Aderaldo</option>
+                        <option value="Outro">Outro</option>
                     </select>
 
                     <IoArrowDownSharp

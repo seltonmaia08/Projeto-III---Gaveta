@@ -1,27 +1,39 @@
 import './visualizarMemoria.css'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Voltar from '../../components/Botões/Voltar'
 import Denunciar from '../../components/Botões/Denunciar'
 import Compartilhar from '../../components/Botões/Compartilhar'
 import Dados from '../../services/dados.json'
+import { GetMemoriesByID } from '../../services/api'
+import { collection } from 'firebase/firestore'
 
 function VisualizarMemoria() {
 
-    
-    const { id } = useParams()
-    
+    const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
+    const { id } = useParams(); // o que isso faz, Selton?
 
-    useEffect(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })  
-    },[])
+    useEffect(
+        () => {
 
+            window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); // levar o scroll para o topo
 
-    const memoriaSelecionada = Dados.find(
-        (memoria) => memoria.id === Number(id)
+            async function carregar() { // carregar as memorias
+
+                const apiMemorie = await GetMemoriesByID(id);
+                console.log(apiMemorie);
+                setMemoriaSelecionada(apiMemorie);
+            }
+
+            carregar();
+        },[]
     )
 
-    if (!memoriaSelecionada) {
+    /*const memoriaSelecionada = Dados.find(
+        (memoria) => memoria.id === Number(id)
+    )*/
+
+    if (memoriaSelecionada == null) {
         return <h1>Memória não encontrada</h1>
     }
 
@@ -34,7 +46,7 @@ function VisualizarMemoria() {
 
                 <img
                     className='img'
-                    src={memoriaSelecionada.imagem}
+                    src={memoriaSelecionada.imagensURL}
                     alt={memoriaSelecionada.titulo}
                 />
 
@@ -45,7 +57,7 @@ function VisualizarMemoria() {
                     </h1>
 
                     <p className='infos'> 
-                        {memoriaSelecionada.lugar} | {memoriaSelecionada.tagAdm} | {memoriaSelecionada.data}
+                        {memoriaSelecionada.ponto_memoria} | {memoriaSelecionada.categoriaMemoria} | {memoriaSelecionada.dataMemoria}
                     </p>
 
                     <div className="tags">
@@ -57,7 +69,7 @@ function VisualizarMemoria() {
                     </div>
 
                     <p className='text'>
-                        {memoriaSelecionada.descricao}
+                        {memoriaSelecionada.relatoMemoria}
                     </p>
 
                     <div className='denu-comp'>

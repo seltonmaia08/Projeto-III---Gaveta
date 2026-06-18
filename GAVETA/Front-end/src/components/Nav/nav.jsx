@@ -6,7 +6,7 @@ import { RxExit } from "react-icons/rx";
 
 const buttons = [
     {id: 1, title: 'Mural', color: '#FDCD9D', colorText: '#313131', router: '/', admin: false},
-    {id: 2, title: 'Memória', color: '#5C766D', colorText: '#EDE9E6', router: '/memoria', admin: false},
+    {id: 2, title: 'Memórias', color: '#5C766D', colorText: '#EDE9E6', router: '/memoria', admin: false},
     {id: 3, title: 'Pontos turísticos', color: '#43251D', colorText: '#EDE9E6', router: '/ponto-turistico', admin: false},
     {id: 4, title: 'Compartilhar memórias', color: '#7A6047', colorText: '#EDE9E6', router: '/compartilhar-memoria', admin: false},
 
