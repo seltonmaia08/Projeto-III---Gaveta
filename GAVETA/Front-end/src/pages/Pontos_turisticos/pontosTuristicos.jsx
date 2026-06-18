@@ -51,7 +51,7 @@ const PontoTuristico = () => {
                 {
                     exibirDados.length === 0 ?
                         <div className='messageItemNotFound'>
-                            <p>Ops... Nenhuma memória foi encontrada.</p>
+                            <p>Ops... Nenhum ponto foi encontrado.</p>
                             <p>Por favor tente outras palavras!</p>
                         </div>
                         :
@@ -63,7 +63,8 @@ const PontoTuristico = () => {
                                 <Polaroide
                                     id={memoria.id}
                                     titulo={memoria.titulo}
-                                    imagem={memoria.imagem}
+                                    imagem={memoria.imagens?.[0]} // algumas URL não estavam sendo lidas corretamente
+                                    // então precisou de uma verificação
                                     rotation={false}
                                 />
                             </div>

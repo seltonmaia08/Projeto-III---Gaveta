@@ -1,19 +1,35 @@
 import { IoClose, IoSearchOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import Dados from '../../services/dados.json'
+//import Dados from '../../services/dados.json'
+import { GetMemoriesPostadas } from "../../services/api";
 import './search.css'
 
 const Search = ({ setBuscarConteudo }) => {
     const [busca, setBusca] = useState('')
+    const [exibirDados, setExibirDados] = useState([]);
+
+    useEffect(
+        () => {
+
+            async function Carregar() {
+
+                const apiMemories = await GetMemoriesPostadas();
+                console.log(apiMemories);
+                setExibirDados(apiMemories);
+            }
+
+            Carregar();
+        }, []
+    )
 
     useEffect(() => {
+
         const normalizeTextSearch = (text) => {
             if (!text || typeof text !== 'string') return '';
             return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
         }
 
-
-        const buscando = Dados.filter((procurando) => {
+        const buscando = exibirDados.filter((procurando) => {
             const titleNormalize = normalizeTextSearch(procurando.titulo)
             const buscaNormalize = normalizeTextSearch(busca).split(' ').filter(Boolean)
             return buscaNormalize.every(palavra => titleNormalize.includes(palavra))
@@ -22,15 +38,15 @@ const Search = ({ setBuscarConteudo }) => {
         setBuscarConteudo(buscando.map(e => ({
             id: e.id,
             titulo: e.titulo,
-            descricao: e.descricao,
-            imagem: e.imagem,
+            descricao: e.relatoMemoria,
+            imagem: e.imagensURL,
             tags: e.tags
         })))
     }, [busca])
 
     const buscaMemoria = () => {
         if (busca === '') {
-            setBuscarConteudo(Dados)
+            setBuscarConteudo(exibirDados)
             return
         }
     }
@@ -50,7 +66,7 @@ const Search = ({ setBuscarConteudo }) => {
                     <IoClose className="icone-clean"
                         onClick={() => {
                             setBusca('')
-                            setBuscarConteudo(Dados)
+                            setBuscarConteudo(exibirDados)
                         }} />
                     : ''
             }

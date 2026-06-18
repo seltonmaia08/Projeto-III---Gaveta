@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc, query, where } from "firebase/firestore";
 import { db } from "./firebase";
 import { memo } from "react";
 
@@ -44,12 +44,17 @@ export async function SendMemories(dados) {
 
 }
 
-export async function GetMemories() {
+export async function GetMemoriesPendentes() {
 
     try {
 
-        const colecao = collection(db, "memorias")
-        const snapshot = await getDocs(colecao);
+        const consulta = query(
+            
+            collection(db, "memorias"), //indico a coleção;
+            where("postada", "==", false) //mas quero apenas as memórias com atributo "postada" false;
+        )
+            
+        const snapshot = await getDocs(consulta);
 
         const memorias = snapshot.docs.map(cada => {
             return {
@@ -62,7 +67,57 @@ export async function GetMemories() {
     }
     catch (error) {
 
-        console.error("Erro ao buscar memórias: ", error);
+        console.error("Erro ao buscar memórias pendentes: ", error);
+        throw error;
+    }
+}
+
+export async function GetMemoriesPostadas() {
+
+    try {
+
+        const consulta = query(
+
+            collection(db, "memorias"),
+            where("postada", "==", true)
+        )
+
+        const snapshot = await getDocs(consulta);
+        const memorias = snapshot.docs.map(cada => {
+            return {
+                id: cada.id,
+                ...cada.data()
+            }
+        })
+
+        return memorias;
+
+    } catch(error) {
+
+        console.error("Erro ao buscar memórias postadas: ", error);
+        throw error;
+    }
+}
+
+export async function GetMemoriasDenunciadas() {
+
+    try {
+
+        const colecao = collection(db, "denuncia");
+        const snapshot = await getDocs(colecao);
+
+        const denunciadas = snapshot.docs.map(cada => {
+            return {
+                id: cada.id,
+                ...cada.data()
+            }
+        })
+
+        return denunciadas;
+
+    } catch(error) {
+
+        console.log("Erro ao buscar memórias denunciadas: ", error);
         throw error;
     }
 }
@@ -85,6 +140,35 @@ export async function GetMemoriesByID(id) {
     } catch (error) {
 
         console.error("Erro ao buscar memória: ", error);
+        throw error;
+    }
+}
+
+export async function GetMemoriesByPontos(ponto) {
+
+    try {
+
+        const consulta = query(
+
+            collection(db, "memorias"),
+            where("ponto_memoria", "==", ponto),
+            where("postada", "==", true)
+        )
+
+        const snapshot = await getDocs(consulta);
+        const memorias = snapshot.docs.map(cada => {
+
+            return {
+                id: cada.id,
+                ...cada.data()
+            }
+        });
+
+        return memorias;
+
+    } catch(error) {
+
+        console.error("Erro ao buscar memorias do ponto: ", error);
         throw error;
     }
 }

@@ -2,7 +2,7 @@ import { memo, useEffect, useState } from "react";
 import Polaroide from "../../components/polaroide/Polaroide";
 import "./mural.css";
 //import Dados from "../../services/dados.json";
-import { GetMemories } from "../../services/api";
+import { GetMemoriesPostadas } from "../../services/api";
 
 const Mural = () => {
 
@@ -15,7 +15,7 @@ const Mural = () => {
 
       async function Carregar() {
 
-        const apiMemories = await GetMemories();
+        const apiMemories = await GetMemoriesPostadas();
         setExibirDados(embaralharMemorias(apiMemories));
       }
       

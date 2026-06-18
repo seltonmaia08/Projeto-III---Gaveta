@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import Polaroide from '../../components/polaroide/Polaroide';
 
 import PostadasPopUp from '../../components/PostadasPopUp/PostadasPopUp';
@@ -8,7 +8,7 @@ import PopUpSucesso from '../../components/PopUpSucesso/PopUpSucesso';
 import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao';
 
 import Dados from '../../services/dados.json'
-import { GetMemories } from '../../services/api';
+import { GetMemoriesPostadas } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 
 import './postadas.css';
@@ -20,7 +20,10 @@ const PostadasDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
   const [editMode, setEditMode] = useState(false);
+
   const [exibirDados, setExibirDados] = useState([]) // useState(Dados) anteriormente mockados
+  const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
+
   const [openFilter, setOpenFilter] = useState(false)
   const [filtrarConteudo, setFiltrarConteudo] = useState([])
 
@@ -30,7 +33,7 @@ const PostadasDashboard = () => {
 
       async function Carregar() {
 
-        const apiMemories = await GetMemories();
+        const apiMemories = await GetMemoriesPostadas();
         console.log(apiMemories);
         setExibirDados(apiMemories);
       }
@@ -40,8 +43,10 @@ const PostadasDashboard = () => {
   )
 
   // ABRIR POPUP DETALHES
-  function handlePostadasPopUp(e) {
+  function handlePostadasPopUp(e, memoria) {
     e.preventDefault();
+
+    setMemoriaSelecionada(memoria);
     setPostadasInfoShow(true);
   }
 
@@ -102,23 +107,23 @@ const PostadasDashboard = () => {
             titulo={memoria.titulo}
             imagem={memoria.imagensURL}
             rotation={false}
-            onClick={(event) => handlePostadasPopUp(event)}
+            onClick={(event) => handlePostadasPopUp(event, memoria)}
           />
         ))}
       </div>
 
       {/* POPUP DETALHES */}
-      {postadasInfoShow && (
+      {postadasInfoShow && memoriaSelecionada && (
         <PostadasPopUp
-          titulo="Trilha da Galinha Choca"
-          nome="Roberto Silva"
-          data="27/04/2025"
-          texto="Era uma tarde quente em Quixadá..."
-          tags={["conto", "turismo"]}
-          lugar="Açude do Cedro"
-          email="robertoss2016@gmail.com"
-          outroContato="(88) 99999-9999"
-          foto="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/80/20/ac/img-20190503-092801729.jpg?w=1000&h=1000&s=1"
+          titulo={memoriaSelecionada.titulo}
+          nome={memoriaSelecionada.nomeAutor}
+          data={memoriaSelecionada.dataMemoria}
+          texto={memoriaSelecionada.relatoMemoria}
+          tags={memoriaSelecionada.tags}
+          lugar={memoriaSelecionada.ponto_memoria}
+          email={memoriaSelecionada.contatoAutor[0]}
+          outroContato={memoriaSelecionada.contatoAutor[1]}
+          foto={memoriaSelecionada.imagensURL}
 
           onFechar={handleFechar}
           onEditMode={handleAbrirEdicao}
@@ -127,17 +132,17 @@ const PostadasDashboard = () => {
       )}
 
       {/* POPUP EDITAR */}
-      {editMode && (
+      {editMode && memoriaSelecionada && (
         <PostadasEdit
-          titulo="Trilha da Galinha Choca"
-          nome="Roberto Silva"
-          data="27/04/2025"
-          texto="Era uma tarde quente em Quixadá..."
-          tags={["conto", "turismo"]}
-          lugar="Açude do Cedro"
-          email="robertoss2016@gmail.com"
-          outroContato="(88) 99999-9999"
-          foto="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/80/20/ac/img-20190503-092801729.jpg?w=1000&h=1000&s=1"
+          titulo={memoriaSelecionada.titulo}
+          nome={memoriaSelecionada.nomeAutor}
+          data={memoriaSelecionada.dataMemoria}
+          texto={memoriaSelecionada.relatoMemoria}
+          tags={memoriaSelecionada.tags}
+          lugar={memoriaSelecionada.ponto_memoria}
+          email={memoriaSelecionada.contatoAutor[0]}
+          outroContato={memoriaSelecionada.contatoAutor[1]}
+          foto={memoriaSelecionada.imagensURL}
 
           onClose={handleFecharEdicao}
           onSave={
