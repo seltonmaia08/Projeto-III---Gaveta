@@ -63,7 +63,7 @@ const PontoTuristico = () => {
                                 <Polaroide
                                     id={memoria.id}
                                     titulo={memoria.titulo}
-                                    imagem={memoria.imagens?.[0]} // algumas URL não estavam sendo lidas corretamente
+                                    imagens={memoria.imagens?.[0]} // algumas URL não estavam sendo lidas corretamente
                                     // então precisou de uma verificação
                                     rotation={false}
                                 />

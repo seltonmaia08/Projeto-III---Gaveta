@@ -21,9 +21,11 @@ const CardMemories = ({ titulo, relatoMemoria, imagensURL, tags, id, onClick }) 
                 </div>
                 <div className="tags-card">
                     {
+                        Array.isArray(tags) ?
                         tags.map((tag) =>
                             <p className="tag-card-m" key={tag}>{tag}</p>
                         )
+                        : ''
                     }
                 </div>
                 <div className="description">

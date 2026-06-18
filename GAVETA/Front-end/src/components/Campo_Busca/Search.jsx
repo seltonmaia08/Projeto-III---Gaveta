@@ -1,6 +1,5 @@
 import { IoClose, IoSearchOutline } from "react-icons/io5";
 import { useEffect, useState } from "react";
-//import Dados from '../../services/dados.json'
 import { GetMemoriesPostadas } from "../../services/api";
 import './search.css'
 
@@ -14,7 +13,6 @@ const Search = ({ setBuscarConteudo }) => {
             async function Carregar() {
 
                 const apiMemories = await GetMemoriesPostadas();
-                console.log(apiMemories);
                 setExibirDados(apiMemories);
             }
 
@@ -23,7 +21,7 @@ const Search = ({ setBuscarConteudo }) => {
     )
 
     useEffect(() => {
-
+        if (exibirDados.length === 0) return;
         const normalizeTextSearch = (text) => {
             if (!text || typeof text !== 'string') return '';
             return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase()
@@ -38,11 +36,11 @@ const Search = ({ setBuscarConteudo }) => {
         setBuscarConteudo(buscando.map(e => ({
             id: e.id,
             titulo: e.titulo,
-            descricao: e.relatoMemoria,
-            imagem: e.imagensURL,
+            relatoMemoria: e.relatoMemoria,
+            imagensURL: e.imagensURL,
             tags: e.tags
         })))
-    }, [busca])
+    }, [busca, exibirDados])
 
     const buscaMemoria = () => {
         if (busca === '') {

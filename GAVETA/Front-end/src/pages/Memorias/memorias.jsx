@@ -3,17 +3,15 @@ import { memo, useState, useEffect } from 'react'
 import Search from '../../components/Campo_Busca/Search'
 import CardMemories from '../../components/Card/CardMemories'
 import FilterMemories from '../../components/filter-memories/FilterMemories'
-//import Dados from '../../services/dados.json'
 import { GetMemoriesPostadas } from "../../services/api"
 import './memoria.css'
 
 const Memoria = () => {
     const [openFilter, setOpenFilter] = useState(false)
-    const [exibirDados, setExibirDados] = useState([]) //useState(Dados) anteriormente mockados
+    const [exibirDados, setExibirDados] = useState([])
     const [filtrarConteudo, setFiltrarConteudo] = useState([])
     const [buscarConteudo, setBuscarConteudo] = useState([])
 
-    //console.log(exibirDados)
 
     useEffect(
         
@@ -22,7 +20,8 @@ const Memoria = () => {
             async function carregar() {
 
                 const apiMemories = await GetMemoriesPostadas();
-                setExibirDados();
+                setExibirDados(apiMemories);
+                console.log("pagina memorias: ", apiMemories)
             }
 
             carregar();
@@ -43,7 +42,7 @@ const Memoria = () => {
                 />
             </div>
             {
-                exibirDados.length == 0 ?
+                (!exibirDados || exibirDados.length === 0) ?
                     <div className='messageItemNotFound'>
                         <p>Ops... Nenhuma memória foi encontrada.</p>
                         <p>Por favor tente outras palavras!</p>
@@ -52,7 +51,10 @@ const Memoria = () => {
                     exibirDados.map((memoria) =>
                         <CardMemories
                             key={memoria.id}
-                            {...memoria}
+                            titulo={memoria.titulo}
+                            relatoMemoria={memoria.relatoMemoria}
+                            tags={memoria.tags}
+                            imagensURL={memoria.imagensURL}
                         />
                     )
             }

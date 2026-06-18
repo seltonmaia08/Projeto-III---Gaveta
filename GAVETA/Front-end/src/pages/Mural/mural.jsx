@@ -7,8 +7,6 @@ import { GetMemoriesPostadas } from "../../services/api";
 const Mural = () => {
 
   const [exibirDados, setExibirDados] = useState([]);
-  // O firebase está funcionando corretamente. Aguardando para implementação futura das outras funções...
-  // console.log(MemoriasDao.getAll())
 
   useEffect(
     () => {

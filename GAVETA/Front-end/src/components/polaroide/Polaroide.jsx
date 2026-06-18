@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './polaroide.css';
 
-const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
+const Polaroide = ({ imagens, titulo, rotation, onClick, id }) => {
   const [colorPolaroide, setColorPolaroide] = useState(null)
   const [isPontoTuristico, setIsPontoTuristico] = useState(false)
 
@@ -46,7 +46,7 @@ const Polaroide = ({ imagem, titulo, rotation, onClick, id }) => {
     >
       <div
         className="photo-card"
-        style={{ "--bg-image": `url(${imagem})` }}
+        style={{ "--bg-image": `url(${imagens})` }}
       ></div>
 
       <div className="title-card-polaroide">

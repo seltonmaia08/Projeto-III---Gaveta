@@ -3,7 +3,6 @@ import './filterMemories.css'
 import { useEffect, useState } from 'react'
 import Tags from '../Tags/Tags'
 import { useMemo } from 'react'
-import Dados from '../../services/dados.json'
 import { GetMemoriesPostadas } from '../../services/api'
 import { useLocation } from 'react-router-dom'
 
@@ -13,37 +12,38 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
     const [selecionadas, setSelecionadas] = useState([]);
     const [dadoFiltrado, setDadoFiltrado] = useState(false);
     const location = useLocation().pathname.includes('Dashboard')
+    const [exibirFiltro, setExibirFiltro] = useState([])
     console.log(location)
 
-    /*useEffect(                // esse useEffect() é pra puxar as memorias, mas estou esperando ver o que vai ser feito.
+    useEffect(                // esse useEffect() é pra puxar as memorias, mas estou esperando ver o que vai ser feito.
 
         () => {
             async function Carregar() {
                 const apiMemories = await GetMemoriesPostadas();
-                setExibirDados(apiMemories);
+                setExibirFiltro(apiMemories);
             }
 
             Carregar();
         }, []
-    )*/
+    )
 
     const handleFilter = () => {
 
         const filtroBusca = selecionadas.map(e => e.toLowerCase())
         if (filtroBusca.length === 0) {
-            setExibirDados(Dados);
+            setExibirDados(exibirFiltro);
             setDadoFiltrado(false);
             setOpenFilter(false);
             return
         }
 
-        const filtrar = Dados.filter((filtro) =>
+        const filtrar = exibirFiltro.filter((filtro) =>
             filtro.tags.some(tag => filtroBusca.includes(tag.toLowerCase())))
         setExibirDados(filtrar.map(e => ({
             id: e.id,
             titulo: e.titulo,
-            descricao: e.descricao,
-            imagem: e.imagem,
+            relatoMemoria: e.relatoMemoria,
+            imagensURL: e.imagensURL,
             tags: e.tags
         })))
 
@@ -54,7 +54,7 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
 
     const cleanFilter = () => {
         setSelecionadas([])
-        setExibirDados(Dados)
+        setExibirDados(exibirFiltro)
         setOpenFilter(false)
         setDadoFiltrado(false)
 
