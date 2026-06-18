@@ -1,5 +1,6 @@
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import { memo } from "react";
 
 export async function SendMemories(dados) {
 
@@ -43,3 +44,91 @@ export async function SendMemories(dados) {
 
 }
 
+export async function GetMemories() {
+
+    try {
+
+        const colecao = collection(db, "memorias")
+        const snapshot = await getDocs(colecao);
+
+        const memorias = snapshot.docs.map(cada => {
+            return {
+                id: cada.id,
+                ...cada.data()
+            }
+        });
+
+        return memorias;
+    }
+    catch (error) {
+
+        console.error("Erro ao buscar memórias: ", error);
+        throw error;
+    }
+}
+
+export async function GetMemoriesByID(id) {
+
+    try {
+
+        const especifico = doc(db, "memorias", id); // cria referência, procurando na coleção memórias,
+        // do documento específico com ID (localização)
+        const snapshot = await getDoc(especifico); // busca por esse documento (puxa as informações);
+
+        if(!snapshot.exists()) {return null} // 
+
+        return {
+            id: snapshot.id,
+            ...snapshot.data()
+        };
+
+    } catch (error) {
+
+        console.error("Erro ao buscar memória: ", error);
+        throw error;
+    }
+}
+
+export async function GetPontos() {
+
+    try {
+
+        const colecao = collection(db, "ponto_turisticos");
+        const snapshot = await getDocs(colecao);
+
+        const pontos = snapshot.docs.map(ponto => {
+            return {
+                id: ponto.id,
+                ...ponto.data()
+            }
+        });
+
+        return pontos;
+
+    } catch(error) {
+
+        console.error("Erro ao buscar pontos turísticos: ", error);
+        throw error;
+    }
+}
+
+export async function GetPontosByID(id) {
+
+    try {
+
+        const referencia = doc(db, "ponto_turisticos", id);
+        const snapshot = await getDoc(referencia);
+
+        if(!snapshot.exists()) {return null}
+
+        return {
+            id: snapshot.id,
+            ...snapshot.data()
+        }
+        
+    } catch(error) {
+        
+        console.error("Erro: ", error);
+        throw error;
+    }
+}

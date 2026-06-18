@@ -1,17 +1,34 @@
-import { memo, useState } from 'react'
+import { memo, useState, useEffect } from 'react'
+
 import Search from '../../components/Campo_Busca/Search'
 import CardMemories from '../../components/Card/CardMemories'
 import FilterMemories from '../../components/filter-memories/FilterMemories'
-import Dados from '../../services/dados.json'
+//import Dados from '../../services/dados.json'
+import { GetMemories } from "../../services/api"
 import './memoria.css'
 
 const Memoria = () => {
     const [openFilter, setOpenFilter] = useState(false)
-    const [exibirDados, setExibirDados] = useState(Dados)
+    const [exibirDados, setExibirDados] = useState([]) //useState(Dados) anteriormente mockados
     const [filtrarConteudo, setFiltrarConteudo] = useState([])
     const [buscarConteudo, setBuscarConteudo] = useState([])
 
-    console.log(exibirDados)
+    //console.log(exibirDados)
+
+    useEffect(
+        
+        () => {
+
+            async function carregar() {
+
+                const apiMemories = await GetMemories();
+                setExibirDados(apiMemories);
+            }
+
+            carregar();
+
+        }, []
+    )
 
     return (
         <div className="memoria">

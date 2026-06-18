@@ -2,14 +2,29 @@ import { useNavigate } from 'react-router-dom'
 import Search from '../../components/Campo_Busca/Search'
 import Polaroide from '../../components/polaroide/Polaroide'
 import './pontosTuristicos.css'
-import Dados from '../../services/dados.json'
-import { useState } from 'react'
+//import Dados from '../../services/dados.json'
+import { GetPontos } from '../../services/api'
+import { useState, useEffect } from 'react'
 
 const PontoTuristico = () => {
-    const [exibirDados, setExibirDados] = useState(Dados)
-    const [buscarConteudo, setBuscarConteudo] = useState([])
 
+    const [exibirDados, setExibirDados] = useState([]) //useState(Dados) anteriormente mockados
+    const [buscarConteudo, setBuscarConteudo] = useState([])
     const navigate = useNavigate()
+
+    useEffect(
+
+        () => {
+
+            async function Carregar() {
+
+                const apiPontos = await GetPontos();
+                setExibirDados(apiPontos);
+            }
+
+            Carregar();
+        }, []
+    )
 
     const handleCardClick = (ponto) => {
         // CORRIGIDO: Agora aponta exatamente para '/ponto-turistico-especifico/'

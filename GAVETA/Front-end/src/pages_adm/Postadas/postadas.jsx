@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Polaroide from '../../components/polaroide/Polaroide';
 
 import PostadasPopUp from '../../components/PostadasPopUp/PostadasPopUp';
@@ -8,6 +8,7 @@ import PopUpSucesso from '../../components/PopUpSucesso/PopUpSucesso';
 import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao';
 
 import Dados from '../../services/dados.json'
+import { GetMemories } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 
 import './postadas.css';
@@ -19,9 +20,24 @@ const PostadasDashboard = () => {
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [exibirDados, serExibirDados] = useState(Dados)
+  const [exibirDados, setExibirDados] = useState([]) // useState(Dados) anteriormente mockados
   const [openFilter, setOpenFilter] = useState(false)
   const [filtrarConteudo, setFiltrarConteudo] = useState([])
+
+  useEffect(
+
+    () => {
+
+      async function Carregar() {
+
+        const apiMemories = await GetMemories();
+        console.log(apiMemories);
+        setExibirDados(apiMemories);
+      }
+
+      Carregar();
+    }, []
+  )
 
   // ABRIR POPUP DETALHES
   function handlePostadasPopUp(e) {
@@ -73,7 +89,7 @@ const PostadasDashboard = () => {
       <div className='filtro-postadas'>
         <h3>Postadas</h3>
         <FilterMemories
-          setExibirDados={serExibirDados}
+          setExibirDados={setExibirDados}
           openFilter={openFilter}
           setOpenFilter={setOpenFilter}
         />
@@ -84,7 +100,7 @@ const PostadasDashboard = () => {
           <Polaroide
             key={memoria.id}
             titulo={memoria.titulo}
-            imagem={memoria.imagem}
+            imagem={memoria.imagensURL}
             rotation={false}
             onClick={(event) => handlePostadasPopUp(event)}
           />

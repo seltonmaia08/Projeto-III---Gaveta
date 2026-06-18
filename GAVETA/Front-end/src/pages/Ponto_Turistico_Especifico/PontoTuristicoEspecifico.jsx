@@ -1,33 +1,52 @@
-import { useParams, useLocation, useNavigate } from "react-router-dom"; // Importado o useLocation e useNavigate
+import { useParams, useNavigate } from "react-router-dom"; // Importado useNavigate, não precisa mais do useLocation
 import "./PontoTuristicoEspecifico.css";
 import Polaroide from "../../components/polaroide/Polaroide";
 import { FaShareAlt } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
+import { GetPontosByID } from "../../services/api";
 import Compartilhar from '../../components/Botões/Compartilhar'
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const PontoTuristicoEspecifico = () => {
+
+  const [pontoSelecionado, setPontoSelecionado] = useState(null);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // o código comentado abaixo não precisa mais! - samuel
+
   // 1. Ativamos o useLocation para capturar os dados vindos do clique
-  const location = useLocation();
+  //const location = useLocation();
 
   // 2. Pegamos o ponto que foi passado no navigate
-  const ponto = location.state?.ponto;
+  //const ponto = location.state?.ponto;
 
   // Se tentar acessar a página direto sem clicar (ou der F5), exibe o aviso
-  if (!ponto) {
+
+  useEffect(
+    
+    () => {
+
+      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+
+      async function Carregar() {
+
+        const apiPonto = await GetPontosByID(id);
+        setPontoSelecionado(apiPonto);
+      }
+
+      Carregar();
+    }, []
+  )
+
+  if (!pontoSelecionado) {
     return (
       <h1 style={{ textAlign: "center", color: "white", marginTop: "5rem" }}>
-        Ponto não encontrado ou página recarregada.
+        Ponto não encontrado.
       </h1>
-    );
+    )
   }
-
-  useEffect(() => {
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
-  },[])
 
   const memorias = [
     {
@@ -61,15 +80,15 @@ const PontoTuristicoEspecifico = () => {
           <MdArrowBack />
         </button>
 
-        <h1>{ponto.titulo}</h1>
+        <h1>{pontoSelecionado.titulo}</h1>
       </div>
 
       {/* CONTEÚDO */}
       <div className="conteudo-ponto">
         <div className="imagem-texto">
-          <img src={ponto.imagem} alt={ponto.titulo} />
+          <img src={pontoSelecionado.imagens[0]} alt={pontoSelecionado.titulo} />
 
-          <p>{ponto.descricao}</p>
+          <p>{pontoSelecionado.texto_desc}</p>
         </div>
       </div>
       <div className="btn-compartilhar">
