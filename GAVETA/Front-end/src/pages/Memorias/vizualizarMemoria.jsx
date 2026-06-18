@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import Voltar from '../../components/Botões/Voltar'
 import Denunciar from '../../components/Botões/Denunciar'
 import Compartilhar from '../../components/Botões/Compartilhar'
-import Dados from '../../services/dados.json'
+//import Dados from '../../services/dados.json'
 import { GetMemoriesByID } from '../../services/api'
 import { collection } from 'firebase/firestore'
 

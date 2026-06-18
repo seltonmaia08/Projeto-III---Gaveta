@@ -4,7 +4,7 @@ import Search from '../../components/Campo_Busca/Search'
 import CardMemories from '../../components/Card/CardMemories'
 import FilterMemories from '../../components/filter-memories/FilterMemories'
 //import Dados from '../../services/dados.json'
-import { GetMemories } from "../../services/api"
+import { GetMemoriesPostadas } from "../../services/api"
 import './memoria.css'
 
 const Memoria = () => {
@@ -21,12 +21,11 @@ const Memoria = () => {
 
             async function carregar() {
 
-                const apiMemories = await GetMemories();
-                setExibirDados(apiMemories);
+                const apiMemories = await GetMemoriesPostadas();
+                setExibirDados();
             }
 
             carregar();
-
         }, []
     )
 

@@ -3,13 +3,14 @@ import "./PontoTuristicoEspecifico.css";
 import Polaroide from "../../components/polaroide/Polaroide";
 import { FaShareAlt } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
-import { GetPontosByID } from "../../services/api";
+import { GetPontosByID, GetMemoriesByPontos } from "../../services/api";
 import Compartilhar from '../../components/Botões/Compartilhar'
 import { useState, useEffect } from "react";
 
 const PontoTuristicoEspecifico = () => {
 
   const [pontoSelecionado, setPontoSelecionado] = useState(null);
+  const [memoriasPonto, setMemoriasPonto] = useState([]);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,7 +34,12 @@ const PontoTuristicoEspecifico = () => {
       async function Carregar() {
 
         const apiPonto = await GetPontosByID(id);
+        console.log(apiPonto);
         setPontoSelecionado(apiPonto);
+
+        const apiMemoriesPonto = await GetMemoriesByPontos(apiPonto.titulo);
+        console.log(apiMemoriesPonto);
+        setMemoriasPonto(apiMemoriesPonto);
       }
 
       Carregar();
@@ -48,7 +54,7 @@ const PontoTuristicoEspecifico = () => {
     )
   }
 
-  const memorias = [
+  /*const memorias = [
     {
       id: 1,
       titulo: "Minha trilha preferida",
@@ -67,7 +73,7 @@ const PontoTuristicoEspecifico = () => {
       imagem:
         "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
     },
-  ];
+  ];*/
 
   return (
     <div className="ponto-especifico">
@@ -87,8 +93,8 @@ const PontoTuristicoEspecifico = () => {
       <div className="conteudo-ponto">
         <div className="imagem-texto">
           <img src={pontoSelecionado.imagens[0]} alt={pontoSelecionado.titulo} />
-
-          <p>{pontoSelecionado.texto_desc}</p>
+          <p>{pontoSelecionado.texto}</p>
+          <img src={pontoSelecionado.imagens[1]} alt={pontoSelecionado.titulo} />
         </div>
       </div>
       <div className="btn-compartilhar">
@@ -100,12 +106,12 @@ const PontoTuristicoEspecifico = () => {
         <h2>Memórias relacionadas a esse lugar</h2>
 
         <div className="cards-relacionados">
-          {memorias.map((memoria) => (
+          {memoriasPonto.map((memoria) => (
             <Polaroide
               key={memoria.id}
               id={memoria.id}
               titulo={memoria.titulo}
-              imagem={memoria.imagem}
+              imagem={memoria.imagensURL}
               rotation={false}
             />
           ))}

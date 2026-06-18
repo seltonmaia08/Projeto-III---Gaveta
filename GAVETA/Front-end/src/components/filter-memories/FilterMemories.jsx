@@ -4,22 +4,36 @@ import { useEffect, useState } from 'react'
 import Tags from '../Tags/Tags'
 import { useMemo } from 'react'
 import Dados from '../../services/dados.json'
+import { GetMemoriesPostadas } from '../../services/api'
 import { useLocation } from 'react-router-dom'
 
 const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
+
+    //const [exibirDados, setExibirDados] = useState([]); // não consigo usar essas variáveis, já tá puxando por props?
     const [selecionadas, setSelecionadas] = useState([]);
-    const [dadoFiltrado, setDadoFiltrado] = useState(false)
+    const [dadoFiltrado, setDadoFiltrado] = useState(false);
     const location = useLocation().pathname.includes('Dashboard')
     console.log(location)
+
+    /*useEffect(                // esse useEffect() é pra puxar as memorias, mas estou esperando ver o que vai ser feito.
+
+        () => {
+            async function Carregar() {
+                const apiMemories = await GetMemoriesPostadas();
+                setExibirDados(apiMemories);
+            }
+
+            Carregar();
+        }, []
+    )*/
 
     const handleFilter = () => {
 
         const filtroBusca = selecionadas.map(e => e.toLowerCase())
         if (filtroBusca.length === 0) {
-            setExibirDados(Dados)
-            setDadoFiltrado(false)
-            setOpenFilter(false)
-
+            setExibirDados(Dados);
+            setDadoFiltrado(false);
+            setOpenFilter(false);
             return
         }
 

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Polaroide from '../../components/polaroide/Polaroide'
 
 import DenunciaPopUp from '../../components/DenunciaPopUp/DenunciaPopUp';
@@ -9,15 +9,34 @@ import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao
 import './denuncia.css'
 
 import Dados from '../../services/dados.json'
+import { GetMemoriasDenunciadas } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 
 const DenunciaDashboard = () => {
   const [DenunciaInfoShow, setDenunciaInfoShow] = useState(false);
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
-  const [exibirDados, serExibirDados] = useState(Dados)
+
+  const [exibirDados, setExibirDados] = useState(Dados) // substituir por [] e atualizar com método do useEffect()
+  const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
+
   const [openFilter, setOpenFilter] = useState(false)
   const [filtrarConteudo, setFiltrarConteudo] = useState([])
+
+  useEffect(
+
+    () => {
+
+      async function Carregar() {
+
+        const apiDenunciadas = await GetMemoriasDenunciadas();
+        console.log(apiDenunciadas);
+        //setExibirDados(apiDenunciadas); //descomentar isso depois
+      }
+
+      Carregar();
+    }, []
+  )
 
   function handleDenunciaPopUp(e) {
     e.preventDefault();
@@ -52,7 +71,7 @@ const DenunciaDashboard = () => {
       <div className='filtro-denuncias'>
         <h3>Denúncia</h3>
         <FilterMemories
-          setExibirDados={serExibirDados}
+          setExibirDados={setExibirDados}
           openFilter={openFilter}
           setOpenFilter={setOpenFilter}
         />
