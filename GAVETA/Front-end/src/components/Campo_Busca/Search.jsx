@@ -40,13 +40,7 @@ const Search = ({ setBuscarConteudo }) => {
             return buscaNormalize.every(palavra => titleNormalize.includes(palavra))
         })
 
-        setBuscarConteudo(buscando.map(e => ({
-            id: e.id,
-            titulo: e.titulo,
-            relatoMemoria: e.relatoMemoria,
-            imagensURL: e.imagensURL,
-            tags: e.tags
-        })))
+        setBuscarConteudo(buscando)
     }, [busca, exibirDados])
 
     const buscaMemoria = () => {
