@@ -12,7 +12,9 @@ function CuradoriaPendente({
   outroContato,
   foto,
   onFechar,
-  onAceitarRecusar,
+  onAceitar,
+  onRecusar,
+  onChangeCategoria,
 }) {
   return (
     <div className="overlay">
@@ -27,7 +29,7 @@ function CuradoriaPendente({
             <span className="label">Nome:</span>
             <span className="valor">{nome}</span>
             <span className="label nome-data-gap">Data:</span>
-            <span className="valor">{data}</span>
+            <span className="valor">{String(data).replace(/[-]/g, '/')}</span>
           </div>
 
           <div className="campo">
@@ -63,10 +65,12 @@ function CuradoriaPendente({
 
             <div className="campo">
               <span className="label">Categoria:</span>
-              <select className="menu-categoria">
+              <select className="menu-categoria"
+                onChange={(e) => onChangeCategoria(e.target.value)}
+                >
                 <option value="">Selecione...</option>
-                <option value="historica">Memória histórica</option>
                 <option value="cotidiana">Memória cotidiana</option>
+                <option value="historica">Memória histórica</option>
               </select>
             </div>
           </div>
@@ -74,7 +78,7 @@ function CuradoriaPendente({
 
         <div className="coluna-direita">
           <div className="direita-topo">
-            <button className="btn-fechar" onClick={onFechar}> <IoCloseOutline/> </button>
+            <button className="btn-fechar" onClick={onFechar}> <IoCloseOutline /> </button>
             <div className="campo">
               <span className="label">Foto:</span>
               <img className="foto" src={foto} alt="Foto da memória" />
@@ -82,10 +86,10 @@ function CuradoriaPendente({
           </div>
 
           <div className="direita-botoes">
-            <button className="btn-recusar" onClick={onAceitarRecusar}>
+            <button className="btn-recusar" onClick={onRecusar}>
               RECUSAR
             </button>
-            <button className="btn-aceitar" onClick={onAceitarRecusar}>
+            <button className="btn-aceitar" onClick={onAceitar}>
               ACEITAR
             </button>
           </div>

@@ -4,9 +4,10 @@ import CuradoriaPendente from "../../components/CuradoriaPendente/CuradoriaPende
 import PopUpConfirmacao from "../../components/PopUpConfirmacao/PopUpConfirmacao";
 import PopUpSucesso from "../../components/PopUpSucesso/PopUpSucesso";
 import Polaroide from "../../components/polaroide/Polaroide";
-import { GetMemoriesPendentes } from "../../services/api";
+import { GetMemoriesPendentes, UpdateMemoria } from "../../services/api";
 //import Dados from "../../services/dados.json";
 import FilterMemories from "../../components/filter-memories/FilterMemories";
+
 
 const PendentesDashboard = () => {
   const [curadoriaAberta, setCuradoriaAberta] = useState(false);
@@ -15,10 +16,12 @@ const PendentesDashboard = () => {
 
   const [exibirDados, setExibirDados] = useState([]); // useState(Dados) anteriormente mockados
   const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
-
+  const [acaoSelecionada, setAcaoSelecionada] = useState("");
+  const [categoriaSelecionada, setCategoriaSelecionada] = useState("");
   const [openFilter, setOpenFilter] = useState(false);
   const [filtrarConteudo, setFiltrarConteudo] = useState([]);
-
+  const [alertaAberto, setAlertaAberto] = useState(false)
+  const [avisoEnvio, setAvisoEnvio] = useState(false)
   useEffect(
 
     () => {
@@ -33,6 +36,15 @@ const PendentesDashboard = () => {
     }, []
   )
 
+  const ExibirAlertaDeCampoFazio = () => {
+    return (
+      <div className="exibirAlerta">
+        <p>Por favor, selecione uma categoria!</p>
+      </div>
+    )
+  }
+
+
   function handlePopUpCuradoria(e, memoria) {
     e.preventDefault();
 
@@ -40,19 +52,50 @@ const PendentesDashboard = () => {
     setCuradoriaAberta(true);
   }
 
-  function handleAceitarRecusar() {
+
+  function handleAceitar() {
+    if (categoriaSelecionada === '') {
+      setAlertaAberto(true)
+      setTimeout(() => setAlertaAberto(false), 3000)
+      return
+    }
+    setAcaoSelecionada("aceitar");
     setConfirmacaoAberta(true);
+  }
+
+  function handleRecusar() {
+    setAcaoSelecionada("recusar");
+    setConfirmacaoAberta(true)
   }
 
   function handleNao() {
     setConfirmacaoAberta(false);
   }
 
-  function handleSim() {
-    setConfirmacaoAberta(false);
-    setCuradoriaAberta(false);
-    setSucessoAberto(true);
+  async function handleSim() {
+    try {
+      if (acaoSelecionada === "aceitar") {
+        setAvisoEnvio(true)
+        await UpdateMemoria(memoriaSelecionada.id, {
+          categoriaMemoria: categoriaSelecionada,
+          postada: true
+        });
+        setAvisoEnvio(false)
+      } else if (acaoSelecionada === "recusar") {
+        //Função de deletar memória aqui
+      }
+
+      // Atualiza a lista de memorias pendentes
+      setExibirDados(exibirDados.filter((memoria) => memoria.id !== memoriaSelecionada.id));
+
+      setConfirmacaoAberta(false);
+      setCuradoriaAberta(false);
+      setSucessoAberto(true);
+    } catch (error) {
+      console.log(error)
+    }
   }
+
 
   function handleFecharSucesso() {
     setSucessoAberto(false);
@@ -95,13 +138,16 @@ const PendentesDashboard = () => {
           outroContato={memoriaSelecionada.contatoAutor[1]}
           foto={memoriaSelecionada.imagensURL}
           onFechar={handleFecharCuradoria}
-          onAceitarRecusar={handleAceitarRecusar}
+          onAceitar={handleAceitar}
+          onRecusar={handleRecusar}
+          onChangeCategoria={setCategoriaSelecionada}
         />
       )}
       {confirmacaoAberta && (
-        <PopUpConfirmacao onSim={handleSim} onNao={handleNao} />
+        <PopUpConfirmacao onSim={handleSim} onNao={handleNao} avisoEnvio={avisoEnvio}/>
       )}
       {sucessoAberto && <PopUpSucesso onFechar={handleFecharSucesso} />}
+      {alertaAberto && <ExibirAlertaDeCampoFazio />}
     </div>
   );
 };

@@ -30,7 +30,7 @@ function PostadasPopUp({
             <span className="label-postada">Nome:</span>
             <span className="valor-postada">{nome}</span>
             <span className="label-postada nome-data-gap-postada">Data:</span>
-            <span className="valor-postada">{data}</span>
+            <span className="valor-postada">{String(data).replace(/[-]/g, '/')}</span>
           </div>
 
           <div className="campo-postada-topo">

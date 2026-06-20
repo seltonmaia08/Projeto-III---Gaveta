@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, getDoc, query, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc, query, where, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { memo } from "react";
 
@@ -214,5 +214,17 @@ export async function GetPontosByID(id) {
         
         console.error("Erro: ", error);
         throw error;
+    }
+}
+
+export async function UpdateMemoria(id, dadosAtualizados){
+    try {
+        const ref = doc(db, 'memorias', id)
+        await updateDoc(ref, dadosAtualizados)
+        console.log("Dados atualizados com sucesso!")
+        return true
+    } catch (error) {
+        console.log("Memórias não atualizadas: ", error)
+        throw error
     }
 }

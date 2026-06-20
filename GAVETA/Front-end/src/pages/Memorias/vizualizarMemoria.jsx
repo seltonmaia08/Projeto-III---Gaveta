@@ -23,15 +23,36 @@ function VisualizarMemoria() {
                 const apiMemorie = await GetMemoriesByID(id);
                 console.log(apiMemorie);
                 setMemoriaSelecionada(apiMemorie);
-            }
 
+            }
             carregar();
-        },[]
+        }, []
     )
 
     /*const memoriaSelecionada = Dados.find(
         (memoria) => memoria.id === Number(id)
     )*/
+
+    const formatarData = (data) => {
+        if (!data) return ''
+
+        const partes = data.split('-')
+
+        if (partes.length !== 3) return data
+
+        const [ano, mes, dia] = partes
+
+        const meses = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        const nomeMes = meses[parseInt(mes, 10) - 1]
+
+        return `${dia} de ${nomeMes} de ${ano}`
+
+    }
+
 
     if (memoriaSelecionada == null) {
         return <h1>Memória não encontrada</h1>
@@ -56,8 +77,8 @@ function VisualizarMemoria() {
                         {memoriaSelecionada.titulo}
                     </h1>
 
-                    <p className='infos'> 
-                        {memoriaSelecionada.ponto_memoria} | {memoriaSelecionada.categoriaMemoria} | {memoriaSelecionada.dataMemoria}
+                    <p className='infos'>
+                        {memoriaSelecionada.ponto_memoria} | {memoriaSelecionada.categoriaMemoria} | {formatarData(memoriaSelecionada.dataMemoria)}
                     </p>
 
                     <div className="tags">

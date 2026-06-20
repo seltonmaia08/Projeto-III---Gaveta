@@ -30,6 +30,7 @@
 .title-card-polaroide {
     font-family: 'title-h2-CoveredBy';
     font-size: 10pt;
+    overflow: hidden;
 }
 
 .title-card-polaroide h2 {

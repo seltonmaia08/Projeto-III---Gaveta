@@ -8,7 +8,7 @@ import PopUpSucesso from '../../components/PopUpSucesso/PopUpSucesso';
 import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao';
 
 import Dados from '../../services/dados.json'
-import { GetMemoriesPostadas } from '../../services/api';
+import { GetMemoriesPostadas, UpdateMemoria } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 
 import './postadas.css';
@@ -23,9 +23,11 @@ const PostadasDashboard = () => {
 
   const [exibirDados, setExibirDados] = useState([]) // useState(Dados) anteriormente mockados
   const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
-
+  const [dadosParaSalvar, setDadosParaSalvar] = useState(null);
+  const [acaoSelecionada, setAcaoSelecionada] = useState("");
   const [openFilter, setOpenFilter] = useState(false)
   const [filtrarConteudo, setFiltrarConteudo] = useState([])
+  const [avisoEnvio, setAvisoEnvio] = useState(false)
 
   useEffect(
 
@@ -73,15 +75,33 @@ const PostadasDashboard = () => {
   // CANCELAR CONFIRMAÇÃO
   function handleNao() {
     setConfirmacaoAberta(false);
-    if(editMode) setEditMode(true)
+    if (editMode) setEditMode(true)
   }
 
   // CONFIRMAR AÇÃO
-  function handleSim() {
-    setConfirmacaoAberta(false);
-    setPostadasInfoShow(false);
-    if(editMode) setEditMode(false)
-    setSucessoAberto(true);
+  async function handleSim() {
+    try {
+        if (acaoSelecionada === "editar" && dadosParaSalvar) {
+          setAvisoEnvio(true)
+            await UpdateMemoria(memoriaSelecionada.id, dadosParaSalvar);            
+            setExibirDados(exibirDados.map(memoria => {
+                if(memoria.id === memoriaSelecionada.id) {
+                    return { ...memoria, ...dadosParaSalvar };
+                }
+                return memoria;
+            }));
+            setAvisoEnvio(false)
+        } else if (acaoSelecionada === "deletar") {
+            // Deleta a memoria
+        }
+        setConfirmacaoAberta(false);
+        setPostadasInfoShow(false);
+        if(editMode) setEditMode(false);
+        setSucessoAberto(true);
+        
+    } catch (error) {
+        console.log("Erro ao atualizar:", error);
+    }
   }
 
   // FECHAR SUCESSO
@@ -145,21 +165,24 @@ const PostadasDashboard = () => {
           foto={memoriaSelecionada.imagensURL}
 
           onClose={handleFecharEdicao}
-          onSave={
-            (dados) => {
-            console.log("Salvo:", dados);
+          onSave={(dados) => {
+            setDadosParaSalvar(dados);
+            setAcaoSelecionada("editar");
             handleAceitarRecusar();
-          }
-        }
-          onDelete={handleAceitarRecusar}
-        />
-      )}
+          }}
+          onDelete={() => {
+            setAcaoSelecionada("deletar");
+            handleAceitarRecusar();
+          }}
+          />
+        )}
 
       {/* CONFIRMAÇÃO */}
       {confirmacaoAberta && (
         <PopUpConfirmacao
-          onSim={handleSim}
-          onNao={handleNao}
+        onSim={handleSim}
+        onNao={handleNao}
+        avisoEnvio={avisoEnvio}
         />
       )}
 

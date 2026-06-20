@@ -11,6 +11,7 @@ function PostadasEdit({
   lugar: lugarInicial,
   email: emailInicial,
   outroContato: outroContatoInicial,
+  categoria: categoriaInicial,
   foto,
   onClose,              // Função vinda do Dashboard para fechar a edição
   onSave,               // Nova: Para salvar as alterações feitas
@@ -28,25 +29,25 @@ function PostadasEdit({
   const [lugar, setLugar] = useState(lugarInicial);
   const [email, setEmail] = useState(emailInicial);
   const [outroContato, setOutroContato] = useState(outroContatoInicial);
-  const [categoria, setCategoria] = useState("");
+  const [categoria, setCategoria] = useState(categoriaInicial || "");
 
   // Handler para quando o usuário clicar em Salvar/Aceitar Edição
   function handleSalvar(e) {
     e.preventDefault();
-    // Monta o objeto com os dados atualizados
-    const dadosAtualizados = {
-      titulo,
-      nome,
-      data,
-      texto,
-      lugar,
-      email,
-      outroContato,
-      categoria,
-    };
+
+    const dadosAlterados = {};
+    if (titulo !== tituloInicial) {
+      dadosAlterados.titulo = titulo;
+    }
+    if (texto !== textoInicial) {
+      dadosAlterados.relatoMemoria = texto;
+    }
+    if (categoria !== categoriaInicial) {
+      dadosAlterados.categoriaMemoria = categoria;
+    }
     
     if (onSave) {
-      onSave(dadosAtualizados);
+      onSave(dadosAlterados);
     }
   }
 
@@ -54,14 +55,14 @@ function PostadasEdit({
     <div className="overlay">
       <form className="container-editando" onSubmit={handleSalvar}>
         <div className="coluna-esquerda-editando">
-          
+
           <div className="campo-editando">
             <label className="label-editando">Título:</label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               className="input-edit"
-              value={titulo} 
-              onChange={(e) => setTitulo(e.target.value)} 
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
             />
           </div>
 
@@ -69,14 +70,14 @@ function PostadasEdit({
             <span className="label-postada">Nome:</span>
             <span className="input-edit-bloqueado">{nome}</span>
             <span className="label-postada nome-data-gap-postada">Data:</span>
-            <span className="input-edit-bloqueado">{data}</span>
+            <span className="input-edit-bloqueado">{String(data).replace(/[-]/g, '/')}</span>
           </div>
 
           <div className="campo-editando-topo">
             <label className="label-editando">Texto:</label>
-            <textarea 
+            <textarea
               className="v-texto-editando"
-              value={texto} 
+              value={texto}
               onChange={(e) => setTexto(e.target.value)}
               rows={6}
             />
@@ -110,7 +111,7 @@ function PostadasEdit({
 
             <div className="campo-editando">
               <label className="label-editando">Categoria:</label>
-              <select 
+              <select
                 className="menu-categoria"
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
@@ -127,7 +128,7 @@ function PostadasEdit({
           <div className="direita-topo-editando">
             {/* O botão X agora chama a função onClose vinda do Dashboard */}
             <button type="button" className="btn-fechar" onClick={onClose}>
-              <IoCloseOutline/>
+              <IoCloseOutline />
             </button>
             <div className="campo-editando-topo">
               <span className="label-editando">Foto:</span>
@@ -136,13 +137,12 @@ function PostadasEdit({
           </div>
 
           <div className="direita-botoes-editando">
-            {/* type="submit" faz disparar o handleSalvar no onSubmit do formulário */}
-            <button type="button" className="btn-recusar-edit" onClick={onDelete}>
-              <span>DESCARTAR</span>
-            </button>
-            <button type="submit" className="btn-aceitar-edit" onClick={onSave}>
-              <span>SALVAR</span>
-            </button>
+                <button type="button" className="btn-recusar-edit" onClick={onDelete}>
+                  <span>DESCARTAR</span>
+                </button>
+                <button type="submit" className="btn-aceitar-edit">
+                  <span>SALVAR</span>
+                </button>
           </div>
         </div>
       </form>

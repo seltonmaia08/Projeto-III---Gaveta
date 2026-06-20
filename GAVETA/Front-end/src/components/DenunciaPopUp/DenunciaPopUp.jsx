@@ -29,7 +29,7 @@ function DenunciaPopUp({
             <span className="label-denu">Nome:</span>
             <span className="valor-denu">{nome}</span>
             <span className="label-denu nome-data-gap-denu">Data:</span>
-            <span className="valor-denu">{data}</span>
+            <span className="valor-denu">{String(data).replace(/[-]/g, '/')}</span>
           </div>
 
           <div className="campo-denu">
