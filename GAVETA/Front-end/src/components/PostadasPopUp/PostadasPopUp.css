@@ -167,13 +167,13 @@
   background-color: #5c766d;
   color: white;
 
-  font-size: 28px;
-  padding-top: 7px;
+  font-size: 15px;
+  padding-top: 4px;
 
   cursor: pointer;
   font-weight: bold;
 
-  width: 3.5rem;
+  width: 10.5rem;
   height: 3.5rem;
 }
 
@@ -185,12 +185,12 @@
   background-color: var(--terra-molhada);
   color: white;
 
-  font-size: 25px;
-  padding-top: 5px;
+  font-size: 15px;
+  padding-top: 4px;
 
   cursor: pointer;
   font-weight: bold;
 
-  width: 3.5rem;
+  width: 10.5rem;
   height: 3.5rem;
 }

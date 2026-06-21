@@ -29,7 +29,7 @@ const AppRouter = () => {
                 <Route path='/login' element={<LoginAdm setIsAdminLogado={setIsAdminLogado}/>} />
             </Route>
 
-            {/* ROTAS PÚBLICAS E DO USUÁRIO */}
+            {/* ROTAS PÚLBICAS E DO USUÁRIO */}
             {/* O RotaApenasUsuario bloqueia o Administrador de acessar a interface de usuário */}
             <Route element={<RotaApenasUsuario isAdmin={isAdminLogado} />}>
                 <Route element={<MainLayout/>}>

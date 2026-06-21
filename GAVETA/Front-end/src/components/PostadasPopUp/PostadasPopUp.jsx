@@ -82,10 +82,10 @@ function PostadasPopUp({
 
           <div className="direita-botoes-postada">
             <button className="btn-excluir-postada" onClick={onDelete}> 
-              <FaRegTrashAlt/>
+              <span>APAGAR</span>
             </button>
             <button className="btn-editar-postada" onClick={onEditMode}>
-              <MdOutlineEdit/>
+              <span>EDITAR</span>
             </button>
           </div>
         </div>
