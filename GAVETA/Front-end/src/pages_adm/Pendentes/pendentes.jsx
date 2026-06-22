@@ -4,7 +4,7 @@ import CuradoriaPendente from "../../components/CuradoriaPendente/CuradoriaPende
 import PopUpConfirmacao from "../../components/PopUpConfirmacao/PopUpConfirmacao";
 import PopUpSucesso from "../../components/PopUpSucesso/PopUpSucesso";
 import Polaroide from "../../components/polaroide/Polaroide";
-import { GetMemoriesPendentes, UpdateMemoria } from "../../services/api";
+import { DeleteMemoria, GetMemoriesPendentes, UpdateMemoria } from "../../services/api";
 //import Dados from "../../services/dados.json";
 import FilterMemories from "../../components/filter-memories/FilterMemories";
 
@@ -82,7 +82,14 @@ const PendentesDashboard = () => {
         });
         setAvisoEnvio(false)
       } else if (acaoSelecionada === "recusar") {
-        //Função de deletar memória aqui
+          setAvisoEnvio(true)
+          await DeleteMemoria(memoriaSelecionada.id)
+          setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+            prev.filter(
+              memoria => memoria.id !== memoriaSelecionada.id
+            )
+          );
+          setAvisoEnvio(false);
       }
 
       // Atualiza a lista de memorias pendentes
