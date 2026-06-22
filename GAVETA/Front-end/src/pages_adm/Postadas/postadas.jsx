@@ -67,6 +67,11 @@ const PostadasDashboard = () => {
     setEditMode(false);
   }
 
+  // RECUSAR ALTERAÇÃO DOS DADOS
+  function handleRecusarAlteracao() {
+    setConfirmacaoAberta(true)
+  }
+
   // ABRIR CONFIRMAÇÃO
   function handleAceitarRecusar() {
     setConfirmacaoAberta(true);
@@ -80,35 +85,44 @@ const PostadasDashboard = () => {
 
   // CONFIRMAR AÇÃO
   async function handleSim() {
+
+    if (acaoSelecionada === "recusar") {
+      setConfirmacaoAberta(false);
+      setPostadasInfoShow(false);
+      if (editMode) setEditMode(false);
+      setSucessoAberto(true);
+      return
+    }
+
     try {
-        if (acaoSelecionada === "editar" && dadosParaSalvar) {
-          setAvisoEnvio(true)
-            await UpdateMemoria(memoriaSelecionada.id, dadosParaSalvar);            
-            setExibirDados(exibirDados.map(memoria => {
-                if(memoria.id === memoriaSelecionada.id) {
-                    return { ...memoria, ...dadosParaSalvar };
-                }
-                return memoria;
-            }));
-            setAvisoEnvio(false)
-        }  
-        if (acaoSelecionada === "deletar") {
-          setAvisoEnvio(true)  
-          await DeleteMemoria(memoriaSelecionada.id)
-          setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
-            prev.filter(
-              memoria => memoria.id !== memoriaSelecionada.id
-            )
-          );
-          setAvisoEnvio(false);
-        }
-        setConfirmacaoAberta(false);
-        setPostadasInfoShow(false);
-        if(editMode) setEditMode(false);
-        setSucessoAberto(true);
-        
+      if (acaoSelecionada === "editar" && dadosParaSalvar) {
+        setAvisoEnvio(true)
+        await UpdateMemoria(memoriaSelecionada.id, dadosParaSalvar);
+        setExibirDados(exibirDados.map(memoria => {
+          if (memoria.id === memoriaSelecionada.id) {
+            return { ...memoria, ...dadosParaSalvar };
+          }
+          return memoria;
+        }));
+        setAvisoEnvio(false)
+      }
+      if (acaoSelecionada === "deletar") {
+        setAvisoEnvio(true)
+        await DeleteMemoria(memoriaSelecionada.id)
+        setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+          prev.filter(
+            memoria => memoria.id !== memoriaSelecionada.id
+          )
+        );
+        setAvisoEnvio(false);
+      }
+      setConfirmacaoAberta(false);
+      setPostadasInfoShow(false);
+      if (editMode) setEditMode(false);
+      setSucessoAberto(true);
+
     } catch (error) {
-        console.log("Erro ao atualizar:", error);
+      console.log("Erro ao atualizar:", error);
     }
   }
 
@@ -155,7 +169,10 @@ const PostadasDashboard = () => {
 
           onFechar={handleFechar}
           onEditMode={handleAbrirEdicao}
-          onDelete={handleAceitarRecusar}
+          onDelete={() => {
+            setAcaoSelecionada("deletar");
+            handleAceitarRecusar();
+          }}
         />
       )}
 
@@ -179,18 +196,18 @@ const PostadasDashboard = () => {
             handleAceitarRecusar();
           }}
           onDelete={() => {
-            setAcaoSelecionada("deletar");
-            handleAceitarRecusar();
+            setAcaoSelecionada("recusar")
+            handleRecusarAlteracao()
           }}
-          />
-        )}
+        />
+      )}
 
       {/* CONFIRMAÇÃO */}
       {confirmacaoAberta && (
         <PopUpConfirmacao
-        onSim={handleSim}
-        onNao={handleNao}
-        avisoEnvio={avisoEnvio}
+          onSim={handleSim}
+          onNao={handleNao}
+          avisoEnvio={avisoEnvio}
         />
       )}
 
