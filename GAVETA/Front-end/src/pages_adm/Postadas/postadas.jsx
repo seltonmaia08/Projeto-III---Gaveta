@@ -8,7 +8,7 @@ import PopUpSucesso from '../../components/PopUpSucesso/PopUpSucesso';
 import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao';
 
 import Dados from '../../services/dados.json'
-import { GetMemoriesPostadas, UpdateMemoria } from '../../services/api';
+import { DeleteMemoria, GetMemoriesPostadas, UpdateMemoria } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 
 import './postadas.css';
@@ -91,8 +91,16 @@ const PostadasDashboard = () => {
                 return memoria;
             }));
             setAvisoEnvio(false)
-        } else if (acaoSelecionada === "deletar") {
-            // Deleta a memoria
+        }  
+        if (acaoSelecionada === "deletar") {
+          setAvisoEnvio(true)  
+          await DeleteMemoria(memoriaSelecionada.id)
+          setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+            prev.filter(
+              memoria => memoria.id !== memoriaSelecionada.id
+            )
+          );
+          setAvisoEnvio(false);
         }
         setConfirmacaoAberta(false);
         setPostadasInfoShow(false);

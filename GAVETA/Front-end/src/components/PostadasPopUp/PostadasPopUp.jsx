@@ -1,6 +1,4 @@
 import "./PostadasPopUp.css";
-import { FaRegTrashAlt } from "react-icons/fa";
-import { MdOutlineEdit } from "react-icons/md";
 import { IoCloseOutline } from "react-icons/io5";
 
 function PostadasPopUp({

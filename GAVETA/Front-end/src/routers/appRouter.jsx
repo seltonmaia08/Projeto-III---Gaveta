@@ -20,7 +20,7 @@ import { RotaProtegidaAdmin, RotaApenasUsuario } from './RotasProtegidas'
 
 const AppRouter = () => {
     // Mude isso depois para pegar o estado real do Firebase (ex: auth.currentUser)
-    const [isAdminLogado, setIsAdminLogado] = useState(false)
+    const [isAdminLogado, setIsAdminLogado] = useState(true)
 
     return (
         <Routes>

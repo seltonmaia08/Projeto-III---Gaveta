@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, doc, getDoc, query, where, updateDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc, query, where, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import { memo } from "react";
 
@@ -225,6 +225,18 @@ export async function UpdateMemoria(id, dadosAtualizados){
         return true
     } catch (error) {
         console.log("Memórias não atualizadas: ", error)
+        throw error
+    }
+}
+
+export async function DeleteMemoria(id) {
+    try {
+        const ref = doc(db, 'memorias', id)
+        await deleteDoc(ref)
+        console.log("Dados deletados com sucesso!")
+        return true;
+    } catch (error) {
+        console.log("Erro ao deletar os dados: ", error)
         throw error
     }
 }
