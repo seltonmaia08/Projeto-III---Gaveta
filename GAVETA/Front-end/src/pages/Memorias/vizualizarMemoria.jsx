@@ -94,7 +94,7 @@ function VisualizarMemoria() {
                     </p>
 
                     <div className='denu-comp'>
-                        <Denunciar />
+                        <Denunciar idMemoria={memoriaSelecionada.id}/>
                         <Compartilhar />
                     </div>
 

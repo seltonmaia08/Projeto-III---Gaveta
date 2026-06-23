@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import App from "../App"
 import MainLayout from '../layout/mainLayout'
 import Mural from '../pages/Mural/mural'
@@ -17,16 +17,27 @@ import DenunciaDashboard from '../pages_adm/Denuncia/denuncia'
 import MainLayoutADM from '../layout/MainLayoutADM'
 
 import { RotaProtegidaAdmin, RotaApenasUsuario } from './RotasProtegidas'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../services/firebase'
 
 const AppRouter = () => {
-    // Mude isso depois para pegar o estado real do Firebase (ex: auth.currentUser)
-    const [isAdminLogado, setIsAdminLogado] = useState(true)
+    const [isAdminLogado, setIsAdminLogado] = useState(false)
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if(user){
+                setIsAdminLogado(true)
+            }
+            else setIsAdminLogado(false)
+        })
+
+        return () => unsubscribe()
+    }, [])
 
     return (
         <Routes>
-            {/* O Login do Admin precisa ficar desprotegido para que ele consiga fazer login */}
             <Route element={<MainLayoutADM />}>
-                <Route path='/login' element={<LoginAdm setIsAdminLogado={setIsAdminLogado}/>} />
+                <Route path='/login' element={<LoginAdm/>} />
             </Route>
 
             {/* ROTAS PÚLBICAS E DO USUÁRIO */}

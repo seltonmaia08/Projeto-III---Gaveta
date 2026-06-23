@@ -125,6 +125,16 @@ form {
   white-space: nowrap;
 }
 
+.textErro{
+  padding: 1rem;
+  background-color: #d62828;
+  color: #fff;
+  text-align: "center"; 
+  font-weight: bold;
+  font-size: 11pt;
+  margin-bottom: 1rem;
+}
+
 #entrar {
   width: 19rem;
   padding: 1rem;

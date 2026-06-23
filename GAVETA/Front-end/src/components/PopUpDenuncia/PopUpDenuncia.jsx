@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { IoCheckmarkOutline } from "react-icons/io5";
+import { DenunciarMemorias } from "../../services/api";
 
 import "./PopUpDenuncia.css";
 
-function PopUpDenuncia({ fecharPopup, mostrarSucesso }) {
+function PopUpDenuncia({ fecharPopup, mostrarSucesso, idMemoria }) {
 
     const [selecionado, setSelecionado] = useState("");
 
@@ -24,8 +25,18 @@ function PopUpDenuncia({ fecharPopup, mostrarSucesso }) {
         }
     }
     
-    function enviarDenuncia() {
+    async function enviarDenuncia() {
         if (!selecionado) return;
+
+        const novaDenuncia = {
+            id_memoria: idMemoria,
+            motivo: selecionado,
+        }
+        try{
+            await DenunciarMemorias(novaDenuncia)
+        } catch(error) {
+            console.log(error.message)
+        }
 
         fecharPopup();
         mostrarSucesso();

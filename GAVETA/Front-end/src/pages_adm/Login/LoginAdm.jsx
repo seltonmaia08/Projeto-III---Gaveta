@@ -4,9 +4,12 @@ import { FaEye, FaEyeSlash, FaUserCircle } from "react-icons/fa";
 
 import "./LoginAdm.css";
 import LogoGaveta from "../../assets/imgs/logo_gaveta.svg";
+import { auth } from '../../services/firebase'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 
-function LoginAdm({ setIsAdminLogado }) {
+function LoginAdm() {
     const [showPassword, setShowPassword] = useState(false);
+    const [erro, setErro] = useState("");
 
     const [dados, setDados] = useState({
         email: "",
@@ -17,14 +20,14 @@ function LoginAdm({ setIsAdminLogado }) {
 
     const alterarDados = (e) => {
         const { name, value } = e.target;
-
+        setErro("")
         setDados({
             ...dados,
             [name]: value
         });
     };
 
-    function validarFormulario(e) {
+    async function validarFormulario(e) {
         e.preventDefault();
 
         const form = e.currentTarget;
@@ -34,8 +37,13 @@ function LoginAdm({ setIsAdminLogado }) {
             return;
         }
 
-        setIsAdminLogado(true);
-        navigate("/postadasDashboard");
+        try {
+            await signInWithEmailAndPassword(auth, dados.email, dados.senha)
+            navigate("/postadasDashboard")
+        } catch (error) {
+            setErro("Email ou senha incorretos. Por favor, tente novamente.")
+            console.log('Erro ao fazer o login...', error.message)
+        }
     }
 
     const toggleShow = () => {
@@ -95,6 +103,9 @@ function LoginAdm({ setIsAdminLogado }) {
                         </div>
                     </div>
 
+                    {
+                    erro && 
+                    <p className="textErro">{erro}</p>}
                     <button type="submit" id="entrar">
                         ENTRAR
                     </button>

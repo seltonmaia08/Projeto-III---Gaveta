@@ -240,3 +240,23 @@ export async function DeleteMemoria(id) {
         throw error
     }
 }
+
+export async function DenunciarMemorias(dados) {
+
+    try {
+
+        const denuncia = {
+            idMemoria: dados.id_memoria,
+            motivo: dados.motivo,
+            data: new Date()
+        }
+
+        const docRef = await addDoc(collection(db, "denuncia"), denuncia);
+        console.log("Salvo com sucesso! ID:", docRef.id);
+        return { message: "Sucesso!", id: docRef.id };
+    } catch (error) {
+        console.error("Erro ao processar:", error);
+        throw error;
+    }
+
+}

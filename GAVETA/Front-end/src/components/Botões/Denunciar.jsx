@@ -7,7 +7,7 @@ import "./Denunciar.css";
 import PopUpDenuncia from "../PopUpDenuncia/PopUpDenuncia";
 import PopUpSucesso from "../PopUpSucesso/PopUpSucesso";
 
-function Denunciar() {
+function Denunciar({ idMemoria }) {
 
     const [abrirPopup, setAbrirPopup] = useState(false);
     const [mostrarPopupSucesso, setMostrarPopupSucesso] = useState(false);
@@ -95,6 +95,7 @@ function Denunciar() {
                         <PopUpDenuncia
                             fecharPopup={() => setAbrirPopup(false)}
                             mostrarSucesso={abrirPopupSucesso}
+                            idMemoria={idMemoria}
                         />
                     </div>,
                     document.body
