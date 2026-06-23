@@ -9,7 +9,7 @@ import PopUpConfirmacao from '../../components/PopUpConfirmacao/PopUpConfirmacao
 import './denuncia.css'
 
 //import Dados from '../../services/dados.json'
-import { GetMemoriasDenunciadas, GetMemoriesByID } from '../../services/api';
+import { DeleteDenuncia, DeleteMemoria, GetMemoriasDenunciadas, GetMemoriesByID } from '../../services/api';
 import FilterMemories from '../../components/filter-memories/FilterMemories';
 import { memo } from 'react';
 
@@ -17,10 +17,12 @@ const DenunciaDashboard = () => {
   const [DenunciaInfoShow, setDenunciaInfoShow] = useState(false);
   const [confirmacaoAberta, setConfirmacaoAberta] = useState(false);
   const [sucessoAberto, setSucessoAberto] = useState(false);
+  const [acaoSelecionada, setAcaoSelecionada] = useState("");
 
   const [exibirDados, setExibirDados] = useState([]);
   const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
 
+  const [avisoEnvio, setAvisoEnvio] = useState(false)
   const [openFilter, setOpenFilter] = useState(false);
   const [filtrarConteudo, setFiltrarConteudo] = useState([]);
 
@@ -55,6 +57,10 @@ const DenunciaDashboard = () => {
     setDenunciaInfoShow(true);
   }
 
+  function handleFechar() {
+    setDenunciaInfoShow(false);
+  }
+
   function handleAceitarRecusar() {
     setConfirmacaoAberta(true);
   }
@@ -63,18 +69,45 @@ const DenunciaDashboard = () => {
     setConfirmacaoAberta(false);
   }
 
-  function handleSim() {
-    setConfirmacaoAberta(false);
-    setDenunciaInfoShow(false);
-    setSucessoAberto(true);
+  async function handleSim() {
+    try {
+      if (acaoSelecionada === "deletar") {
+        setAvisoEnvio(true)
+        await DeleteDenuncia(memoriaSelecionada.id);
+        setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+          prev.filter(
+            memoria => memoria.id !== memoriaSelecionada.id
+          )
+        );
+
+        await DeleteMemoria(memoriaSelecionada.idMemoria);
+        setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+          prev.filter(
+            memoria => memoria.idMemoria !== memoriaSelecionada.idMemoria
+          )
+        );
+        setAvisoEnvio(false)
+      }
+      if (acaoSelecionada === "ignorar") {
+        setAvisoEnvio(true)
+        await DeleteDenuncia(memoriaSelecionada.id)
+        setExibirDados(prev => //usa esse prev para garantir que está pegando o estado mais atual do ExibirDados
+          prev.filter(
+            memoria => memoria.id !== memoriaSelecionada.id
+          )
+        );
+        setAvisoEnvio(false);
+      }
+      setConfirmacaoAberta(false);
+      setDenunciaInfoShow(false);
+      setSucessoAberto(true);
+    } catch (error) {
+      console.log("Erro ao atualizar:", error);
+    }
   }
 
   function handleFecharSucesso() {
     setSucessoAberto(false);
-  }
-
-  function handleFechar() {
-    setDenunciaInfoShow(false);
   }
 
   return (
@@ -118,13 +151,19 @@ const DenunciaDashboard = () => {
           denuncia= {memoriaSelecionada.motivo}
           foto={memoriaSelecionada.imagensURL}
           onFechar={handleFechar}
-          onDelete={handleAceitarRecusar}
-          onIgnore={handleAceitarRecusar}
+          onDelete={() => {
+            setAcaoSelecionada("deletar");
+            handleAceitarRecusar();
+          }}
+          onIgnore={() => {
+            setAcaoSelecionada("ignorar");
+            handleAceitarRecusar();
+          }}
         />
       )}
 
       {confirmacaoAberta && (
-        <PopUpConfirmacao onSim={handleSim} onNao={handleNao} />
+        <PopUpConfirmacao onSim={handleSim} onNao={handleNao} avisoEnvio={avisoEnvio} />
       )}
 
       {sucessoAberto && <PopUpSucesso onFechar={handleFecharSucesso} />}

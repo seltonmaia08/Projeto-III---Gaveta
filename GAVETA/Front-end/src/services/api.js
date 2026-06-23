@@ -241,6 +241,18 @@ export async function DeleteMemoria(id) {
     }
 }
 
+export async function DeleteDenuncia(id) {
+    try {
+        const ref = doc(db, 'denuncia', id)
+        await deleteDoc(ref)
+        console.log("Dados deletados com sucesso!")
+        return true;
+    } catch (error) {
+        console.log("Erro ao deletar os dados: ", error)
+        throw error
+    }
+}
+
 export async function DenunciarMemorias(dados) {
 
     try {
