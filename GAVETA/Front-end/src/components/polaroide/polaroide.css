@@ -1,63 +1,93 @@
 .polaroide-card {
-    width: 17rem;
-    height: 24rem;
-    padding: 1rem;
-    margin: 2rem;
+  position: relative;
+  overflow: visible;
+  width: 17rem;
+  height: 24rem;
+  padding: 1rem;
+  margin: 2rem;
 
-    background-color: var(--pedra-cruzeiro);
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    box-shadow: 0px 4px 4px 0px #00000025;
+  background-color: var(--pedra-cruzeiro);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  box-shadow: 0px 4px 4px 0px #00000025;
 
-    transition: transform 0.3s ease-in;
-    transform: rotate(var(--rotation));
+  transition: transform 0.3s ease-in;
+  transform: rotate(var(--rotation));
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .photo-card {
-    width: 15.5rem;
-    height: 15.5em;
-    margin-bottom: 1rem;
-    background-image: var(--bg-image);
-    background-repeat: no-repeat;
-    background-size: cover;
-
+  width: 15.5rem;
+  height: 15.5em;
+  margin-bottom: 1rem;
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .title-card-polaroide {
-    font-family: 'title-h2-CoveredBy';
-    font-size: 10pt;
-    overflow: hidden;
+  font-family: "title-h2-CoveredBy";
+  font-size: 10pt;
+  overflow: hidden;
 }
 
 .title-card-polaroide h2 {
-    color: var(--nuvem-inverno);
+  color: var(--nuvem-inverno);
 }
 
 .polaroide-card:hover {
-    transform: rotate(var(--rotation)) scale(1.05);
+  transform: rotate(var(--rotation)) scale(1.05);
 }
 
 /* Configuração para mudar a cor de fundo do polaroide de acordo com a tela que ele se encontra no modulo do ADM */
 .postadasDashboard {
-    background-color: var(--sertao-chuvoso);
+  background-color: var(--sertao-chuvoso);
 }
 
 .postadasDashboard h2 {
-    color: var(--pedra-cruzeiro);
+  color: var(--pedra-cruzeiro);
 }
 
 .pendentesDashboard {
-    background-color: var(--areia-sertao);
+  background-color: var(--areia-sertao);
 }
 
 .denunciaDashboard {
-    background-color: var(--monolitos);
+  background-color: var(--monolitos);
 }
 
 .denunciaDashboard h2 {
-    color: var(--pedra-cruzeiro);
+  color: var(--pedra-cruzeiro);
+}
+
+.fita-polaroide {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.fita-1 {
+  width: 8rem !important;
+}
+
+.fita-2 {
+  width: 6rem !important;
+}
+
+.fita-3 {
+  width: 8rem !important;
+}
+
+.pregador-polaroide {
+  width: 6rem;
+  position: absolute;
+  top: -2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
