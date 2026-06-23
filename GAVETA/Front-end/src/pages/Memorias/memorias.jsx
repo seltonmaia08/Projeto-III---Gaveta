@@ -11,17 +11,19 @@ const Memoria = () => {
     const [exibirDados, setExibirDados] = useState([])
     const [filtrarConteudo, setFiltrarConteudo] = useState([])
     const [buscarConteudo, setBuscarConteudo] = useState([])
+    const [carregando, setCarregando] = useState(true)
 
 
     useEffect(
-        
+
         () => {
 
             async function carregar() {
 
                 const apiMemories = await GetMemoriesPostadas();
                 setExibirDados(apiMemories);
-                console.log("pagina memorias: ", apiMemories)
+                console.log("pagina memorias: ", apiMemories)   
+                setCarregando(false)
             }
 
             carregar();
@@ -42,21 +44,27 @@ const Memoria = () => {
                 />
             </div>
             {
-                (!exibirDados || exibirDados.length === 0) ?
+                carregando ? (
+                    <div style={{ textAlign: "center", width: "100%", padding: "4rem" }}>
+                        <h2 style={{ color: "#fff" }}>Resgatando memórias...</h2>
+                    </div>
+                ) : (!exibirDados || exibirDados.length === 0) ? (
                     <div className='messageItemNotFound'>
                         <p>Ops... Nenhuma memória foi encontrada.</p>
-                        <p>Por favor tente outras palavras!</p>
+                        <p>Por favor, tente outras palavras...</p>
                     </div>
-                    :
+                ) : (
                     exibirDados.map((memoria) =>
                         <CardMemories
                             key={memoria.id}
+                            id={memoria.id}
                             titulo={memoria.titulo}
                             relatoMemoria={memoria.relatoMemoria}
                             tags={memoria.tags}
                             imagensURL={memoria.imagensURL}
                         />
                     )
+                )
             }
         </div>
     )

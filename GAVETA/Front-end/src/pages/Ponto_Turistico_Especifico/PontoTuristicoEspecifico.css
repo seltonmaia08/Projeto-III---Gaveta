@@ -86,13 +86,24 @@
   width: 100%;
 }
 
-.imagem-texto img,
-.texto-imagem img {
+.imagem-texto img:first-of-type,
+.texto-imagem img:first-of-type {
   width: 22rem;
   /* Aumentado ligeiramente para ficar idêntico à imagem de referência */
   height: 22rem;
   object-fit: cover;
   border-radius: 0.5rem;
+  align-self: flex-start;
+}
+
+.imagem-texto img:last-of-type,
+.texto-imagem img:last-of-type {
+  width: 22rem;
+  /* Aumentado ligeiramente para ficar idêntico à imagem de referência */
+  height: 22rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  align-self: flex-end;
 }
 
 .imagem-texto p,

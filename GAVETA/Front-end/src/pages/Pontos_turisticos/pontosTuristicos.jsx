@@ -10,11 +10,13 @@ const PontoTuristico = () => {
   const [exibirDados, setExibirDados] = useState([]); //useState(Dados) anteriormente mockados
   const [buscarConteudo, setBuscarConteudo] = useState([]);
   const navigate = useNavigate();
+  const [carregando, setCarregando] = useState(true)
 
   useEffect(() => {
     async function Carregar() {
       const apiPontos = await GetPontos();
       setExibirDados(apiPontos);
+      setCarregando(false)
     }
 
     Carregar();
@@ -37,12 +39,16 @@ const PontoTuristico = () => {
       </div>
 
       <div className="content-ponto-turistico">
-        {exibirDados.length === 0 ? (
-          <div className="messageItemNotFound">
-            <p>Ops... Nenhum ponto foi encontrado.</p>
-            <p>Por favor tente outras palavras!</p>
-          </div>
-        ) : (
+        {carregando ? (
+                    <div style={{ textAlign: "center", width: "100%", padding: "4rem" }}>
+                        <h2 style={{ color: "#fff" }}>Resgatando memórias...</h2>
+                    </div>
+                ) : (!exibirDados || exibirDados.length === 0) ? (
+                    <div className='messageItemNotFound'>
+                        <p>Ops... Nenhuma memória foi encontrada.</p>
+                        <p>Por favor, tente outras palavras...</p>
+                    </div>
+                ) : (
           exibirDados.map((memoria) => (
             <div key={memoria.id} onClick={() => handleCardClick(memoria)}>
               <Polaroide

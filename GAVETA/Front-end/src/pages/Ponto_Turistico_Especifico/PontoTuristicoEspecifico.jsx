@@ -54,27 +54,6 @@ const PontoTuristicoEspecifico = () => {
     )
   }
 
-  /*const memorias = [
-    {
-      id: 1,
-      titulo: "Minha trilha preferida",
-      imagem:
-        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-    },
-    {
-      id: 2,
-      titulo: "Pôr do sol na Pedra",
-      imagem:
-        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-    },
-    {
-      id: 3,
-      titulo: "A trilha e o vento",
-      imagem:
-        "https://fundacaomarquesdemelo.org/wp-content/uploads/2022/06/GalinhaChoca.png?w=640",
-    },
-  ];*/
-
   return (
     <div className="ponto-especifico">
       {/* TOPO */}

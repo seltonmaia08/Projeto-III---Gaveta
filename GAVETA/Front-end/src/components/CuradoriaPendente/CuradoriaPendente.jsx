@@ -22,7 +22,7 @@ function CuradoriaPendente({
         <div className="coluna-esquerda">
           <div className="campo">
             <span className="label">Título:</span>
-            <span className="valor">{titulo}</span>
+            <span style={{width: '100%'}} className="valor">{titulo}</span>
           </div>
 
           <div className="campo">
@@ -51,7 +51,7 @@ function CuradoriaPendente({
 
           <div className="campo">
             <span className="label">Lugar:</span>
-            <span className="valor">{lugar}</span>
+            <span style={{width: '30%'}} className="valor">{lugar}</span>
           </div>
 
           <div className="contato-categoria">

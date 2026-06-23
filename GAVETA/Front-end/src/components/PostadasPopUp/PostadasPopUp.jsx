@@ -21,7 +21,7 @@ function PostadasPopUp({
         <div className="coluna-esquerda-postada">
           <div className="campo-postada">
             <span className="label-postada">Título:</span>
-            <span className="valor-postada">{titulo}</span>
+            <span style={{width: '100%'}} className="valor-postada">{titulo}</span>
           </div>
 
           <div className="campo-postada">
@@ -50,7 +50,7 @@ function PostadasPopUp({
 
           <div className="campo-postada">
             <span className="label-postada">Lugar:</span>
-            <span className="valor-postada">{lugar}</span>
+            <span style={{width: '30%'}} className="valor-postada">{lugar}</span>
           </div>
 
           <div className="contato-categoria-postada">

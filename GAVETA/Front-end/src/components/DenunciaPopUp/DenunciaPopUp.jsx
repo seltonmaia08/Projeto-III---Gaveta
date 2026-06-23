@@ -22,7 +22,7 @@ function DenunciaPopUp({
         <div className="coluna-esquerda-denu">
           <div className="campo-denu">
             <span className="label-denu">Título:</span>
-            <span className="valor-denu">{titulo}</span>
+            <span style={{width: '100%'}} className="valor-denu">{titulo}</span>
           </div>
 
           <div className="campo-denu">
@@ -53,7 +53,7 @@ function DenunciaPopUp({
           <div className="contato-categoria-denu">
             <div className="campo-denu">
               <span className="label-denu">Lugar:</span>
-              <span className="valor-denu">{lugar}</span>
+              <span style={{width: '70%'}} className="valor-denu">{lugar}</span>
             </div>
 
             <div className="campo-denu">

@@ -65,8 +65,9 @@
 .campo-denu,
 .denuncia {
   display: flex;
-  align-items:flex-start;
+  align-items: flex-start;
   gap: 0.5rem;
+  width: 100%;
   margin-bottom: 1rem;
 }
 
@@ -98,6 +99,8 @@
   flex-direction: row;
   gap: 1rem;
   align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .v-texto-denu {
@@ -158,16 +161,16 @@
 }
 
 .btn-fechar-denu {
-    display: flex;
-    background-color: var(--sertao-chuvoso);
-    color: white;
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 0.3rem;
-    padding: 0.2rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
+  display: flex;
+  background-color: var(--sertao-chuvoso);
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 0.3rem;
+  padding: 0.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .btn-ignorar {

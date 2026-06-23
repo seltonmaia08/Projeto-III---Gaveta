@@ -11,6 +11,7 @@ import { collection } from 'firebase/firestore'
 function VisualizarMemoria() {
 
     const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
+    const [carregando, setCarregando] = useState(true);
     const { id } = useParams(); // o que isso faz, Selton?
 
     useEffect(
@@ -19,10 +20,10 @@ function VisualizarMemoria() {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); // levar o scroll para o topo
 
             async function carregar() { // carregar as memorias
-
                 const apiMemorie = await GetMemoriesByID(id);
                 console.log(apiMemorie);
                 setMemoriaSelecionada(apiMemorie);
+                setCarregando(false);
 
             }
             carregar();
@@ -53,7 +54,13 @@ function VisualizarMemoria() {
 
     }
 
-
+    if (carregando) {
+        return (
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+                <h2 style={{ color: "var(--vermelho-goyabeira)" }}>Carregando a memória...</h2>
+            </div>
+        );
+    }
     if (memoriaSelecionada == null) {
         return <h1>Memória não encontrada</h1>
     }
@@ -64,7 +71,6 @@ function VisualizarMemoria() {
             <Voltar />
 
             <div className='visu-memoria'>
-
                 <img
                     className='img'
                     src={memoriaSelecionada.imagensURL}
@@ -94,7 +100,7 @@ function VisualizarMemoria() {
                     </p>
 
                     <div className='denu-comp'>
-                        <Denunciar idMemoria={memoriaSelecionada.id}/>
+                        <Denunciar idMemoria={memoriaSelecionada.id} />
                         <Compartilhar />
                     </div>
 

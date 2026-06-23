@@ -18,6 +18,7 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
     useEffect(                // esse useEffect() é pra puxar as memorias, mas estou esperando ver o que vai ser feito.
 
         () => {
+
             async function Carregar() {
                 const apiMemories = await GetMemoriesPostadas();
                 setExibirFiltro(apiMemories);
@@ -39,13 +40,7 @@ const FilterMemories = ({ setExibirDados, openFilter, setOpenFilter }) => {
 
         const filtrar = exibirFiltro.filter((filtro) =>
             filtro.tags.some(tag => filtroBusca.includes(tag.toLowerCase())))
-        setExibirDados(filtrar.map(e => ({
-            id: e.id,
-            titulo: e.titulo,
-            relatoMemoria: e.relatoMemoria,
-            imagensURL: e.imagensURL,
-            tags: e.tags
-        })))
+         setExibirDados(filtrar)
 
         setOpenFilter(false)
         setDadoFiltrado(true)

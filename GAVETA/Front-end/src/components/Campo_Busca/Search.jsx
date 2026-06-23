@@ -10,7 +10,6 @@ const Search = ({ setBuscarConteudo }) => {
     const location = useLocation()
     useEffect(
         () => {
-
             async function Carregar() {
 
                 if (location.pathname.includes('ponto-turistico')) {

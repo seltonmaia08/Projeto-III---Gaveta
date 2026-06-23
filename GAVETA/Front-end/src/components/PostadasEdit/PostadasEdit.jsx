@@ -59,6 +59,7 @@ function PostadasEdit({
           <div className="campo-editando">
             <label className="label-editando">Título:</label>
             <input
+              style={{width: '100%'}}
               type="text"
               className="input-edit"
               value={titulo}
@@ -97,7 +98,7 @@ function PostadasEdit({
 
           <div className="campo-postada">
             <span className="label-postada">Lugar:</span>
-            <span className="input-edit-bloqueado">{lugar}</span>
+            <span style={{width: '30%'}} className="input-edit-bloqueado">{lugar}</span>
           </div>
 
           <div className="contato-categoria-editando">
