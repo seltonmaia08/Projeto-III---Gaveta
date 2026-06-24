@@ -1,35 +1,70 @@
-.memoria{
-    min-height: 100vh;
-    width: 100%;
-    height: auto;
-    background-color: var(--sertao-chuvoso);
-    padding: 10rem;
+.memoria {
+  min-height: 100vh;
+  width: 100%;
+  height: auto;
+  background-color: var(--sertao-chuvoso);
+  padding: 10rem;
 
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .area-search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.messageItemNotFound{
-    margin: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+.messageItemNotFound {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .messageItemNotFound p {
-    color: var(--pedra-cruzeiro);
-    font-family: "Title-h2";
-    font-size: 16pt;
+  color: var(--pedra-cruzeiro);
+  font-family: "Title-h2";
+  font-size: 16pt;
+}
+
+.paginacao {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.btn-pagina {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--pedra-cruzeiro);
+  background-color: transparent;
+  color: var(--pedra-cruzeiro);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-pagina-ativa {
+  background-color: var(--pedra-cruzeiro);
+  color: var(--nuvem-inverno);
+}
+
+.btn-seta {
+  font-size: 1.3rem;
+}
+
+.btn-pagina:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }

@@ -4,13 +4,13 @@ import Polaroide from "../../components/polaroide/Polaroide";
 import { FaShareAlt } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";
 import { GetPontosByID, GetMemoriesByPontos } from "../../services/api";
-import Compartilhar from '../../components/Botões/Compartilhar'
+import Compartilhar from "../../components/Botões/Compartilhar";
 import { useState, useEffect } from "react";
 
 const PontoTuristicoEspecifico = () => {
-
   const [pontoSelecionado, setPontoSelecionado] = useState(null);
   const [memoriasPonto, setMemoriasPonto] = useState([]);
+  const [verMais, setVerMais] = useState(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -25,33 +25,28 @@ const PontoTuristicoEspecifico = () => {
 
   // Se tentar acessar a página direto sem clicar (ou der F5), exibe o aviso
 
-  useEffect(
-    
-    () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
-      window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+    async function Carregar() {
+      const apiPonto = await GetPontosByID(id);
+      console.log(apiPonto);
+      setPontoSelecionado(apiPonto);
 
-      async function Carregar() {
+      const apiMemoriesPonto = await GetMemoriesByPontos(apiPonto.titulo);
+      console.log(apiMemoriesPonto);
+      setMemoriasPonto(apiMemoriesPonto);
+    }
 
-        const apiPonto = await GetPontosByID(id);
-        console.log(apiPonto);
-        setPontoSelecionado(apiPonto);
-
-        const apiMemoriesPonto = await GetMemoriesByPontos(apiPonto.titulo);
-        console.log(apiMemoriesPonto);
-        setMemoriasPonto(apiMemoriesPonto);
-      }
-
-      Carregar();
-    }, []
-  )
+    Carregar();
+  }, []);
 
   if (!pontoSelecionado) {
     return (
       <h1 style={{ textAlign: "center", color: "white", marginTop: "5rem" }}>
         Ponto não encontrado.
       </h1>
-    )
+    );
   }
 
   return (
@@ -71,30 +66,48 @@ const PontoTuristicoEspecifico = () => {
       {/* CONTEÚDO */}
       <div className="conteudo-ponto">
         <div className="imagem-texto">
-          <img src={pontoSelecionado.imagens[0]} alt={pontoSelecionado.titulo} />
+          <img
+            src={pontoSelecionado.imagens[0]}
+            alt={pontoSelecionado.titulo}
+          />
           <p>{pontoSelecionado.texto}</p>
-          <img src={pontoSelecionado.imagens[1]} alt={pontoSelecionado.titulo} />
+          <img
+            src={pontoSelecionado.imagens[1]}
+            alt={pontoSelecionado.titulo}
+          />
         </div>
       </div>
       <div className="btn-compartilhar">
-          <Compartilhar />
+        <Compartilhar />
       </div>
 
       {/* MEMÓRIAS RELACIONADAS */}
       <div className="memorias-relacionadas">
         <h2>Memórias relacionadas a esse lugar</h2>
-
-        <div className="cards-relacionados">
-          {memoriasPonto.map((memoria) => (
-            <Polaroide
-              key={memoria.id}
-              id={memoria.id}
-              titulo={memoria.titulo}
-              imagem={memoria.imagensURL}
-              rotation={false}
-            />
-          ))}
+        <div
+          className={`cards-relacionados ${verMais ? "cards-expandido" : ""}`}
+        >
+          {(verMais ? memoriasPonto : memoriasPonto.slice(0, 3)).map(
+            (memoria) => (
+              <Polaroide
+                key={memoria.id}
+                id={memoria.id}
+                titulo={memoria.titulo}
+                imagem={memoria.imagensURL}
+                rotation={false}
+              />
+            ),
+          )}
         </div>
+
+        {memoriasPonto.length > 3 && (
+          <button
+            className="btn-ver-mais"
+            onClick={() => setVerMais((v) => !v)}
+          >
+            {verMais ? "Ver menos" : "Ver mais"}
+          </button>
+        )}
       </div>
     </div>
   );
