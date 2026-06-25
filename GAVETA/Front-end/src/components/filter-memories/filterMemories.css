@@ -1,73 +1,74 @@
 .filter-content {
-    width: auto;
-    height: auto;
-    min-height: 5rem;
-    padding-top: 0.8rem;
+  width: auto;
+  height: auto;
+  min-height: 5rem;
+  padding-top: 0.8rem;
+  z-index: 999;
 }
-.btn-filter{
-    width: 3.5rem;
-    height: 3.5rem;
-    border: none;
-    border-radius: 1rem;
-    
-    cursor: pointer;
-    background-color: var(--pedra-cruzeiro);
-    box-shadow: 0px 4px 4px 0 #00000025;
+.btn-filter {
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 1rem;
+
+  cursor: pointer;
+  background-color: var(--pedra-cruzeiro);
+  box-shadow: 0px 4px 4px 0 #00000025;
 }
 
-.icon-filter{
-    margin-top: 0.3rem;
-    width: 50%;
-    height: 50%;
+.icon-filter {
+  margin-top: 0.3rem;
+  width: 50%;
+  height: 50%;
 }
 
 .card-filter-open {
-    width: auto;
-    height: auto;
-    background-color: var(--pedra-cruzeiro);
-    position: absolute;
-    transform: translateX(-91%);
-    margin-top: 1rem;
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: end;
+  width: auto;
+  height: auto;
+  background-color: var(--pedra-cruzeiro);
+  position: absolute;
+  transform: translateX(-91%);
+  margin-top: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: end;
 
-    border-radius: 2rem;
-    box-shadow: 0px 4px 4px 0 #00000025;
+  border-radius: 2rem;
+  box-shadow: 0px 4px 4px 0 #00000025;
 }
 
 .btn-submit-filter,
 .btn-clean-filter {
-    border: none;
-    background-color: var(--sertao-chuvoso);
-    font-family: 'text-button';
-    color: var(--pedra-cruzeiro);
-    padding: 1rem 2rem;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 12pt;
-    margin-left: 1rem;
-    width: auto;
-    height: auto;
+  border: none;
+  background-color: var(--sertao-chuvoso);
+  font-family: "text-button";
+  color: var(--pedra-cruzeiro);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12pt;
+  margin-left: 1rem;
+  width: auto;
+  height: auto;
 
-    transition: transform 0.3 ease;
+  transition: transform 0.3 ease;
 }
 
-.btn-submit-filter:hover{
-    box-shadow: 0px 4px 4px 0 #00000025;
-    transform: scale(1.01);
+.btn-submit-filter:hover {
+  box-shadow: 0px 4px 4px 0 #00000025;
+  transform: scale(1.01);
 }
 
-.btn-submit-filter:active{
-    box-shadow: none;
-    transform: scale(0.99);
+.btn-submit-filter:active {
+  box-shadow: none;
+  transform: scale(0.99);
 }
 
-.btn-clean-filter{
-    background-color: var(--pedra-cruzeiro);
-    color: var(--monolitos);
-    border: 2px solid var(--monolitos);
+.btn-clean-filter {
+  background-color: var(--pedra-cruzeiro);
+  color: var(--monolitos);
+  border: 2px solid var(--monolitos);
 }
