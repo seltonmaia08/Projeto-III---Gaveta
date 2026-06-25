@@ -64,7 +64,10 @@ const PostadasDashboard = () => {
 
   // FECHAR EDIÇÃO
   function handleFecharEdicao() {
-    setEditMode(false);
+    // alterações de 25/06
+    // tirei o setEditMode(false) daqui
+    setConfirmacaoAberta(true);
+    setAcaoSelecionada("fechar"); // e fiz uma nova categoria pro setAcao;
   }
 
   // RECUSAR ALTERAÇÃO DOS DADOS
@@ -88,11 +91,18 @@ const PostadasDashboard = () => {
 
     if (acaoSelecionada === "recusar") {
       setConfirmacaoAberta(false);
-      setPostadasInfoShow(false);
+      //setPostadasInfoShow(false);
       if (editMode) setEditMode(false);
       setSucessoAberto(true);
       return
     }
+
+    // adição do dia 25/06
+    else if (acaoSelecionada === "fechar") {
+      if(confirmacaoAberta === false) {setPostadasInfoShow(false); setEditMode(false);}
+      return;
+    }
+    //---------
 
     try {
       if (acaoSelecionada === "editar" && dadosParaSalvar) {
@@ -196,7 +206,7 @@ const PostadasDashboard = () => {
             handleAceitarRecusar();
           }}
           onDelete={() => {
-            setAcaoSelecionada("recusar")
+            setAcaoSelecionada("recusar");
             handleRecusarAlteracao()
           }}
         />

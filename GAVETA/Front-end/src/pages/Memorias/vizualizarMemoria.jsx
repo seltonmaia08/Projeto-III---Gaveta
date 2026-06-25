@@ -12,7 +12,7 @@ function VisualizarMemoria() {
 
     const [memoriaSelecionada, setMemoriaSelecionada] = useState(null);
     const [carregando, setCarregando] = useState(true);
-    const { id } = useParams(); // o que isso faz, Selton?
+    const { id } = useParams();
 
     useEffect(
         () => {
@@ -20,11 +20,11 @@ function VisualizarMemoria() {
             window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); // levar o scroll para o topo
 
             async function carregar() { // carregar as memorias
+
                 const apiMemorie = await GetMemoriesByID(id);
                 console.log(apiMemorie);
                 setMemoriaSelecionada(apiMemorie);
                 setCarregando(false);
-
             }
             carregar();
         }, []
