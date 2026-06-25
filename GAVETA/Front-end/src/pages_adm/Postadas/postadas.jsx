@@ -99,7 +99,9 @@ const PostadasDashboard = () => {
 
     // adição do dia 25/06
     else if (acaoSelecionada === "fechar") {
-      if(confirmacaoAberta === false) {setPostadasInfoShow(false); setEditMode(false);}
+      setConfirmacaoAberta(false);
+      setPostadasInfoShow(false);
+      setEditMode(false);
       return;
     }
     //---------
@@ -196,6 +198,7 @@ const PostadasDashboard = () => {
           tags={memoriaSelecionada.tags}
           lugar={memoriaSelecionada.ponto_memoria}
           email={memoriaSelecionada.contatoAutor[0]}
+          categoria={memoriaSelecionada.categoriaMemoria}
           outroContato={memoriaSelecionada.contatoAutor[1]}
           foto={memoriaSelecionada.imagensURL}
 

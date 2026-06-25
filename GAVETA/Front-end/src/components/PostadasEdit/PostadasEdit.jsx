@@ -117,7 +117,7 @@ function PostadasEdit({
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option value="">Selecione...</option>
+                <option value="" disabled>Selecione...</option>
                 <option value="historica">Memória histórica</option>
                 <option value="cotidiana">Memória cotidiana</option>
               </select>
@@ -149,54 +149,6 @@ function PostadasEdit({
       </form>
     </div>
   )
-
-  /*
-    <div className="campo-editando">
-      <label className="label-editando">Nome:</label>
-      <input 
-        type="text" 
-        className="input-edit"
-        value={nome} 
-        onChange={(e) => setNome(e.target.value)} 
-      />
-      
-      <label className="label-editando nome-data-gap-editando">Data:</label>
-      <input 
-        type="date"
-        max={hoje}
-        className="input-edit input-data"
-        value={data} 
-        onChange={(e) => setData(e.target.value)} 
-      />
-    </div>
-    <div className="campo-editando">
-      <label className="label-editando">Lugar:</label>
-      <input 
-        type="text" 
-        className="input-edit"
-        value={lugar} 
-        onChange={(e) => setLugar(e.target.value)} 
-      />
-    </div>
-    <div className="campo-editando-topo">
-      <label className="label-editando">Contato:</label>
-      <div className="contatos-editando">
-        <input 
-          type="email" 
-          className="input-edit"
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-        />
-        <input 
-          type="text" 
-          className="input-edit"
-          value={outroContato} 
-          placeholder="Outro contato"
-          onChange={(e) => setOutroContato(e.target.value)} 
-        />
-      </div>
-    </div>
-  */
 }
 
 export default PostadasEdit;
