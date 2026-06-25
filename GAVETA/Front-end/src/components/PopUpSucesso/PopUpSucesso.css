@@ -3,13 +3,36 @@
   top: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  background: #5c766d;
+
+  background: var(--sertao-chuvoso);
   border-radius: 1.25rem;
   padding: 2rem 2rem;
   z-index: 1003;
   text-align: center;
   font-family: "Inter", sans-serif;
   width: fit-content;
+
+  opacity: 1;
+  transition: all 0.5s ease;
+  animation: aparecer 0.5s ease;
+}
+
+.container-sucesso.saindo {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-15pt);
+}
+
+@keyframes aparecer {
+
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-15pt);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .titulo-sucesso {
