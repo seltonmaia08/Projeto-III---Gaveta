@@ -2,7 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 export const RotaProtegidaAdmin = ({ isAdmin }) => {
     if (!isAdmin) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     return <Outlet />;
