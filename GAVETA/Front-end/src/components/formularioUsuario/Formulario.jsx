@@ -140,7 +140,7 @@ function Formulario({ termos, setTermos }) {
             const altura = imagemInstante.height;
 
             if (Math.abs(largura - altura) > 10) { mostrarErro("A imagem deve ser quadrada") }
-            // imagem com range de 20 pixels de tolerância (1080 - 1060, ou 1060 - 1080 = 20 em módulo)
+            // imagem com range de 10 pixels de tolerância (1080 - 1070, ou 1070 - 1080 = 10 em módulo)
             else {
 
                 //-------------------------- Tamanho Aceito?
