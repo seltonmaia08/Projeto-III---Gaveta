@@ -125,9 +125,13 @@ function Formulario({ termos, setTermos }) {
         const tamanhoMaximo = 10485760; // 10 * 1024 * 1024 bytes
 
         const imagemAtual = evento.target.files[0]; // o arquivo selecionado pelo usuário ao apertar no botão fica guardado
-        //no alvo → arquivos[], que é um vetor de arquivos. Nesse caso, o elemento que disparou o evento não é o botão
+        //no files[], que é um objeto de arquivos dentro do target. Na posição zero, se encontra a minha imagem.
+        // Nesse caso, o elemento que disparou o evento não é o botão
         //"fazer upload", mas é o input escondido, com seu html referenciado pela variável de referência inputImagem.
+        // a variável guarda um objeto do tipo "file" (com nome, tamanho, tipo, etc.)
 
+        if(!imagemAtual) {return} // somente para evitar erros com "undefined/null", caso não haja nenhum arquivo no files.
+        // isso pode acontecer ao clicar em cancelar depois de apertar no botão de upload
         //-------------------------- Calculando proporção
 
         const imagemInstante = new Image();
@@ -150,12 +154,8 @@ function Formulario({ termos, setTermos }) {
                     setDados({ ...dados, imagem: null });
                 }
                 else {
-
-                    if (imagemAtual == undefined) { setImagemEnviada(false) }
-                    else {
-                        setDados({ ...dados, imagem: imagemAtual });
-                        setImagemEnviada(true);
-                    }
+                    setDados({ ...dados, imagem: imagemAtual });
+                    setImagemEnviada(true);
                 }
             }
         }
