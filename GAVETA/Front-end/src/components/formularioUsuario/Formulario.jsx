@@ -70,19 +70,15 @@ function Formulario({ termos, setTermos }) {
         }
 
         try {
-
-            setCarregando(true)
-            await SendMemories(dados)
-            setPopSucesso(true)
-
-            limparFormulario()
-            
-            setCarregando(false)
+            setCarregando(true);
+            await SendMemories(dados);
+            setPopSucesso(true);
+            limparFormulario();
+            setCarregando(false);
         }
         catch (error) {
-            mostrarErro('Algo deu errado. Por favor check os dados e tente novamente...')
-            setCarregando(false)
-
+            mostrarErro('Algo deu errado. Por favor cheque os dados e tente novamente...');
+            setCarregando(false);
         }
     }
 
