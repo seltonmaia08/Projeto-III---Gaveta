@@ -30,13 +30,6 @@ function LoginAdm() {
     async function validarFormulario(e) {
         e.preventDefault();
 
-        const form = e.currentTarget;
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
         try {
             await signInWithEmailAndPassword(auth, dados.email, dados.senha)
             navigate("/postadasDashboard")
@@ -69,7 +62,6 @@ function LoginAdm() {
                                 id="login"
                                 name="email"
                                 required
-                                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
                                 onInvalid={(e) =>
                                     e.target.setCustomValidity(
                                         "Digite um email válido no formato exemplo@email.com"
